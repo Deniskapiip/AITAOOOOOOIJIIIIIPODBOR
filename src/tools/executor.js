@@ -48,6 +48,7 @@ export class ToolState {
     this.checkedDeeply = new Set();
     this.viewedItemIds = new Set();
     this.itemAttempts = new Set();
+    this.toolStats = {};
     this.priceResults = new Map();
     this.priceBudgetCny = null;
     this.rateCnyRub = null;
@@ -100,11 +101,19 @@ async function runSearch(args, state) {
     personalOnly: args.personal_only === undefined ? true : Boolean(args.personal_only),
   });
   state.searchKeys.add(keyword);
-  for (const item of data.items) state.seenItemIds.add(item.item_id);
+  const seen = new Set();
+  const unique = [];
+  for (const item of data.items) {
+    if (seen.has(item.item_id)) continue;
+    seen.add(item.item_id);
+    unique.push(item);
+    state.seenItemIds.add(item.item_id);
+  }
+  const removed = data.items.length - unique.length;
   const header =
-    'ПОИСК "' + keyword + '" — найдено ' + data.total + ', стр. ' + data.page + ', показано ' + data.items.length + ' (provider: ' + data.provider + ')';
-  const body = data.items.length ? data.items.map(formatSearchItem).join('\n') : '(ничего не найдено)';
-  const hint = data.items.length
+    'ПОИСК "' + keyword + '" — найдено ' + data.total + ', стр. ' + data.page + ', показано ' + unique.length + (removed ? ' (дублей убрано: ' + removed + ')' : '') + ' (provider: ' + data.provider + ')';
+  const body = unique.length ? unique.map(formatSearchItem).join('\n') : '(ничего не найдено)';
+  const hint = unique.length
     ? '\n\nПроверяй перспективные лоты через goofish_item. seller_id для goofish_seller бери из карточки лота: в поиске только ник. Помни: цена-заглушка и аксессуары отсеиваются по заголовку.'
     : '\n\nПопробуй другой ключ или измени ценовые границы.';
   return { text: header + '\n' + body + hint };
@@ -372,6 +381,7 @@ export async function executeTool(name, args, state) {
   const handler = HANDLERS[name];
   if (!handler) return { text: 'ОШИБКА: неизвестный инструмент ' + name };
   const started = Date.now();
+  state.toolStats[name] = (state.toolStats[name] || 0) + 1;
   try {
     const result = await handler(args || {}, state);
     state.log.push({

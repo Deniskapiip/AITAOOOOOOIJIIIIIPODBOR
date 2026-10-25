@@ -12,3 +12,9 @@
 - Added `budget_hint` for explicit CNY/RUB budgets; prevents 4300 CNY -> 4300 RUB errors.
 - `goofish_item` now rejects duplicate item IDs in one run (saves calls and reduces RGV risk).
 - Photo claims in `why_good` are now a validation error when `photo_check != "ок"`.
+
+## v3 · 2026-10-25
+
+- Search results are deduplicated by `item_id` before the model sees them.
+- Runs store `llm_requests` and `tool_stats`.
+- Baseline extended to 11 scenarios / 7 categories; all safety gates pass.

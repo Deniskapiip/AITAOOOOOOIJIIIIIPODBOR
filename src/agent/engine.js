@@ -210,6 +210,8 @@ export async function runAgent({
       state,
       messages,
       usage: llm.totalUsage || null,
+      llmRequests: llm.requests || null,
+      toolStats: state.toolStats,
       calls: budget.used,
       budget,
       finishWarnings: state.finishWarnings,
