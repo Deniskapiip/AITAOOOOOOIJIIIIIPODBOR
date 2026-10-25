@@ -53,7 +53,9 @@ export class LlmClient {
   }
 
   async request(messages, tools, signal, temperature) {
-    const controllerSignal = AbortSignal.any ? AbortSignal.any([signal, AbortSignal.timeout(this.config.timeoutMs)]) : signal;
+    const timeoutSignal = AbortSignal.timeout(this.config.timeoutMs);
+    const signals = signal ? [signal, timeoutSignal] : [timeoutSignal];
+    const controllerSignal = AbortSignal.any ? AbortSignal.any(signals) : signal || timeoutSignal;
     const body = {
       model: this.config.model,
       messages,

@@ -19,6 +19,17 @@
 - отдаёт JSON, карточки менеджера, ссылки и вопросы продавцу;
 - пишет каждый прогон в data/runs для разбора.
 
+## Устойчивость к RGV587
+
+Если карточки в cooldown, бот не падает и не льёт запросы: он проверяет
+`provider.health()`, показывает `/accounts`, а при `GOOFISH_SEARCH_ONLY_FALLBACK=true`
+отдаёт до 3 лотов из поиска с вердиктом «проверить» и пометкой, что карточка не проверена.
+
+Пул аккаунтов задаётся `GOOFISH_ACCOUNTS` (JSON) или одним `GOOFISH_COOKIE`;
+состояние хранится в `data/accounts.json` (в git не попадает).
+Команды админа: `/accounts`, `/cookie <cookie>`, `/verify_help`.
+Диагностика: `npm run probe -- health`.
+
 ## Быстрый старт
 
 Требуется Node.js 20+ и ключ LLM (DeepSeek или любой OpenAI-совместимый API).
@@ -72,6 +83,10 @@
 | COMMISSION_MIN_RUB | 650 | минимальная комиссия |
 | GOOFISH_PROVIDER | mock | mock или http |
 | GOOFISH_COOKIE | — | cookie залогиненного goofish.com для http |
+| GOOFISH_ACCOUNTS | — | JSON-пул аккаунтов: [{"id":"main","cookie":"..."}] |
+| GOOFISH_DAILY_LIMIT | 60 | максимум вызовов на аккаунт в сутки |
+| GOOFISH_SEARCH_ONLY_FALLBACK | true | при cooldown карточек отдавать только поиск |
+| GOOFISH_ITEM_TTL_MS | 21600000 | TTL кэша карточек |
 | GOOFISH_PROXY_URL | — | прокси для Goofish (желательно китайский) |
 | MAX_TOOL_CALLS | 45 | жёсткий лимит вызовов (не больше 45) |
 | RUN_TIMEOUT_MS | 300000 | таймаут прогона |

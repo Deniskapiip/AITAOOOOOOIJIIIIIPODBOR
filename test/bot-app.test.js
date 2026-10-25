@@ -115,3 +115,15 @@ test('бот: ошибка LLM показывается менеджеру с ID
   assert.match(last.text, /ID прогона/);
 });
 
+
+test('бот: /accounts доступен админу', async () => {
+  const { app, telegram } = await makeApp();
+  await app.handleMessage({ chat: { id: 1 }, from: { id: 42 }, text: '/accounts' });
+  assert.ok(telegram.sent.some((m) => m.text.includes('Goofish аккаунты')));
+});
+
+test('бот: /cookie не принимает короткое значение', async () => {
+  const { app, telegram } = await makeApp();
+  await app.handleMessage({ chat: { id: 1 }, from: { id: 42 }, text: '/cookie short' });
+  assert.ok(telegram.sent.some((m) => m.text.includes('слишком короткий')));
+});

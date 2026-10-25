@@ -51,6 +51,24 @@ export function loadConfig(env = process.env, baseDir = process.cwd()) {
     throw new Error('GOOFISH_PROVIDER должен быть mock или http, получено: ' + provider);
   }
 
+  let accounts = [];
+  if (merged.GOOFISH_ACCOUNTS) {
+    try {
+      const parsed = JSON.parse(String(merged.GOOFISH_ACCOUNTS));
+      if (Array.isArray(parsed)) {
+        accounts = parsed
+          .filter((entry) => entry && entry.cookie)
+          .map((entry, index) => ({
+            id: String(entry.id || 'account_' + (index + 1)),
+            label: String(entry.label || entry.id || 'аккаунт ' + (index + 1)),
+            cookie: String(entry.cookie).trim(),
+          }));
+      }
+    } catch {
+      accounts = [];
+    }
+  }
+
   const llmBase = String(merged.LLM_BASE_URL || 'https://api.deepseek.com/v1').replace(/\/+$/, '');
   const apiKey = String(merged.DEEPSEEK_API_KEY || merged.LLM_API_KEY || '').trim();
 
@@ -81,8 +99,16 @@ export function loadConfig(env = process.env, baseDir = process.cwd()) {
     goofish: {
       provider,
       cookie: String(merged.GOOFISH_COOKIE || '').trim(),
+      accounts,
+      accountsFile: path.resolve(dataDir, merged.GOOFISH_ACCOUNTS_FILE || 'accounts.json'),
+      dailyLimit: Math.max(1, Math.floor(num(merged.GOOFISH_DAILY_LIMIT, 60))),
       proxyUrl: String(merged.GOOFISH_PROXY_URL || '').trim(),
       minIntervalMs: num(merged.GOOFISH_MIN_INTERVAL_MS, 1500),
+      itemTtlMs: num(merged.GOOFISH_ITEM_TTL_MS, 6 * 60 * 60 * 1000),
+      searchTtlMs: num(merged.GOOFISH_SEARCH_TTL_MS, 10 * 60 * 1000),
+      sellerTtlMs: num(merged.GOOFISH_SELLER_TTL_MS, 12 * 60 * 60 * 1000),
+      reviewsTtlMs: num(merged.GOOFISH_REVIEWS_TTL_MS, 12 * 60 * 60 * 1000),
+      searchOnlyFallback: bool(merged.GOOFISH_SEARCH_ONLY_FALLBACK, true),
       userAgent:
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
     },

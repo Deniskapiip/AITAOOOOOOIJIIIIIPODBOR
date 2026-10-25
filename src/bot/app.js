@@ -1,8 +1,10 @@
 import { runAgent } from '../agent/engine.js';
 import { createProvider } from '../goofish/index.js';
 import { saveRun, newRunId } from '../store/runs.js';
-import { buildResultPlan, escapeHtml, progressText } from './format.js';
+import { buildButtons, buildResultPlan, escapeHtml, formatCny, formatRub, progressText } from './format.js';
+import { runSearchOnly } from '../agent/searchOnly.js';
 import { SettingsError } from '../store/settings.js';
+import { formatRetryAfter } from '../goofish/errors.js';
 
 class Semaphore {
   constructor(limit) {
@@ -123,6 +125,7 @@ export class BotApp {
           '/id — твой Telegram ID',
           '',
           'Админ: /rate 12.4 · /commission 6.5 650',
+          'Админ: /accounts · /cookie · /verify_help',
         ].join('\n'),
         { parse_mode: 'HTML' },
       );
@@ -131,6 +134,89 @@ export class BotApp {
 
     if (text.startsWith('/id')) {
       await this.telegram.sendMessage(chatId, 'Твой Telegram ID: <code>' + escapeHtml(userId) + '</code>', { parse_mode: 'HTML' });
+      return;
+    }
+
+    if (text.startsWith('/accounts')) {
+      if (!this.isAdmin(userId)) {
+        await this.telegram.sendMessage(chatId, 'Только администратор видит аккаунты.');
+        return;
+      }
+      if (!this.provider || !this.provider.health) {
+        await this.telegram.sendMessage(chatId, 'Провайдер не поддерживает health.');
+        return;
+      }
+      const health = this.provider.health();
+      const lines = ['<b>Goofish аккаунты</b>'];
+      for (const account of health.accounts || []) {
+        const until = account.item_cooldown_until
+          ? ' · карточки до ' + new Date(account.item_cooldown_until).toLocaleString('ru-RU')
+          : '';
+        lines.push(
+          '• <code>' + escapeHtml(account.id) + '</code> — <b>' + escapeHtml(account.status) + '</b>' +
+          ' · вызовов ' + account.calls_today + '/' + account.daily_limit +
+          ' · риск ' + account.risk_count + until,
+        );
+        if (account.last_error) lines.push('  <i>' + escapeHtml(String(account.last_error).slice(0, 160)) + '</i>');
+      }
+      lines.push('');
+      lines.push('Карточки: ' + (health.item_available ? 'доступны' : 'недоступны') + '. Поиск: ' + (health.search_available ? 'доступен' : 'недоступен') + '.');
+      if (!health.item_available && health.next_item_at) {
+        lines.push('Ближайшая попытка карточек: через ' + formatRetryAfter(Math.max(0, health.next_item_at - Date.now())) + '.');
+      }
+      await this.telegram.sendMessage(chatId, lines.join('\n'), { parse_mode: 'HTML' });
+      return;
+    }
+
+    if (text.startsWith('/cookie')) {
+      if (!this.isAdmin(userId)) {
+        await this.telegram.sendMessage(chatId, 'Только администратор может менять cookie.');
+        return;
+      }
+      const cookie = text.slice('/cookie'.length).trim();
+      if (!cookie) {
+        await this.telegram.sendMessage(
+          chatId,
+          'Пришли: <code>/cookie &lt;полный cookie&gt;</code>\nЗначение не будет выведено в чат. После обновления проверь /accounts.',
+          { parse_mode: 'HTML' },
+        );
+        return;
+      }
+      if (cookie.length < 80) {
+        await this.telegram.sendMessage(chatId, 'Cookie слишком короткий. Нужен полный cookie из залогиненного goofish.com.');
+        return;
+      }
+      if (!this.provider || !this.provider.accounts || !this.provider.accounts.setCookie) {
+        await this.telegram.sendMessage(chatId, 'Провайдер не поддерживает обновление cookie.');
+        return;
+      }
+      try {
+        const account = this.provider.accounts.setCookie(cookie, 'telegram:' + userId);
+        await this.telegram.sendMessage(
+          chatId,
+          'Cookie сохранён для <code>' + escapeHtml(account.id) + '</code>. Статус: <b>' + escapeHtml(account.status) + '</b>. Проверь /accounts.',
+          { parse_mode: 'HTML' },
+        );
+      } catch (err) {
+        await this.telegram.sendMessage(chatId, 'Ошибка cookie: ' + escapeHtml(err.message));
+      }
+      return;
+    }
+
+    if (text.startsWith('/verify_help')) {
+      await this.telegram.sendMessage(
+        chatId,
+        [
+          '<b>Если Goofish просит проверку</b>',
+          '1. Открой goofish.com в обычном браузере под этим аккаунтом.',
+          '2. Пройди капчу/слайдер вручную, открой любой лот.',
+          '3. Обнови cookie: /cookie &lt;полный cookie&gt;.',
+          '4. Проверь /accounts — статус должен стать ok.',
+          '',
+          'Не решай капчу автоматически и не долби API: это продлевает блок.',
+        ].join('\n'),
+        { parse_mode: 'HTML' },
+      );
       return;
     }
 
@@ -231,19 +317,11 @@ export class BotApp {
 
     await this.semaphore.acquire();
     let outcome = null;
+    let searchOnly = null;
     let error = null;
-    try {
-      log.info('run: старт', { query, provider: this.config.goofish.provider });
-      const settings = this.settings.get();
-      outcome = await runAgent({
-        query,
-        provider: this.provider,
-        settings,
-        llm: this.llm,
-        config: this.config,
-        logger: log,
-        onEvent,
-      });
+    const settings = this.settings.get();
+
+    const persistSearchOnly = (payload) => {
       const saved = saveRun(
         this.config.dataDir,
         {
@@ -252,39 +330,115 @@ export class BotApp {
           user_id: userId,
           query,
           provider: this.config.goofish.provider,
+          mode: 'search_only',
           settings,
-          result: outcome.result,
-          calls: outcome.calls,
-          usage: outcome.usage,
-          warnings: outcome.finishWarnings,
-          duration_ms: outcome.durationMs,
+          result: payload,
+          duration_ms: payload.duration_ms || null,
         },
         log,
       );
-      this.lastRuns.set(chatId, { result: outcome.result, file: saved ? saved.file : null, runId });
-      log.info('run: готово', { calls: outcome.calls, durationMs: outcome.durationMs, top: outcome.result.top.length });
-    } catch (err) {
-      error = err;
-      log.error('run: ошибка', { error: err.message });
-      saveRun(
-        this.config.dataDir,
-        {
-          id: runId,
-          chat_id: chatId,
-          user_id: userId,
+      this.lastRuns.set(chatId, { result: payload, file: saved ? saved.file : null, runId });
+      return saved;
+    };
+
+    try {
+      log.info('run: старт', { query, provider: this.config.goofish.provider });
+      const health = this.provider.health ? this.provider.health() : null;
+      const itemAvailable = !health || health.item_available !== false;
+      if (this.config.goofish.searchOnlyFallback && !itemAvailable) {
+        log.info('run: карточки недоступны, включаю search-only');
+        searchOnly = await runSearchOnly({
           query,
-          provider: this.config.goofish.provider,
-          error: err.message,
-          details: err.details || null,
-        },
-        log,
-      );
+          provider: this.provider,
+          llm: this.llm,
+          settings,
+          logger: log,
+          reason: 'карточки Goofish в cooldown после RGV587',
+        });
+        persistSearchOnly(searchOnly);
+      } else {
+        outcome = await runAgent({
+          query,
+          provider: this.provider,
+          settings,
+          llm: this.llm,
+          config: this.config,
+          logger: log,
+          onEvent,
+        });
+        const saved = saveRun(
+          this.config.dataDir,
+          {
+            id: runId,
+            chat_id: chatId,
+            user_id: userId,
+            query,
+            provider: this.config.goofish.provider,
+            settings,
+            result: outcome.result,
+            calls: outcome.calls,
+            usage: outcome.usage,
+            warnings: outcome.finishWarnings,
+            duration_ms: outcome.durationMs,
+          },
+          log,
+        );
+        this.lastRuns.set(chatId, { result: outcome.result, file: saved ? saved.file : null, runId });
+        log.info('run: готово', { calls: outcome.calls, durationMs: outcome.durationMs, top: outcome.result.top.length });
+      }
+    } catch (err) {
+      const health = this.provider.health ? this.provider.health() : null;
+      const canSearch = !health || health.search_available !== false;
+      const canFallback = this.config.goofish.searchOnlyFallback && canSearch &&
+        (err.code === 'risk_control' || err.kind === 'NO_ACCOUNT' || (err.details && err.details.riskControlHits));
+      if (canFallback) {
+        try {
+          log.warn('run: fallback в search-only', { error: err.message });
+          searchOnly = await runSearchOnly({
+            query,
+            provider: this.provider,
+            llm: this.llm,
+            settings,
+            logger: log,
+            reason: err.message,
+          });
+          persistSearchOnly(searchOnly);
+          error = null;
+        } catch (fallbackErr) {
+          error = fallbackErr;
+          log.error('run: search-only тоже упал', { error: fallbackErr.message });
+        }
+      } else {
+        error = err;
+      }
+      if (error) {
+        log.error('run: ошибка', { error: error.message });
+        saveRun(
+          this.config.dataDir,
+          {
+            id: runId,
+            chat_id: chatId,
+            user_id: userId,
+            query,
+            provider: this.config.goofish.provider,
+            error: error.message,
+            details: error.details || null,
+          },
+          log,
+        );
+      }
     } finally {
       this.semaphore.release();
     }
 
     if (placeholderId) {
-      await this.telegram.editMessageText(chatId, placeholderId, error ? '❌ Подбор не завершён' : '✅ Подбор завершён').catch(() => {});
+      const status = searchOnly ? '✅ Поиск завершён' : error ? '❌ Подбор не завершён' : '✅ Подбор завершён';
+      await this.telegram.editMessageText(chatId, placeholderId, status).catch(() => {});
+    }
+
+    if (searchOnly) {
+      await this.sendSearchOnly(chatId, searchOnly, runId);
+      return;
     }
 
     if (error) {
@@ -296,7 +450,6 @@ export class BotApp {
       return;
     }
 
-    const settings = this.settings.get();
     const photosByItem = {};
     for (const lot of outcome.result.top) {
       const item = outcome.state.items.get(String(lot.item_id));
@@ -368,6 +521,64 @@ export class BotApp {
       });
     } catch (err) {
       log.warn('bot: не удалось отправить футер', { error: err.message });
+    }
+  }
+
+  async sendSearchOnly(chatId, result, runId) {
+    const items = Array.isArray(result.items) ? result.items : [];
+    const header = items.length
+      ? '<b>Ограниченный режим: только поиск</b>\n' +
+        'Карточки Goofish сейчас недоступны (RGV587/cooldown), поэтому это <b>не проверенные</b> лоты: только заголовок и цена из поиска.'
+      : '<b>Ограниченный режим: только поиск</b>\nПодходящих лотов в поиске не нашлось.';
+    await this.telegram.sendMessage(chatId, header, { parse_mode: 'HTML', disable_web_page_preview: true });
+
+    for (const item of items) {
+      const price = formatCny(item.price_cny);
+      const rub = formatRub(item.final_price_rub);
+      const lines = [
+        '<b>' + escapeHtml(item.rank + '. ' + item.title) + '</b>',
+        '',
+        '<b>' + (price === null ? '—' : price + ' ¥') + (rub === null ? '' : ' · ' + rub + ' ₽') + '</b>',
+        '🟡 проверить · ' + item.score + '/100 · уверенность низкая',
+      ];
+      if (item.seller_nick || item.location) {
+        lines.push('👤 ' + escapeHtml([item.seller_nick, item.location].filter(Boolean).join(' · ')));
+      }
+      if (Array.isArray(item.risks) && item.risks.length) {
+        lines.push('⚠️ ' + escapeHtml(item.risks.slice(0, 2).join('; ')));
+      }
+      lines.push('🔗 <a href="' + escapeHtml(item.url) + '">Открыть на сайте</a>');
+      try {
+        await this.telegram.sendMessage(chatId, lines.join('\n'), {
+          parse_mode: 'HTML',
+          disable_web_page_preview: true,
+          reply_markup: buildButtons(item),
+        });
+      } catch (err) {
+        this.logger.warn('bot: не удалось отправить search-only карточку', { itemId: item.item_id, error: err.message });
+      }
+      if (item.image_url) {
+        try {
+          await this.telegram.sendPhoto(chatId, item.image_url);
+        } catch {
+          /* фото не критично */
+        }
+      }
+    }
+
+    const footer = [
+      escapeHtml(result.disclaimer || 'Это только поиск, не проверка карточки.'),
+      'Найдено в поиске: ' + (result.total_found || 0) + ' · показано: ' + items.length + ' · ключ: ' + escapeHtml(result.keyword || '—'),
+      'Карточки и фото не проверялись; перед покупкой проверь вручную.',
+    ];
+    try {
+      await this.telegram.sendMessage(chatId, footer.join('\n'), {
+        parse_mode: 'HTML',
+        disable_web_page_preview: true,
+        reply_markup: { inline_keyboard: [[{ text: '📄 JSON прогона', callback_data: 'json:' + runId }]] },
+      });
+    } catch (err) {
+      this.logger.warn('bot: не удалось отправить search-only футер', { error: err.message });
     }
   }
 

@@ -2,6 +2,7 @@ import { calcPrice } from './pricing.js';
 import { loadImage } from './images.js';
 import { analyzePhotos } from '../agent/vision.js';
 import { validateFinish } from '../agent/validate.js';
+import { GOOFISH_KINDS, classifyGoofishError, formatRetryAfter } from '../goofish/errors.js';
 
 function str(value, fallback = '') {
   return value === null || value === undefined ? fallback : String(value);
@@ -379,12 +380,28 @@ export async function executeTool(name, args, state) {
     state.log.push({ tool: name, args, ok: false, ms: Date.now() - started, error: message });
     if (state.logger) state.logger.warn('tool error', { tool: name, error: message });
     const code = err && err.code ? ' [' + err.code + ']' : '';
+    const info = classifyGoofishError(err);
     if (err && err.code === 'risk_control') {
       state.riskControlHits += 1;
+      const wait = err.retryAfterMs ? ' Пауза: ' + formatRetryAfter(err.retryAfterMs) + '.' : '';
       return {
         text:
-          'ОШИБКА: Goofish временно ограничил запросы (антибот RGV587). ' +
-          'Не повторяй запросы подряд. Если это повторится — заверши прогон и подожди 10-15 минут.',
+          'ОШИБКА: Goofish ограничил карточки/профили (RGV587 или ручная проверка).' + wait +
+          ' Поиск при этом может работать. Не повторяй запрос подряд; заверши прогон по уже собранным данным.',
+      };
+    }
+    if (info.kind === GOOFISH_KINDS.NO_ACCOUNT) {
+      return {
+        text:
+          'ОШИБКА: нет доступного аккаунта Goofish (cooldown/проверка). ' +
+          'Карточки недоступны; можно работать только через поиск. Не повторяй запрос.',
+      };
+    }
+    if (info.kind === GOOFISH_KINDS.SESSION_EXPIRED) {
+      return {
+        text:
+          'ОШИБКА: сессия Goofish истекла. Админ должен обновить cookie командой /cookie. ' +
+          'До этого карточки недоступны.',
       };
     }
     return { text: 'ОШИБКА инструмента ' + name + code + ': ' + message };

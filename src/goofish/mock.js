@@ -43,6 +43,25 @@ export class MockGoofishProvider {
     if (this.latencyMs > 0) await new Promise((r) => setTimeout(r, this.latencyMs));
   }
 
+  health() {
+    return {
+      provider: 'mock',
+      accounts: [],
+      search_available: true,
+      item_available: true,
+      next_search_at: null,
+      next_item_at: null,
+    };
+  }
+
+  itemAvailable() {
+    return true;
+  }
+
+  searchAvailable() {
+    return true;
+  }
+
   async search(params) {
     const {
       keyword,

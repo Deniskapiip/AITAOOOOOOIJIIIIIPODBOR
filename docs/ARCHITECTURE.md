@@ -22,7 +22,11 @@ Telegram-бот и (в планах) Mini App для подбора б/у тех
 | Инструменты | src/tools/definitions.js, executor.js | схемы и исполнение 7 инструментов |
 | Лимиты | src/tools/budget.js | 45 вызовов, лимиты этапов |
 | Деньги | src/tools/pricing.js | calc_price |
-| Goofish HTTP | src/goofish/http.js | mtop, cookie, IPv4, throttle, ошибки |
+| Goofish HTTP | src/goofish/http.js | mtop, cookie, IPv4, throttle, кэш, ошибки |
+| Goofish ошибки | src/goofish/errors.js | RGV587, капча, сессия, сеть, not found |
+| Пул аккаунтов | src/goofish/accounts.js | cooldown, item/search scope, дневной лимит |
+| Лимитер/кэш | src/goofish/limiter.js, cache.js | интервал запросов, TTL карточек/поиска |
+| Search-only | src/agent/searchOnly.js | fallback, когда карточки недоступны |
 | Нормализация | src/goofish/normalize.js | сырые ответы -> схемы инструментов |
 | Mock | src/goofish/mock.js, fixtures | демо-данные |
 | Настройки | src/store/settings.js | курс, комиссия, админ |
@@ -41,6 +45,7 @@ Telegram-бот и (в планах) Mini App для подбора б/у тех
             -> tool call -> executeTool -> provider (http/mock)
                  -> normalize -> текст результата модели
             -> finish -> validateFinish -> нормализованный result
+        -> если item API в cooldown: runSearchOnly -> result.mode=search_only
         -> saveRun (data/runs)
         -> BotApp: HTML-карточки, фото, кнопки
         -> Telegram (IP-транспорт при блокировке DNS)
@@ -97,7 +102,8 @@ token — первая часть cookie _m_h5_tk. Cookie живёт в .env.
 - RGV587/FAIL_SYS_USER_VALIDATE классифицируются как risk_control:
   три таких ошибки останавливают прогон;
 - текущий риск: поиск работает, карточка отдаёт RGV587 после серии
-  прогонов; нужен cooldown или другой аккаунт.
+  прогонов; AccountStore ставит item cooldown (30 мин → 2 ч → 6 ч → 24 ч),
+  поиск при этом остаётся доступен; при необходимости бот уходит в search-only.
 
 Диплинки: www.goofish.com/item?id=..., h5.m.goofish.com/item?id=...,
 fleamarket://awesome_detail?itemId=...
@@ -136,7 +142,8 @@ COMMISSION_PERCENT, COMMISSION_MIN_RUB, GOOFISH_PROVIDER,
 GOOFISH_COOKIE, GOOFISH_PROXY_URL, SEND_PHOTOS_PER_LOT,
 VISION_ENABLED, VISION_BASE_URL, VISION_API_KEY, VISION_MODEL,
 VISION_MODELS, VISION_MAX_PHOTOS, PHOTO_MODE, TELEGRAM_API_IP,
-BRAND_SEED, DATA_DIR, PORT.
+BRAND_SEED, DATA_DIR, APP_PORT, GOOFISH_ACCOUNTS,
+GOOFISH_DAILY_LIMIT, GOOFISH_SEARCH_ONLY_FALLBACK, GOOFISH_*_TTL_MS.
 
 data/ и .env не коммитятся. data/runs хранит запрос/итог/usage.
 
@@ -152,8 +159,8 @@ data/ и .env не коммитятся. data/runs хранит запрос/и�
 
 - RGV587 на карточке: аккаунт в cooldown, поиск жив.
 - Vision free-модели медленные и лимитированные; платный ключ лучше.
-- Нет пула аккаунтов, circuit breaker, search-only режима и кэша
-  карточек с TTL — это фаза 1.
+- Пул аккаунтов, cooldown, TTL-кэш и search-only уже есть (фаза 1).
+  Нет автоматического refresh cookie и мультиаккаунтного переключения по IP.
 - Mini App отсутствует; web/ содержит только brand/logo.jpg.
 - Telegram DNS блокируется: используется IP-транспорт 149.154.167.220.
 - Единственная зависимость sharp; для фронтенда сборка не используется.
