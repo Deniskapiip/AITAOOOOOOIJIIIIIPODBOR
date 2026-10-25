@@ -209,7 +209,8 @@ export class AccountStore {
       if (scope === 'item') account.item_cooldown_until = new Date(now + TRANSIENT_COOLDOWN).toISOString();
       else account.cooldown_until = new Date(now + TRANSIENT_COOLDOWN).toISOString();
     } else if (isRiskKind(kind) || kind === GOOFISH_KINDS.RATE_LIMIT) {
-      const cooldown = COOLDOWN_STEPS[Math.min(account.strikes - 1, COOLDOWN_STEPS.length - 1)];
+      // After the second RGV strike stop automatic card retries for 24h.
+      const cooldown = account.strikes >= 2 ? 24 * 60 * 60 * 1000 : COOLDOWN_STEPS[0];
       if (scope === 'item') account.item_cooldown_until = new Date(now + cooldown).toISOString();
       else {
         account.status = 'cooldown';

@@ -72,3 +72,13 @@ test('дневной лимит останавливает выбор', () => {
   store.markCall(account.id);
   assert.equal(store.pick('search'), null);
 });
+
+test('после второго страйка карточки закрываются на 24 часа', () => {
+  const nowRef = { value: Date.parse('2026-01-01T00:00:00Z') };
+  const store = makeStore(nowRef);
+  const account = store.pick('item');
+  store.reportRisk(account.id, { kind: GOOFISH_KINDS.RATE_LIMIT }, 'item');
+  assert.ok(new Date(store.list()[0].item_cooldown_until).getTime() - nowRef.value >= 29 * 60 * 1000);
+  store.reportRisk(account.id, { kind: GOOFISH_KINDS.RATE_LIMIT }, 'item');
+  assert.ok(new Date(store.list()[0].item_cooldown_until).getTime() - nowRef.value >= 23 * 60 * 60 * 1000);
+});

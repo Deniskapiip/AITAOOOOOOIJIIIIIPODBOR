@@ -151,7 +151,7 @@ export class BotApp {
       const lines = ['<b>Goofish аккаунты</b>'];
       for (const account of health.accounts || []) {
         const until = account.item_cooldown_until
-          ? ' · карточки до ' + new Date(account.item_cooldown_until).toLocaleString('ru-RU')
+          ? ' · карточки до ' + new Date(account.item_cooldown_until).toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' }) + ' МСК'
           : '';
         lines.push(
           '• <code>' + escapeHtml(account.id) + '</code> — <b>' + escapeHtml(account.status) + '</b>' +
