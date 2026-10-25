@@ -1,0 +1,810 @@
+{
+  "id": "tablet-03",
+  "category": "tablet",
+  "client_query": "Найди Samsung Tab S9 256 до 3300 юаней, только 国行, без ремонтов",
+  "budget_cny": 3300,
+  "provider_data": {
+    "search": [
+      {
+        "item_id": "lab-tablet-03-1",
+        "title": "Samsung Tab S9 256 个人自用 全套 国行",
+        "price_cny": 2805,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家tablet-03-1",
+        "seller_ref": "seller-tablet-03-1",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 11,
+        "image_url": "https://lab.local/images/tablet-03-1-1.png"
+      },
+      {
+        "item_id": "lab-tablet-03-2",
+        "title": "Samsung Tab S9 256 个人",
+        "price_cny": 2970,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家tablet-03-2",
+        "seller_ref": "seller-tablet-03-2",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 12,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-tablet-03-3",
+        "title": "Samsung Tab S9 256 个人自用",
+        "price_cny": 3036,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家tablet-03-3",
+        "seller_ref": "seller-tablet-03-3",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 13,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-tablet-03-3",
+        "title": "Samsung Tab S9 256 个人自用",
+        "price_cny": 3036,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家tablet-03-3",
+        "seller_ref": "seller-tablet-03-3",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 13,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-tablet-03-4",
+        "title": "Samsung Tab S9 256 已出",
+        "price_cny": 2310,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家tablet-03-4",
+        "seller_ref": "seller-tablet-03-4",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 14,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-tablet-03-5",
+        "title": "Samsung Tab S9 256 个人自用",
+        "price_cny": 2805,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家tablet-03-5",
+        "seller_ref": "seller-tablet-03-5",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 15,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-tablet-03-6",
+        "title": "Samsung Tab S9 256 個人自用 😀 國行",
+        "price_cny": 2970,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家tablet-03-6",
+        "seller_ref": "seller-tablet-03-6",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 16,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-tablet-03-7",
+        "title": "Samsung Tab S9 256 自用 成色好",
+        "price_cny": 3036,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家tablet-03-7",
+        "seller_ref": "seller-tablet-03-7",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 17,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-tablet-03-8",
+        "title": "Samsung Tab S9 256 自用 有使用痕迹",
+        "price_cny": 3102,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家tablet-03-8",
+        "seller_ref": "seller-tablet-03-8",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 18,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-tablet-03-9",
+        "title": "Samsung Tab S9 256 自用 成色好",
+        "price_cny": 3168,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家tablet-03-9",
+        "seller_ref": "seller-tablet-03-9",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 19,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-tablet-03-10",
+        "title": "Samsung Tab S9 256 自用 有使用痕迹",
+        "price_cny": 3234,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "新卖家tablet-03-10",
+        "seller_ref": "seller-tablet-03-10",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 20,
+        "image_url": null
+      }
+    ],
+    "items": {
+      "lab-tablet-03-1": {
+        "item_id": "lab-tablet-03-1",
+        "title": "Samsung Tab S9 256 个人自用 全套 国行",
+        "price_cny": 2805,
+        "original_price_cny": 3105,
+        "status": "active",
+        "description": "个人自用，无进水无烧屏无拆修，全套，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [
+          "https://lab.local/images/tablet-03-1-1.png",
+          "https://lab.local/images/tablet-03-1-2.png",
+          "https://lab.local/images/tablet-03-1-3.png"
+        ],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 11,
+        "view_count": 120,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-tablet-03-1",
+        "seller_nick": "卖家tablet-03-1",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-tablet-03-2": {
+        "item_id": "lab-tablet-03-2",
+        "title": "Samsung Tab S9 256 个人",
+        "price_cny": 2970,
+        "original_price_cny": 3270,
+        "status": "active",
+        "description": "个人自用，包邮",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 12,
+        "view_count": 140,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-tablet-03-2",
+        "seller_nick": "卖家tablet-03-2",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-tablet-03-3": {
+        "item_id": "lab-tablet-03-3",
+        "title": "Samsung Tab S9 256 个人自用",
+        "price_cny": 3036,
+        "original_price_cny": 3336,
+        "status": "active",
+        "description": "个人自用，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 13,
+        "view_count": 160,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-tablet-03-3",
+        "seller_nick": "卖家tablet-03-3",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-tablet-03-4": {
+        "item_id": "lab-tablet-03-4",
+        "title": "Samsung Tab S9 256 已出",
+        "price_cny": 2310,
+        "original_price_cny": 2610,
+        "status": "sold",
+        "description": "已出，留着纪念",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 14,
+        "view_count": 180,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-tablet-03-4",
+        "seller_nick": "卖家tablet-03-4",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-tablet-03-5": {
+        "item_id": "lab-tablet-03-5",
+        "title": "Samsung Tab S9 256 个人自用",
+        "price_cny": 2805,
+        "original_price_cny": 3105,
+        "status": "active",
+        "description": "无进水无烧屏无拆修，功能正常，包邮",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 15,
+        "view_count": 200,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-tablet-03-5",
+        "seller_nick": "卖家tablet-03-5",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-tablet-03-6": {
+        "item_id": "lab-tablet-03-6",
+        "title": "Samsung Tab S9 256 個人自用 😀 國行",
+        "price_cny": 2970,
+        "original_price_cny": 3270,
+        "status": "active",
+        "description": "繁體/简体混用，emoji，功能正常",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 16,
+        "view_count": 220,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-tablet-03-6",
+        "seller_nick": "卖家tablet-03-6",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-tablet-03-7": {
+        "item_id": "lab-tablet-03-7",
+        "title": "Samsung Tab S9 256 自用 成色好",
+        "price_cny": 3036,
+        "original_price_cny": 3336,
+        "status": "active",
+        "description": "自用，功能正常，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 17,
+        "view_count": 240,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-tablet-03-7",
+        "seller_nick": "卖家tablet-03-7",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-tablet-03-8": {
+        "item_id": "lab-tablet-03-8",
+        "title": "Samsung Tab S9 256 自用 有使用痕迹",
+        "price_cny": 3102,
+        "original_price_cny": 3402,
+        "status": "active",
+        "description": "自用，功能正常，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 18,
+        "view_count": 260,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-tablet-03-8",
+        "seller_nick": "卖家tablet-03-8",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-tablet-03-9": {
+        "item_id": "lab-tablet-03-9",
+        "title": "Samsung Tab S9 256 自用 成色好",
+        "price_cny": 3168,
+        "original_price_cny": 3468,
+        "status": "active",
+        "description": "自用，功能正常，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 19,
+        "view_count": 280,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-tablet-03-9",
+        "seller_nick": "卖家tablet-03-9",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-tablet-03-10": {
+        "item_id": "lab-tablet-03-10",
+        "title": "Samsung Tab S9 256 自用 有使用痕迹",
+        "price_cny": 3234,
+        "original_price_cny": 3534,
+        "status": "active",
+        "description": "自用，功能正常，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 20,
+        "view_count": 300,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-tablet-03-10",
+        "seller_nick": "新卖家tablet-03-10",
+        "seller_credit": "无",
+        "seller_registered_at": "2026-08-01T00:00:00.000Z",
+        "provider": "lab"
+      }
+    },
+    "sellers": {
+      "seller-tablet-03-1": {
+        "seller_id": "seller-tablet-03-1",
+        "nickname": "卖家tablet-03-1",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-tablet-03-2": {
+        "seller_id": "seller-tablet-03-2",
+        "nickname": "卖家tablet-03-2",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-tablet-03-3": {
+        "seller_id": "seller-tablet-03-3",
+        "nickname": "卖家tablet-03-3",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-tablet-03-4": {
+        "seller_id": "seller-tablet-03-4",
+        "nickname": "卖家tablet-03-4",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-tablet-03-5": {
+        "seller_id": "seller-tablet-03-5",
+        "nickname": "卖家tablet-03-5",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-tablet-03-6": {
+        "seller_id": "seller-tablet-03-6",
+        "nickname": "卖家tablet-03-6",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-tablet-03-7": {
+        "seller_id": "seller-tablet-03-7",
+        "nickname": "卖家tablet-03-7",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-tablet-03-8": {
+        "seller_id": "seller-tablet-03-8",
+        "nickname": "卖家tablet-03-8",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-tablet-03-9": {
+        "seller_id": "seller-tablet-03-9",
+        "nickname": "卖家tablet-03-9",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-tablet-03-10": {
+        "seller_id": "seller-tablet-03-10",
+        "nickname": "新卖家tablet-03-10",
+        "zhima_credit": null,
+        "zhima_text": "无",
+        "verified": false,
+        "registered_at": "2026-08-01T00:00:00.000Z",
+        "sold_count": 1,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 0
+      }
+    },
+    "reviews": {
+      "seller-tablet-03-1": [
+        {
+          "review_id": "g1-seller-tablet-03-1",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-tablet-03-1",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-tablet-03-2": [
+        {
+          "review_id": "g1-seller-tablet-03-2",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-tablet-03-2",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-tablet-03-3": [
+        {
+          "review_id": "g1-seller-tablet-03-3",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-tablet-03-3",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-tablet-03-4": [
+        {
+          "review_id": "g1-seller-tablet-03-4",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-tablet-03-4",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-tablet-03-5": [
+        {
+          "review_id": "g1-seller-tablet-03-5",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-tablet-03-5",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-tablet-03-6": [
+        {
+          "review_id": "g1-seller-tablet-03-6",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-tablet-03-6",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-tablet-03-7": [
+        {
+          "review_id": "g1-seller-tablet-03-7",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-tablet-03-7",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-tablet-03-8": [
+        {
+          "review_id": "g1-seller-tablet-03-8",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-tablet-03-8",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-tablet-03-9": [
+        {
+          "review_id": "g1-seller-tablet-03-9",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-tablet-03-9",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-tablet-03-10": []
+    },
+    "errors": {
+      "lab-tablet-03-2": "risk_control"
+    }
+  },
+  "images": {
+    "lab-tablet-03-1": [
+      {
+        "file": "test/fixtures/lab/images/tablet-03-1-1.png",
+        "url": "https://lab.local/images/tablet-03-1-1.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые"
+        }
+      },
+      {
+        "file": "test/fixtures/lab/images/tablet-03-1-2.png",
+        "url": "https://lab.local/images/tablet-03-1-2.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые"
+        }
+      },
+      {
+        "file": "test/fixtures/lab/images/tablet-03-1-3.png",
+        "url": "https://lab.local/images/tablet-03-1-3.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые"
+        }
+      }
+    ]
+  },
+  "expected": {
+    "top_must_include": [
+      "lab-tablet-03-1"
+    ],
+    "top_must_exclude": [
+      "lab-tablet-03-2",
+      "lab-tablet-03-4"
+    ],
+    "verdicts": {
+      "lab-tablet-03-1": "брать",
+      "lab-tablet-03-2": "пропустить",
+      "lab-tablet-03-3": "проверить",
+      "lab-tablet-03-4": "пропустить",
+      "lab-tablet-03-5": "брать",
+      "lab-tablet-03-6": "проверить"
+    },
+    "stop_factor_ids": {
+      "lab-tablet-03-4": "лот продан"
+    },
+    "notes": "golden: чистый лот с фото и отрицаниями",
+    "traps": [
+      "rgv587",
+      "duplicate",
+      "sold",
+      "negation",
+      "mixed_lang"
+    ]
+  },
+  "traps": [
+    "rgv587",
+    "duplicate",
+    "sold",
+    "negation",
+    "mixed_lang"
+  ],
+  "seed": 42
+}

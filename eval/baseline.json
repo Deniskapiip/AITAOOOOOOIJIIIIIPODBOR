@@ -1,0 +1,124 @@
+{
+  "created_at": "2026-10-25T20:06:09.235Z",
+  "aggregate": {
+    "scenarios": 4,
+    "safety_pass_rate": 1,
+    "stop_in_top": 0,
+    "over_budget_in_top": 0,
+    "buy_without_photo": 0,
+    "unsupported_photo_claims": 0,
+    "rub_mismatch": 0,
+    "gold_recall": 1,
+    "verdict_match": 1,
+    "all_bad_top_empty": 1,
+    "duplicate_item_calls": 0,
+    "finish_first_rate": 1,
+    "call_median": 28
+  },
+  "scores": [
+    {
+      "scenario_id": "camera-01",
+      "top_ids": [
+        "lab-camera-01-1",
+        "lab-camera-01-7",
+        "lab-camera-01-8"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 33,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 8
+    },
+    {
+      "scenario_id": "laptop-01",
+      "top_ids": [
+        "lab-laptop-01-1",
+        "lab-laptop-01-7",
+        "lab-laptop-01-9"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 27,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "smartphone-01",
+      "top_ids": [
+        "lab-smartphone-01-1",
+        "lab-smartphone-01-7",
+        "lab-smartphone-01-8"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 29,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 3
+    },
+    {
+      "scenario_id": "smartphone-06",
+      "top_ids": [],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 24,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    }
+  ]
+}

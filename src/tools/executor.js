@@ -30,12 +30,13 @@ function monthsSince(iso) {
 }
 
 export class ToolState {
-  constructor({ provider, settings, budget, config, logger }) {
+  constructor({ provider, settings, budget, config, logger, visionAnalyzer = null }) {
     this.provider = provider;
     this.settings = settings;
     this.budget = budget;
     this.config = config;
     this.logger = logger;
+    this.visionAnalyzer = visionAnalyzer;
     this.items = new Map();
     this.sellers = new Map();
     this.reviews = new Map();
@@ -226,7 +227,8 @@ async function runImages(args, state) {
         if (!visionUrls.includes(url)) visionUrls.push(url);
       }
     }
-    const result = await analyzePhotos({
+    const analyzer = state.visionAnalyzer || analyzePhotos;
+    const result = await analyzer({
       urls: visionUrls.slice(0, state.config.vision.maxPhotos),
       item: targetEntry ? targetEntry[1] : null,
       config: state.config,

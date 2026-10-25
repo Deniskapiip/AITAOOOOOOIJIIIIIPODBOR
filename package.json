@@ -14,7 +14,10 @@
     "admin": "node src/admin.js",
     "probe": "node src/probe.js",
     "test": "node --test",
-    "doctor": "node src/doctor.js"
+    "doctor": "node src/doctor.js",
+    "lab:gen": "node scripts/lab-gen.mjs",
+    "eval": "node src/lab/eval.js",
+    "lab:check": "node src/lab/eval.js"
   },
   "main": "index.js",
   "dependencies": {

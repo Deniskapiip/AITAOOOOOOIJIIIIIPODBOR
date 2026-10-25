@@ -70,13 +70,14 @@ export async function runAgent({
   logger,
   onEvent = () => {},
   signal = null,
+  visionAnalyzer = null,
 }) {
   if (!query || !String(query).trim()) throw new AgentError('Пустой запрос клиента');
   if (!settings) throw new AgentError('Настройки не загружены');
 
   const startedAt = Date.now();
   const budget = new Budget(config.agent.maxToolCalls);
-  const state = new ToolState({ provider, settings, budget, config, logger });
+  const state = new ToolState({ provider, settings, budget, config, logger, visionAnalyzer });
   const messages = buildMessages({ query, settings });
 
   const controller = new AbortController();

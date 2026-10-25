@@ -1,0 +1,943 @@
+{
+  "id": "pc_parts-02",
+  "category": "pc_parts",
+  "client_query": "Найди RTX 4080 Super до 6900 юаней, только 国行, без ремонтов",
+  "budget_cny": 6900,
+  "provider_data": {
+    "search": [
+      {
+        "item_id": "lab-pc_parts-02-1",
+        "title": "RTX 4080 Super 个人自用 全套 国行",
+        "price_cny": 5865,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家pc_parts-02-1",
+        "seller_ref": "seller-pc_parts-02-1",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 11,
+        "image_url": "https://lab.local/images/pc_parts-02-1-1.png"
+      },
+      {
+        "item_id": "lab-pc_parts-02-2",
+        "title": "RTX 4080 Super 现货多台",
+        "price_cny": 6072,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "数码批发pc_parts-02-2",
+        "seller_ref": "seller-pc_parts-02-2",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 12,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-pc_parts-02-3",
+        "title": "RTX 4080 Super 自用",
+        "price_cny": 6210,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "问题卖家pc_parts-02-3",
+        "seller_ref": "seller-pc_parts-02-3",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 13,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-pc_parts-02-4",
+        "title": "RTX 4080 Super 出",
+        "price_cny": 5520,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "新号pc_parts-02-4",
+        "seller_ref": "seller-pc_parts-02-4",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 14,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-pc_parts-02-5",
+        "title": "RTX 4080 Super 个人",
+        "price_cny": 6210,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家pc_parts-02-5",
+        "seller_ref": "seller-pc_parts-02-5",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 15,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-pc_parts-02-6",
+        "title": "RTX 4080 Super 个人自用",
+        "price_cny": 6348,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家pc_parts-02-6",
+        "seller_ref": "seller-pc_parts-02-6",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 16,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-pc_parts-02-6",
+        "title": "RTX 4080 Super 个人自用",
+        "price_cny": 6348,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家pc_parts-02-6",
+        "seller_ref": "seller-pc_parts-02-6",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 16,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-pc_parts-02-7",
+        "title": "RTX 4080 Super 自用 成色好",
+        "price_cny": 6348,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家pc_parts-02-7",
+        "seller_ref": "seller-pc_parts-02-7",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 17,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-pc_parts-02-8",
+        "title": "RTX 4080 Super 自用 有使用痕迹",
+        "price_cny": 6486,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家pc_parts-02-8",
+        "seller_ref": "seller-pc_parts-02-8",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 18,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-pc_parts-02-9",
+        "title": "RTX 4080 Super 自用 成色好",
+        "price_cny": 6624,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家pc_parts-02-9",
+        "seller_ref": "seller-pc_parts-02-9",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 19,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-pc_parts-02-10",
+        "title": "RTX 4080 Super 自用 有使用痕迹",
+        "price_cny": 6762,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "新卖家pc_parts-02-10",
+        "seller_ref": "seller-pc_parts-02-10",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 20,
+        "image_url": null
+      }
+    ],
+    "items": {
+      "lab-pc_parts-02-1": {
+        "item_id": "lab-pc_parts-02-1",
+        "title": "RTX 4080 Super 个人自用 全套 国行",
+        "price_cny": 5865,
+        "original_price_cny": 6165,
+        "status": "active",
+        "description": "个人自用，无进水无烧屏无拆修，全套，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [
+          "https://lab.local/images/pc_parts-02-1-1.png",
+          "https://lab.local/images/pc_parts-02-1-2.png",
+          "https://lab.local/images/pc_parts-02-1-3.png"
+        ],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 11,
+        "view_count": 120,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-pc_parts-02-1",
+        "seller_nick": "卖家pc_parts-02-1",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-pc_parts-02-2": {
+        "item_id": "lab-pc_parts-02-2",
+        "title": "RTX 4080 Super 现货多台",
+        "price_cny": 6072,
+        "original_price_cny": 6372,
+        "status": "active",
+        "description": "现货多台，颜色齐全，批发价",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 12,
+        "view_count": 140,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-pc_parts-02-2",
+        "seller_nick": "数码批发pc_parts-02-2",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-pc_parts-02-3": {
+        "item_id": "lab-pc_parts-02-3",
+        "title": "RTX 4080 Super 自用",
+        "price_cny": 6210,
+        "original_price_cny": 6510,
+        "status": "active",
+        "description": "自用，成色好，包邮",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 13,
+        "view_count": 160,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-pc_parts-02-3",
+        "seller_nick": "问题卖家pc_parts-02-3",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-pc_parts-02-4": {
+        "item_id": "lab-pc_parts-02-4",
+        "title": "RTX 4080 Super 出",
+        "price_cny": 5520,
+        "original_price_cny": 5820,
+        "status": "active",
+        "description": "出，细节私聊",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 14,
+        "view_count": 180,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-pc_parts-02-4",
+        "seller_nick": "新号pc_parts-02-4",
+        "seller_credit": "无",
+        "seller_registered_at": null,
+        "provider": "lab"
+      },
+      "lab-pc_parts-02-5": {
+        "item_id": "lab-pc_parts-02-5",
+        "title": "RTX 4080 Super 个人",
+        "price_cny": 6210,
+        "original_price_cny": 6510,
+        "status": "active",
+        "description": "个人自用，包邮",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 15,
+        "view_count": 200,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-pc_parts-02-5",
+        "seller_nick": "卖家pc_parts-02-5",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-pc_parts-02-6": {
+        "item_id": "lab-pc_parts-02-6",
+        "title": "RTX 4080 Super 个人自用",
+        "price_cny": 6348,
+        "original_price_cny": 6648,
+        "status": "active",
+        "description": "个人自用，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 16,
+        "view_count": 220,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-pc_parts-02-6",
+        "seller_nick": "卖家pc_parts-02-6",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-pc_parts-02-7": {
+        "item_id": "lab-pc_parts-02-7",
+        "title": "RTX 4080 Super 自用 成色好",
+        "price_cny": 6348,
+        "original_price_cny": 6648,
+        "status": "active",
+        "description": "自用，功能正常，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 17,
+        "view_count": 240,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-pc_parts-02-7",
+        "seller_nick": "卖家pc_parts-02-7",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-pc_parts-02-8": {
+        "item_id": "lab-pc_parts-02-8",
+        "title": "RTX 4080 Super 自用 有使用痕迹",
+        "price_cny": 6486,
+        "original_price_cny": 6786,
+        "status": "active",
+        "description": "自用，功能正常，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 18,
+        "view_count": 260,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-pc_parts-02-8",
+        "seller_nick": "卖家pc_parts-02-8",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-pc_parts-02-9": {
+        "item_id": "lab-pc_parts-02-9",
+        "title": "RTX 4080 Super 自用 成色好",
+        "price_cny": 6624,
+        "original_price_cny": 6924,
+        "status": "active",
+        "description": "自用，功能正常，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 19,
+        "view_count": 280,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-pc_parts-02-9",
+        "seller_nick": "卖家pc_parts-02-9",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-pc_parts-02-10": {
+        "item_id": "lab-pc_parts-02-10",
+        "title": "RTX 4080 Super 自用 有使用痕迹",
+        "price_cny": 6762,
+        "original_price_cny": 7062,
+        "status": "active",
+        "description": "自用，功能正常，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 20,
+        "view_count": 300,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-pc_parts-02-10",
+        "seller_nick": "新卖家pc_parts-02-10",
+        "seller_credit": "无",
+        "seller_registered_at": "2026-08-01T00:00:00.000Z",
+        "provider": "lab"
+      }
+    },
+    "sellers": {
+      "seller-pc_parts-02-1": {
+        "seller_id": "seller-pc_parts-02-1",
+        "nickname": "卖家pc_parts-02-1",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-pc_parts-02-2": {
+        "seller_id": "seller-pc_parts-02-2",
+        "nickname": "数码批发pc_parts-02-2",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 900,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [
+          {
+            "item_id": "shop-pc_parts-02-2-0",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-1",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-2",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-3",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-4",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-5",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-6",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-7",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-8",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-9",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-10",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-11",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-12",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-13",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-14",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-15",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-16",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-17",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-18",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-19",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-20",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-21",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-22",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-23",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-24",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-25",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-26",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-27",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-28",
+            "title": "同款现货",
+            "price_cny": 1000
+          },
+          {
+            "item_id": "shop-pc_parts-02-2-29",
+            "title": "同款现货",
+            "price_cny": 1000
+          }
+        ],
+        "reviews_count": 40
+      },
+      "seller-pc_parts-02-3": {
+        "seller_id": "seller-pc_parts-02-3",
+        "nickname": "问题卖家pc_parts-02-3",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 88,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 12
+      },
+      "seller-pc_parts-02-4": {
+        "seller_id": "seller-pc_parts-02-4",
+        "nickname": "新号pc_parts-02-4",
+        "zhima_credit": null,
+        "zhima_text": "无",
+        "verified": false,
+        "registered_at": null,
+        "sold_count": null,
+        "praise_rate": null,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 0
+      },
+      "seller-pc_parts-02-5": {
+        "seller_id": "seller-pc_parts-02-5",
+        "nickname": "卖家pc_parts-02-5",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-pc_parts-02-6": {
+        "seller_id": "seller-pc_parts-02-6",
+        "nickname": "卖家pc_parts-02-6",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-pc_parts-02-7": {
+        "seller_id": "seller-pc_parts-02-7",
+        "nickname": "卖家pc_parts-02-7",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-pc_parts-02-8": {
+        "seller_id": "seller-pc_parts-02-8",
+        "nickname": "卖家pc_parts-02-8",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-pc_parts-02-9": {
+        "seller_id": "seller-pc_parts-02-9",
+        "nickname": "卖家pc_parts-02-9",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
+      },
+      "seller-pc_parts-02-10": {
+        "seller_id": "seller-pc_parts-02-10",
+        "nickname": "新卖家pc_parts-02-10",
+        "zhima_credit": null,
+        "zhima_text": "无",
+        "verified": false,
+        "registered_at": "2026-08-01T00:00:00.000Z",
+        "sold_count": 1,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 0
+      }
+    },
+    "reviews": {
+      "seller-pc_parts-02-1": [
+        {
+          "review_id": "g1-seller-pc_parts-02-1",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-pc_parts-02-1",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-pc_parts-02-2": [
+        {
+          "review_id": "g1-seller-pc_parts-02-2",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-pc_parts-02-2",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-pc_parts-02-3": [
+        {
+          "review_id": "r1-seller-pc_parts-02-3",
+          "created_at": "2026-09-01T00:00:00.000Z",
+          "rating": -1,
+          "text": "假货，货不对板，卖家不处理",
+          "item_id": null
+        },
+        {
+          "review_id": "r2-seller-pc_parts-02-3",
+          "created_at": "2026-08-01T00:00:00.000Z",
+          "rating": -1,
+          "text": "翻新机，描述不符",
+          "item_id": null
+        }
+      ],
+      "seller-pc_parts-02-4": [],
+      "seller-pc_parts-02-5": [
+        {
+          "review_id": "g1-seller-pc_parts-02-5",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-pc_parts-02-5",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-pc_parts-02-6": [
+        {
+          "review_id": "g1-seller-pc_parts-02-6",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-pc_parts-02-6",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-pc_parts-02-7": [
+        {
+          "review_id": "g1-seller-pc_parts-02-7",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-pc_parts-02-7",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-pc_parts-02-8": [
+        {
+          "review_id": "g1-seller-pc_parts-02-8",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-pc_parts-02-8",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-pc_parts-02-9": [
+        {
+          "review_id": "g1-seller-pc_parts-02-9",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-pc_parts-02-9",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
+      "seller-pc_parts-02-10": []
+    },
+    "errors": {
+      "lab-pc_parts-02-5": "risk_control"
+    }
+  },
+  "images": {
+    "lab-pc_parts-02-1": [
+      {
+        "file": "test/fixtures/lab/images/pc_parts-02-1-1.png",
+        "url": "https://lab.local/images/pc_parts-02-1-1.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые"
+        }
+      },
+      {
+        "file": "test/fixtures/lab/images/pc_parts-02-1-2.png",
+        "url": "https://lab.local/images/pc_parts-02-1-2.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые"
+        }
+      },
+      {
+        "file": "test/fixtures/lab/images/pc_parts-02-1-3.png",
+        "url": "https://lab.local/images/pc_parts-02-1-3.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые"
+        }
+      }
+    ]
+  },
+  "expected": {
+    "top_must_include": [
+      "lab-pc_parts-02-1"
+    ],
+    "top_must_exclude": [
+      "lab-pc_parts-02-5"
+    ],
+    "verdicts": {
+      "lab-pc_parts-02-1": "брать",
+      "lab-pc_parts-02-2": "проверить",
+      "lab-pc_parts-02-3": "проверить",
+      "lab-pc_parts-02-4": "проверить",
+      "lab-pc_parts-02-5": "пропустить",
+      "lab-pc_parts-02-6": "проверить"
+    },
+    "stop_factor_ids": {},
+    "notes": "golden: чистый лот с фото и отрицаниями",
+    "traps": [
+      "reseller",
+      "bad_reviews",
+      "missing_data",
+      "rgv587",
+      "duplicate"
+    ]
+  },
+  "traps": [
+    "reseller",
+    "bad_reviews",
+    "missing_data",
+    "rgv587",
+    "duplicate"
+  ],
+  "seed": 42
+}
