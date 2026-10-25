@@ -54,6 +54,7 @@ export class ToolState {
     this.result = null;
     this.finishWarnings = [];
     this.visionByItem = new Map();
+    this.riskControlHits = 0;
     this.log = [];
   }
 
@@ -371,6 +372,14 @@ export async function executeTool(name, args, state) {
     state.log.push({ tool: name, args, ok: false, ms: Date.now() - started, error: message });
     if (state.logger) state.logger.warn('tool error', { tool: name, error: message });
     const code = err && err.code ? ' [' + err.code + ']' : '';
+    if (err && err.code === 'risk_control') {
+      state.riskControlHits += 1;
+      return {
+        text:
+          'ОШИБКА: Goofish временно ограничил запросы (антибот RGV587). ' +
+          'Не повторяй запросы подряд. Если это повторится — заверши прогон и подожди 10-15 минут.',
+      };
+    }
     return { text: 'ОШИБКА инструмента ' + name + code + ': ' + message };
   }
 }

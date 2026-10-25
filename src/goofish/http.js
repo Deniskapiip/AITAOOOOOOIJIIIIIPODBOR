@@ -60,12 +60,14 @@ function parseApiSpec(spec, fallbackApi, fallbackVersion, fallbackAppKey) {
 }
 
 export class HttpGoofishProvider {
-  constructor({ cookie, proxyUrl, userAgent, logger, apis = {}, timeoutMs = 20000 } = {}) {
+  constructor({ cookie, proxyUrl, userAgent, logger, apis = {}, timeoutMs = 20000, minIntervalMs = 1500 } = {}) {
     this.cookieJar = parseCookie(cookie);
     this.proxyUrl = proxyUrl || '';
     this.userAgent = userAgent;
     this.logger = logger;
     this.timeoutMs = timeoutMs;
+    this.minIntervalMs = Math.max(0, Number(minIntervalMs) || 0);
+    this.lastCallAt = 0;
     this.apis = {
       search: parseApiSpec(apis.search, 'mtop.taobao.idlemtopsearch.pc.search', '1.0', APP_KEY_SEARCH),
       item: parseApiSpec(apis.item, 'mtop.taobao.idle.pc.detail', '1.0', APP_KEY_WEB),
@@ -80,6 +82,13 @@ export class HttpGoofishProvider {
   get token() {
     const raw = this.cookieJar['_m_h5_tk'] || '';
     return raw.split('_')[0] || '';
+  }
+
+  async throttle() {
+    if (!this.minIntervalMs) return;
+    const wait = this.minIntervalMs - (Date.now() - this.lastCallAt);
+    if (wait > 0) await new Promise((resolve) => setTimeout(resolve, wait + Math.floor(Math.random() * 250)));
+    this.lastCallAt = Date.now();
   }
 
   async callMtop(api, version, data, appKey = APP_KEY_SEARCH) {
@@ -101,6 +110,7 @@ export class HttpGoofishProvider {
         timeout: '20000',
       });
       const url = H5_HOST + '/' + api + '/' + version + '/?' + qs.toString();
+      await this.throttle();
       try {
         const json = await requestJson(url, {
           method: 'POST',
@@ -119,6 +129,7 @@ export class HttpGoofishProvider {
         const ret = Array.isArray(json.ret) ? json.ret.join('; ') : String(json.ret || '');
         if (ret && !ret.includes('SUCCESS')) {
           lastError = new Error('mtop ' + api + ': ' + ret);
+          if (/RGV587|USER_VALIDATE|FAIL_SYS_USER/.test(ret)) lastError.code = 'risk_control';
           if (ret.includes('TOKEN') && attempt === 0) continue;
           throw lastError;
         }

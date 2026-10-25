@@ -7,6 +7,7 @@ export async function createProvider(config, logger) {
       cookie: config.goofish.cookie,
       proxyUrl: config.goofish.proxyUrl,
       userAgent: config.goofish.userAgent,
+      minIntervalMs: config.goofish.minIntervalMs,
       logger,
     });
   }

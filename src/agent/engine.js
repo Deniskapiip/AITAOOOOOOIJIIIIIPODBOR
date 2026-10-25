@@ -166,6 +166,9 @@ export async function runAgent({
         budget.record(name);
         onEvent({ type: 'tool', name, args, used: budget.used, max: budget.max });
         const result = await executeTool(name, args, state);
+        if (state.riskControlHits >= 3) {
+          throw new AgentError('Goofish ограничил запросы (антибот RGV587). Подожди 10-15 минут и повтори запрос.', { riskControlHits: state.riskControlHits });
+        }
         messages.push({ role: 'tool', tool_call_id: call.id, content: result.text || '' });
         if (Array.isArray(result.images) && result.images.length) pendingImages.push(...result.images);
       }
