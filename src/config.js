@@ -107,7 +107,7 @@ export function loadConfig(env = process.env, baseDir = process.cwd()) {
       maxConcurrentRuns: Math.max(1, Math.floor(num(merged.MAX_CONCURRENT_RUNS, 2))),
       sendPhotos: Math.max(0, Math.min(Math.floor(num(merged.SEND_PHOTOS_PER_LOT, 4)), 8)),
     },
-    port: merged.PORT ? Number(merged.PORT) : null,
+    port: merged.APP_PORT ? Number(merged.APP_PORT) : null,
     settingsBootstrap: {
       rate_cny_rub: merged.RATE_CNY_RUB ? Number(merged.RATE_CNY_RUB) : null,
       commission_percent: num(merged.COMMISSION_PERCENT, 6.5),

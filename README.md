@@ -83,7 +83,7 @@
 | VISION_API_KEY | LLM key | ключ vision-провайдера |
 | INLINE_IMAGES | true | скачивать фото в data URI для модели |
 | DATA_DIR | data | настройки и логи прогонов |
-| PORT | — | если задан, поднимается GET /health |
+| APP_PORT | — | если задан, поднимается GET /health (не путать с PORT на BotHost) |
 | LOG_LEVEL | info | debug/info/warn/error/silent |
 
 ## Архитектура

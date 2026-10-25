@@ -22,7 +22,7 @@ test('переменные читаются из .env, реальное окру
 test('неверный провайдер и порт', () => {
   const dir = tempDir();
   assert.throws(() => loadConfig({ GOOFISH_PROVIDER: 'ftp' }, dir), /mock или http/);
-  const config = loadConfig({ PORT: '8080' }, dir);
+  const config = loadConfig({ APP_PORT: '8080' }, dir);
   assert.equal(config.port, 8080);
 });
 
