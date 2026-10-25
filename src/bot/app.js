@@ -1,0 +1,336 @@
+import { runAgent } from '../agent/engine.js';
+import { createProvider } from '../goofish/index.js';
+import { saveRun, newRunId } from '../store/runs.js';
+import { buildResultMessages, escapeHtml, progressText } from './format.js';
+import { SettingsError } from '../store/settings.js';
+
+class Semaphore {
+  constructor(limit) {
+    this.limit = limit;
+    this.active = 0;
+    this.queue = [];
+  }
+
+  async acquire() {
+    if (this.active < this.limit) {
+      this.active += 1;
+      return;
+    }
+    await new Promise((resolve) => this.queue.push(resolve));
+    this.active += 1;
+  }
+
+  release() {
+    this.active -= 1;
+    const next = this.queue.shift();
+    if (next) next();
+  }
+}
+
+export class BotApp {
+  constructor({ config, logger, telegram, settings, llm, provider }) {
+    this.config = config;
+    this.logger = logger;
+    this.telegram = telegram;
+    this.settings = settings;
+    this.llm = llm;
+    this.provider = provider;
+    this.semaphore = new Semaphore(config.bot.maxConcurrentRuns);
+    this.chatQueues = new Map();
+    this.lastRuns = new Map();
+    this.running = false;
+  }
+
+  isAdmin(userId) {
+    return this.config.telegram.adminIds.includes(Number(userId));
+  }
+
+  async start() {
+    this.running = true;
+    try {
+      const pending = await this.telegram.getUpdates(0);
+      for (const update of pending) {
+        this.telegram.offset = Math.max(this.telegram.offset, update.update_id + 1);
+      }
+      if (pending.length) this.logger.info('bot: пропущено старых апдейтов', { count: pending.length });
+    } catch (err) {
+      this.logger.warn('bot: не удалось прочитать стартовые апдейты', { error: err.message });
+    }
+    this.logger.info('bot: запущен long polling');
+    while (this.running) {
+      try {
+        const updates = await this.telegram.getUpdates(30);
+        for (const update of updates) {
+          this.telegram.offset = Math.max(this.telegram.offset, update.update_id + 1);
+          this.dispatch(update).catch((err) => {
+            this.logger.error('bot: ошибка обработки апдейта', { error: err.message });
+          });
+        }
+      } catch (err) {
+        if (!this.running) break;
+        this.logger.error('bot: getUpdates failed', { error: err.message });
+        await new Promise((r) => setTimeout(r, 3000));
+      }
+    }
+  }
+
+  stop() {
+    this.running = false;
+  }
+
+  async dispatch(update) {
+    if (update.message) return this.handleMessage(update.message);
+    if (update.callback_query) return this.handleCallback(update.callback_query);
+  }
+
+  enqueue(chatId, task) {
+    const previous = this.chatQueues.get(chatId) || Promise.resolve();
+    const next = previous.then(task).catch((err) => {
+      this.logger.error('bot: задача упала', { chatId, error: err.message });
+    });
+    this.chatQueues.set(chatId, next);
+    next.finally(() => {
+      if (this.chatQueues.get(chatId) === next) this.chatQueues.delete(chatId);
+    });
+    return next;
+  }
+
+  async handleMessage(message) {
+    const chatId = message.chat.id;
+    const userId = message.from ? message.from.id : null;
+    const text = String(message.text || '').trim();
+    if (!text) return;
+    this.logger.info('bot: входящее', { chatId, userId, kind: text.startsWith('/') ? text.split(/\s+/)[0] : 'query' });
+
+    if (text.startsWith('/start') || text.startsWith('/help')) {
+      const modeLine =
+        this.config.goofish.provider === 'mock'
+          ? 'Режим: демо-данные (GOOFISH_PROVIDER=mock). Реальный Goofish требует GOOFISH_COOKIE и прокси.'
+          : 'Режим: реальный Goofish (GOOFISH_PROVIDER=http).';
+      await this.telegram.sendMessage(
+        chatId,
+        [
+          '<b>Подбор техники на Goofish</b>',
+          '',
+          'Отправь запрос одной строкой: модель, память, бюджет, регион, состояние.',
+          'Например: «Xiaomi 15 Ultra 16/512, до 55 000 ₽, только 国行, без ремонтов».',
+          '',
+          escapeHtml(modeLine),
+          '',
+          'Команды:',
+          '/settings — курс и комиссия',
+          '/json — JSON последнего прогона',
+          '/id — твой Telegram ID',
+          '',
+          'Админ: /rate 12.4 · /commission 6.5 650',
+        ].join('\n'),
+        { parse_mode: 'HTML' },
+      );
+      return;
+    }
+
+    if (text.startsWith('/id')) {
+      await this.telegram.sendMessage(chatId, 'Твой Telegram ID: <code>' + escapeHtml(userId) + '</code>', { parse_mode: 'HTML' });
+      return;
+    }
+
+    if (text.startsWith('/settings')) {
+      const s = this.settings.get();
+      await this.telegram.sendMessage(
+        chatId,
+        '<b>Настройки</b>\nКурс: ' + (s.rate_cny_rub === null ? 'не задан' : s.rate_cny_rub + ' ₽/¥') +
+          '\nКомиссия: ' + s.commission_percent + '% (мин. ' + s.commission_min_rub + ' ₽)' +
+          '\nОбновлено: ' + (s.updated_at || '—') + (s.updated_by ? ' (' + s.updated_by + ')' : ''),
+        { parse_mode: 'HTML' },
+      );
+      return;
+    }
+
+    if (text.startsWith('/rate')) {
+      if (!this.isAdmin(userId)) {
+        await this.telegram.sendMessage(chatId, 'Только администратор может менять курс.');
+        return;
+      }
+      const value = Number(text.split(/\s+/)[1]);
+      try {
+        const updated = this.settings.setRate(value, 'telegram:' + userId);
+        await this.telegram.sendMessage(chatId, 'Курс установлен: ' + updated.rate_cny_rub + ' ₽/¥');
+      } catch (err) {
+        await this.telegram.sendMessage(chatId, 'Ошибка: ' + (err instanceof SettingsError ? err.message : err.message));
+      }
+      return;
+    }
+
+    if (text.startsWith('/commission')) {
+      if (!this.isAdmin(userId)) {
+        await this.telegram.sendMessage(chatId, 'Только администратор может менять комиссию.');
+        return;
+      }
+      const parts = text.split(/\s+/);
+      const percent = parts[1] === undefined ? undefined : Number(parts[1]);
+      const minRub = parts[2] === undefined ? undefined : Number(parts[2]);
+      try {
+        const updated = this.settings.setCommission(percent, minRub, 'telegram:' + userId);
+        await this.telegram.sendMessage(chatId, 'Комиссия: ' + updated.commission_percent + '% (мин. ' + updated.commission_min_rub + ' ₽)');
+      } catch (err) {
+        await this.telegram.sendMessage(chatId, 'Ошибка: ' + (err instanceof SettingsError ? err.message : err.message));
+      }
+      return;
+    }
+
+    if (text.startsWith('/json')) {
+      const last = this.lastRuns.get(chatId);
+      if (!last) {
+        await this.telegram.sendMessage(chatId, 'Пока нет прогонов в этом чате.');
+        return;
+      }
+      await this.sendJson(chatId, last);
+      return;
+    }
+
+    if (text.startsWith('/')) {
+      await this.telegram.sendMessage(chatId, 'Не знаю такую команду. Отправь запрос текстом или /help.');
+      return;
+    }
+
+    const allowed = this.config.telegram.allowedIds;
+    if (allowed.length && !this.isAdmin(userId) && !allowed.includes(Number(userId))) {
+      await this.telegram.sendMessage(chatId, 'Доступ к подбору ограничен. Попроси администратора добавить твой ID.');
+      return;
+    }
+
+    this.enqueue(chatId, () => this.runQuery(chatId, userId, text));
+  }
+
+  async runQuery(chatId, userId, query) {
+    const runId = newRunId();
+    const log = this.logger.child({ runId, chatId });
+    const placeholder = await this.telegram.sendMessage(chatId, '⏳ Принял запрос, начинаю подбор…');
+    const placeholderId = placeholder && placeholder.message_id;
+    let lastEdit = 0;
+    let lastText = '';
+
+    const onEvent = (event) => {
+      const text = progressText(event);
+      if (!text || !placeholderId) return;
+      const now = Date.now();
+      if (event.type === 'tool' && now - lastEdit < 2500) return;
+      if (text === lastText) return;
+      if (event.type !== 'tool' && now - lastEdit < 8000) return;
+      lastEdit = now;
+      lastText = text;
+      this.telegram
+        .editMessageText(chatId, placeholderId, escapeHtml(text) + '\n<i>Goofish · подбор</i>', { parse_mode: 'HTML' })
+        .catch(() => {});
+    };
+
+    await this.semaphore.acquire();
+    let outcome = null;
+    let error = null;
+    try {
+      log.info('run: старт', { query, provider: this.config.goofish.provider });
+      const settings = this.settings.get();
+      outcome = await runAgent({
+        query,
+        provider: this.provider,
+        settings,
+        llm: this.llm,
+        config: this.config,
+        logger: log,
+        onEvent,
+      });
+      const saved = saveRun(
+        this.config.dataDir,
+        {
+          id: runId,
+          chat_id: chatId,
+          user_id: userId,
+          query,
+          provider: this.config.goofish.provider,
+          settings,
+          result: outcome.result,
+          calls: outcome.calls,
+          usage: outcome.usage,
+          warnings: outcome.finishWarnings,
+          duration_ms: outcome.durationMs,
+        },
+        log,
+      );
+      this.lastRuns.set(chatId, { result: outcome.result, file: saved ? saved.file : null, runId });
+      log.info('run: готово', { calls: outcome.calls, durationMs: outcome.durationMs, top: outcome.result.top.length });
+    } catch (err) {
+      error = err;
+      log.error('run: ошибка', { error: err.message });
+      saveRun(
+        this.config.dataDir,
+        {
+          id: runId,
+          chat_id: chatId,
+          user_id: userId,
+          query,
+          provider: this.config.goofish.provider,
+          error: err.message,
+          details: err.details || null,
+        },
+        log,
+      );
+    } finally {
+      this.semaphore.release();
+    }
+
+    if (placeholderId) {
+      await this.telegram.editMessageText(chatId, placeholderId, error ? '❌ Подбор не завершён' : '✅ Подбор завершён').catch(() => {});
+    }
+
+    if (error) {
+      await this.telegram.sendMessage(
+        chatId,
+        '❌ ' + escapeHtml(error.message || 'Неизвестная ошибка') + '\nID прогона: <code>' + escapeHtml(runId) + '</code>',
+        { parse_mode: 'HTML' },
+      );
+      return;
+    }
+
+    const settings = this.settings.get();
+    const messages = buildResultMessages(outcome.result, {
+      rate: settings.rate_cny_rub,
+      commissionPercent: settings.commission_percent,
+      commissionMin: settings.commission_min_rub,
+      durationMs: outcome.durationMs,
+      warnings: outcome.finishWarnings,
+      provider: this.config.goofish.provider,
+    });
+    for (const text of messages) {
+      await this.telegram.sendMessage(chatId, text, {
+        parse_mode: 'HTML',
+        disable_web_page_preview: true,
+        reply_markup: {
+          inline_keyboard: [[{ text: '📄 JSON прогона', callback_data: 'json:' + runId }]],
+        },
+      });
+    }
+  }
+
+  async sendJson(chatId, last) {
+    const json = JSON.stringify(last.result, null, 2);
+    try {
+      await this.telegram.sendDocument(chatId, 'goofish-' + last.runId + '.json', json, 'JSON прогона ' + last.runId);
+    } catch {
+      const truncated = json.length > 3800 ? json.slice(0, 3800) + '\n… (обрезано)' : json;
+      await this.telegram.sendMessage(chatId, '<pre>' + escapeHtml(truncated) + '</pre>', { parse_mode: 'HTML' });
+    }
+  }
+
+  async handleCallback(query) {
+    const data = String(query.data || '');
+    const chatId = query.message ? query.message.chat.id : null;
+    if (!chatId) return;
+    if (data.startsWith('json:')) {
+      const runId = data.slice(5);
+      const last = this.lastRuns.get(chatId);
+      await this.telegram.answerCallbackQuery(query.id, 'Отправляю JSON');
+      if (last && last.runId === runId) await this.sendJson(chatId, last);
+      else await this.telegram.sendMessage(chatId, 'Этот прогон уже недоступен в памяти, файл лежит в data/runs.');
+    }
+  }
+}

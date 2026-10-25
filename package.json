@@ -1,0 +1,20 @@
+{
+  "name": "goofish-sourcing-agent",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Автономный агент подбора б/у товаров на Goofish (闲鱼) для Telegram",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "bot": "node src/index.js",
+    "agent": "node src/cli.js",
+    "admin": "node src/admin.js",
+    "probe": "node src/probe.js",
+    "test": "node --test",
+    "doctor": "node src/doctor.js"
+  },
+  "main": "index.js"
+}

@@ -1,0 +1,298 @@
+[
+  {
+    "seller_id": "s_a",
+    "nickname": "数码小陈",
+    "zhima_credit": 780,
+    "verified": true,
+    "registered_at": "2019-04-12",
+    "sold_count": 326,
+    "praise_rate": 99.2,
+    "location": "广东 深圳",
+    "items_sample": [
+      {
+        "item_id": "812345678901",
+        "title": "小米15 Ultra 16+512 黑色 国行 全套 无拆无修 电池97%",
+        "price_cny": 4580
+      },
+      {
+        "item_id": "812345678923",
+        "title": "红米K80 16+512 国行 无拆无修",
+        "price_cny": 1999
+      }
+    ],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_b",
+    "nickname": "老王闲置",
+    "zhima_credit": 712,
+    "verified": true,
+    "registered_at": "2022-06-03",
+    "sold_count": 87,
+    "praise_rate": 97.5,
+    "location": "上海 浦东",
+    "items_sample": [
+      {
+        "item_id": "812345678902",
+        "title": "小米15 Ultra 16G+512G 白色 国行 电池98% 配件齐",
+        "price_cny": 4750
+      },
+      {
+        "item_id": "812345678925",
+        "title": "小米15 Pro 16+512 国行 无拆无修",
+        "price_cny": 3600
+      }
+    ],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_c",
+    "nickname": "机友维修站",
+    "zhima_credit": 690,
+    "verified": false,
+    "registered_at": "2021-01-20",
+    "sold_count": 154,
+    "praise_rate": 95.1,
+    "location": "广东 广州",
+    "items_sample": [
+      {
+        "item_id": "812345678903",
+        "title": "小米15 Ultra 512G 银色 有拆修 换过电池 便宜出",
+        "price_cny": 3999
+      },
+      {
+        "item_id": "812345678910",
+        "title": "小米15 Ultra 16+512 进水 不开机 尸体机",
+        "price_cny": 1800
+      }
+    ],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_d",
+    "nickname": "港版数码仓",
+    "zhima_credit": 760,
+    "verified": true,
+    "registered_at": "2020-09-15",
+    "sold_count": 210,
+    "praise_rate": 98.8,
+    "location": "香港 九龙",
+    "items_sample": [
+      {
+        "item_id": "812345678904",
+        "title": "小米15 Ultra 16+1T 港版 靓机 全套",
+        "price_cny": 5200
+      },
+      {
+        "item_id": "812345678912",
+        "title": "小米15 Ultra 16+512 港版 靓机 无划痕",
+        "price_cny": 4550
+      }
+    ],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_e",
+    "nickname": "阿哲自用",
+    "zhima_credit": 730,
+    "verified": true,
+    "registered_at": "2021-11-08",
+    "sold_count": 42,
+    "praise_rate": 99,
+    "location": "上海 徐汇",
+    "items_sample": [
+      {
+        "item_id": "812345678909",
+        "title": "小米15 Ultra 16+512 国行 仅限本地自提 北京",
+        "price_cny": 4100
+      },
+      {
+        "item_id": "812345678915",
+        "title": "小米15 Ultra 16+512 国行 一价不议 电池97%",
+        "price_cny": 4750
+      }
+    ],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_f",
+    "nickname": "杭城小周",
+    "zhima_credit": 705,
+    "verified": true,
+    "registered_at": "2023-03-17",
+    "sold_count": 63,
+    "praise_rate": 97.8,
+    "location": "浙江 杭州",
+    "items_sample": [
+      {
+        "item_id": "812345678914",
+        "title": "小米15 Ultra 12+256 国行 成色好",
+        "price_cny": 3899
+      },
+      {
+        "item_id": "812345678918",
+        "title": "小米15 Ultra 16+512 国行 屏幕有划痕 边框磕碰",
+        "price_cny": 4650
+      }
+    ],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_g",
+    "nickname": "老李换机",
+    "zhima_credit": 725,
+    "verified": true,
+    "registered_at": "2020-05-05",
+    "sold_count": 118,
+    "praise_rate": 98.2,
+    "location": "河南 郑州",
+    "items_sample": [
+      {
+        "item_id": "812345678916",
+        "title": "小米15 Ultra 16+512 有锁 卡贴机 3000 出",
+        "price_cny": 3000
+      },
+      {
+        "item_id": "812345678919",
+        "title": "小米15 Ultra 16+512 官换机 官换主板 国行",
+        "price_cny": 4500
+      }
+    ],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_h",
+    "nickname": "急于出手",
+    "zhima_credit": 660,
+    "verified": true,
+    "registered_at": "2026-01-12",
+    "sold_count": 6,
+    "praise_rate": 90,
+    "location": "四川 成都",
+    "items_sample": [
+      {
+        "item_id": "812345678920",
+        "title": "小米15 Ultra 16+512 国行 急出 先到先得 秒拍减",
+        "price_cny": 4450
+      },
+      {
+        "item_id": "812345678921",
+        "title": "小米15 Ultra 16+512 国行 微信交易 更便宜",
+        "price_cny": 4800
+      }
+    ],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_i",
+    "nickname": "数码阿杰",
+    "zhima_credit": 645,
+    "verified": false,
+    "registered_at": "2025-09-01",
+    "sold_count": 9,
+    "praise_rate": 88.5,
+    "location": "江苏 南京",
+    "items_sample": [
+      {
+        "item_id": "812345678922",
+        "title": "小米15 Ultra 16+512 国行 定金500 先确认收货",
+        "price_cny": 4700
+      }
+    ],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_j",
+    "nickname": "阿强手机",
+    "zhima_credit": 685,
+    "verified": false,
+    "registered_at": "2024-07-19",
+    "sold_count": 34,
+    "praise_rate": 94,
+    "location": "福建 厦门",
+    "items_sample": [],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_k",
+    "nickname": "武汉阿凯",
+    "zhima_credit": 700,
+    "verified": true,
+    "registered_at": "2022-12-01",
+    "sold_count": 51,
+    "praise_rate": 96.9,
+    "location": "湖北 武汉",
+    "items_sample": [
+      {
+        "item_id": "812345678924",
+        "title": "小米15 Ultra 16+512 国行 换过屏幕 官方维修 电池82%",
+        "price_cny": 4300
+      }
+    ],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_shop",
+    "nickname": "深圳数码专营店",
+    "zhima_credit": 745,
+    "verified": true,
+    "registered_at": "2018-08-08",
+    "sold_count": 4203,
+    "praise_rate": 99.5,
+    "location": "广东 深圳",
+    "items_sample": [
+      {
+        "item_id": "812345678905",
+        "title": "小米15 Ultra 手机壳 钢化膜 套装 防摔",
+        "price_cny": 39
+      },
+      {
+        "item_id": "812345678913",
+        "title": "小米15 Ultra 16+512 摄影师套装 带手柄 国行",
+        "price_cny": 4999
+      },
+      {
+        "item_id": "812345678917",
+        "title": "小米15 Ultra 16+512 全新未拆 未激活 国行",
+        "price_cny": 5199
+      }
+    ],
+    "is_shop": true
+  },
+  {
+    "seller_id": "s_new",
+    "nickname": "新号出闲置",
+    "zhima_credit": null,
+    "verified": false,
+    "registered_at": "2026-08-15",
+    "sold_count": 3,
+    "praise_rate": null,
+    "location": "四川 成都",
+    "items_sample": [
+      {
+        "item_id": "812345678911",
+        "title": "小米15 Ultra 16+512 国行 全套 99新 低价",
+        "price_cny": 4399
+      }
+    ],
+    "is_shop": false
+  },
+  {
+    "seller_id": "s_scam",
+    "nickname": "低价手机小王",
+    "zhima_credit": 610,
+    "verified": false,
+    "registered_at": "2025-11-02",
+    "sold_count": 12,
+    "praise_rate": 86,
+    "location": "广东 深圳",
+    "items_sample": [
+      {
+        "item_id": "812345678907",
+        "title": "小米15 Ultra 16+512 账号锁 便宜出 会解的来",
+        "price_cny": 2600
+      }
+    ],
+    "is_shop": false
+  }
+]

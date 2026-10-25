@@ -1,0 +1,190 @@
+{
+  "s_a": [
+    {
+      "review_id": "r_a1",
+      "created_at": "2026-09-18",
+      "rating": 5,
+      "text": "手机和描述一致，电池健康确实97%，包装很严实，当天就发货了。",
+      "item_id": "812345678901"
+    },
+    {
+      "review_id": "r_a2",
+      "created_at": "2026-08-02",
+      "rating": 5,
+      "text": "老板人很好，问了很多问题都耐心回答，手机无拆修，满意。",
+      "item_id": null
+    },
+    {
+      "review_id": "r_a3",
+      "created_at": "2026-06-11",
+      "rating": 5,
+      "text": "红米K80也很好用，成色和描述一样，值得信任。",
+      "item_id": "812345678923"
+    }
+  ],
+  "s_b": [
+    {
+      "review_id": "r_b1",
+      "created_at": "2026-09-01",
+      "rating": 2,
+      "text": "收到发现是翻新机，边框换过，卖家不承认，退货还扣了运费，大家注意。",
+      "item_id": "812345678902"
+    },
+    {
+      "review_id": "r_b2",
+      "created_at": "2026-07-14",
+      "rating": 4,
+      "text": "发货稍慢，机器本身没问题。",
+      "item_id": null
+    },
+    {
+      "review_id": "r_b3",
+      "created_at": "2026-05-20",
+      "rating": 1,
+      "text": "货不对板，说好的全套结果只有裸机，态度很差。",
+      "item_id": null
+    }
+  ],
+  "s_c": [
+    {
+      "review_id": "r_c1",
+      "created_at": "2026-08-22",
+      "rating": 2,
+      "text": "描述写无拆修，实际拆过，客服也不处理。",
+      "item_id": "812345678903"
+    },
+    {
+      "review_id": "r_c2",
+      "created_at": "2026-04-03",
+      "rating": 5,
+      "text": "买过配件，价格便宜，发货快。",
+      "item_id": null
+    }
+  ],
+  "s_d": [
+    {
+      "review_id": "r_d1",
+      "created_at": "2026-09-10",
+      "rating": 5,
+      "text": "港版机器，成色非常好，和描述一致。",
+      "item_id": "812345678904"
+    },
+    {
+      "review_id": "r_d2",
+      "created_at": "2026-03-18",
+      "rating": 5,
+      "text": "发货快，包装好。",
+      "item_id": null
+    }
+  ],
+  "s_e": [
+    {
+      "review_id": "r_e1",
+      "created_at": "2026-09-25",
+      "rating": 5,
+      "text": "面交验机，机器很新，卖家爽快。",
+      "item_id": "812345678915"
+    },
+    {
+      "review_id": "r_e2",
+      "created_at": "2026-02-11",
+      "rating": 5,
+      "text": "描述真实，值得信赖。",
+      "item_id": null
+    }
+  ],
+  "s_f": [
+    {
+      "review_id": "r_f1",
+      "created_at": "2026-08-30",
+      "rating": 4,
+      "text": "屏幕划痕确实有，卖家提前说了，能接受。",
+      "item_id": "812345678918"
+    }
+  ],
+  "s_g": [
+    {
+      "review_id": "r_g1",
+      "created_at": "2026-07-07",
+      "rating": 5,
+      "text": "官换主板有记录可查，卖家如实告知。",
+      "item_id": "812345678919"
+    }
+  ],
+  "s_h": [
+    {
+      "review_id": "r_h1",
+      "created_at": "2026-09-15",
+      "rating": 1,
+      "text": "骗子，先给定金就把我拉黑了，别买。",
+      "item_id": "812345678920"
+    },
+    {
+      "review_id": "r_h2",
+      "created_at": "2026-05-01",
+      "rating": 2,
+      "text": "一直催着微信转账，感觉不靠谱。",
+      "item_id": null
+    }
+  ],
+  "s_i": [
+    {
+      "review_id": "r_i1",
+      "created_at": "2026-06-06",
+      "rating": 1,
+      "text": "要求先确认收货，结果发来是模型机。",
+      "item_id": "812345678922"
+    }
+  ],
+  "s_j": [
+    {
+      "review_id": "r_j1",
+      "created_at": "2026-01-09",
+      "rating": 4,
+      "text": "正常交易，没什么问题。",
+      "item_id": null
+    }
+  ],
+  "s_k": [
+    {
+      "review_id": "r_k1",
+      "created_at": "2026-09-19",
+      "rating": 5,
+      "text": "换屏有官方维修单，卖家提前说明了。",
+      "item_id": "812345678924"
+    }
+  ],
+  "s_shop": [
+    {
+      "review_id": "r_shop1",
+      "created_at": "2026-09-02",
+      "rating": 5,
+      "text": "全新未拆，发票齐全，正品。",
+      "item_id": "812345678917"
+    },
+    {
+      "review_id": "r_shop2",
+      "created_at": "2026-08-08",
+      "rating": 5,
+      "text": "摄影套装齐全，包装很好。",
+      "item_id": "812345678913"
+    }
+  ],
+  "s_new": [],
+  "s_scam": [
+    {
+      "review_id": "r_scam1",
+      "created_at": "2026-04-16",
+      "rating": 1,
+      "text": "华强北组装机当原装卖，还拉黑我。",
+      "item_id": "812345678907"
+    },
+    {
+      "review_id": "r_scam2",
+      "created_at": "2025-12-20",
+      "rating": 1,
+      "text": "骗子，发来的是有锁机，联系不上。",
+      "item_id": null
+    }
+  ]
+}
