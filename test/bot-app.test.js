@@ -8,6 +8,8 @@ class FakeTelegram {
   constructor() {
     this.sent = [];
     this.edits = [];
+    this.photos = [];
+    this.groups = [];
     this.offset = 0;
   }
   async sendMessage(chatId, text, extra) {
@@ -17,6 +19,14 @@ class FakeTelegram {
   async editMessageText(chatId, messageId, text, extra) {
     this.edits.push({ chatId, messageId, text, extra });
     return {};
+  }
+  async sendPhoto(chatId, photo, caption, extra) {
+    this.photos.push({ chatId, photo, caption, extra });
+    return { message_id: 100 + this.photos.length };
+  }
+  async sendMediaGroup(chatId, media, extra) {
+    this.groups.push({ chatId, media, extra });
+    return media.map((m, i) => ({ message_id: 200 + this.groups.length * 10 + i }));
   }
   async answerCallbackQuery() {}
   async sendDocument() {}
@@ -65,14 +75,17 @@ test('бот: запрос менеджера даёт карточки и JSON 
 
   assert.match(telegram.sent[0].text, /Принял запрос/);
   const texts = telegram.sent.map((m) => m.text);
-  assert.ok(texts.some((t) => t.includes('Итог: 2')));
-  const cardMessage = texts.find((t) => t.includes('<pre>') && t.includes('Xiaomi 15 Ultra'));
+  assert.ok(texts.some((t) => t.includes('Нашёл 2')));
+  const cardMessage = texts.find((t) => t.includes('<b>1. Xiaomi 15 Ultra'));
   assert.ok(cardMessage);
-  assert.match(cardMessage, /4580 ¥ \| 58 533 ₽/);
+  assert.match(cardMessage, /4 580 ¥/);
+  assert.match(cardMessage, /58 533 ₽/);
   assert.match(cardMessage, /item\?id=812345678901/);
   const footer = texts.at(-1);
-  assert.match(footer, /Курс: 12/);
+  assert.match(footer, /Курс 12/);
   assert.match(footer, /вызовов: 10/);
+  assert.equal(telegram.groups.length, 2, 'каждому лоту уходит группа фото');
+  assert.ok(telegram.groups[0].media.length > 0);
   assert.equal(app.lastRuns.get(1).result.top.length, 2);
   assert.equal(app.chatQueues.has(1), false);
 });

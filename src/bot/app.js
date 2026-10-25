@@ -1,7 +1,7 @@
 import { runAgent } from '../agent/engine.js';
 import { createProvider } from '../goofish/index.js';
 import { saveRun, newRunId } from '../store/runs.js';
-import { buildResultMessages, escapeHtml, progressText } from './format.js';
+import { buildResultPlan, escapeHtml, progressText } from './format.js';
 import { SettingsError } from '../store/settings.js';
 
 class Semaphore {
@@ -205,7 +205,12 @@ export class BotApp {
   async runQuery(chatId, userId, query) {
     const runId = newRunId();
     const log = this.logger.child({ runId, chatId });
-    const placeholder = await this.telegram.sendMessage(chatId, '⏳ Принял запрос, начинаю подбор…');
+    let placeholder = null;
+    try {
+      placeholder = await this.telegram.sendMessage(chatId, '⏳ Принял запрос, начинаю подбор…');
+    } catch (err) {
+      log.warn('bot: не удалось отправить статус', { error: err.message });
+    }
     const placeholderId = placeholder && placeholder.message_id;
     let lastEdit = 0;
     let lastText = '';
@@ -292,22 +297,77 @@ export class BotApp {
     }
 
     const settings = this.settings.get();
-    const messages = buildResultMessages(outcome.result, {
-      rate: settings.rate_cny_rub,
-      commissionPercent: settings.commission_percent,
-      commissionMin: settings.commission_min_rub,
-      durationMs: outcome.durationMs,
-      warnings: outcome.finishWarnings,
-      provider: this.config.goofish.provider,
-    });
-    for (const text of messages) {
-      await this.telegram.sendMessage(chatId, text, {
+    const photosByItem = {};
+    for (const lot of outcome.result.top) {
+      const item = outcome.state.items.get(String(lot.item_id));
+      photosByItem[lot.item_id] = item && Array.isArray(item.image_urls) ? item.image_urls : [];
+      if (item) {
+        lot.seller_nick = item.seller_nick || (lot.seller && lot.seller.nickname) || '';
+        lot.seller_credit = item.seller_credit || '';
+      }
+    }
+    const plan = buildResultPlan(
+      outcome.result,
+      {
+        rate: settings.rate_cny_rub,
+        commissionPercent: settings.commission_percent,
+        commissionMin: settings.commission_min_rub,
+        durationMs: outcome.durationMs,
+        warnings: outcome.finishWarnings,
+        provider: this.config.goofish.provider,
+        photoMode: this.config.images.mode,
+        runId,
+        maxPhotos: this.config.bot.sendPhotos,
+      },
+      photosByItem,
+    );
+
+    try {
+      await this.telegram.sendMessage(chatId, plan.header, {
         parse_mode: 'HTML',
         disable_web_page_preview: true,
-        reply_markup: {
-          inline_keyboard: [[{ text: '📄 JSON прогона', callback_data: 'json:' + runId }]],
-        },
       });
+    } catch (err) {
+      log.warn('bot: не удалось отправить заголовок', { error: err.message });
+    }
+
+    for (const entry of plan.lots) {
+      try {
+        await this.telegram.sendMessage(chatId, entry.text, {
+          parse_mode: 'HTML',
+          disable_web_page_preview: true,
+          reply_markup: entry.buttons,
+        });
+      } catch (err) {
+        log.warn('bot: не удалось отправить карточку', { itemId: entry.lot.item_id, error: err.message });
+      }
+      try {
+        if (entry.photos.length >= 2) {
+          await this.telegram.sendMediaGroup(chatId, entry.photos.map((url) => ({ type: 'photo', media: url })));
+        } else if (entry.photos.length === 1) {
+          await this.telegram.sendPhoto(chatId, entry.photos[0]);
+        }
+      } catch (err) {
+        log.warn('bot: группа фото не ушла, пробую по одной', { itemId: entry.lot.item_id, error: err.message });
+        for (const url of entry.photos) {
+          try {
+            await this.telegram.sendPhoto(chatId, url);
+          } catch (photoErr) {
+            log.warn('bot: фото не отправилось', { itemId: entry.lot.item_id, error: photoErr.message });
+            break;
+          }
+        }
+      }
+    }
+
+    try {
+      await this.telegram.sendMessage(chatId, plan.footer, {
+        parse_mode: 'HTML',
+        disable_web_page_preview: true,
+        ...(plan.footerButtons ? { reply_markup: plan.footerButtons } : {}),
+      });
+    } catch (err) {
+      log.warn('bot: не удалось отправить футер', { error: err.message });
     }
   }
 

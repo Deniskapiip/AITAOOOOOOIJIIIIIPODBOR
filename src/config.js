@@ -89,6 +89,7 @@ export function loadConfig(env = process.env, baseDir = process.cwd()) {
     },
     bot: {
       maxConcurrentRuns: Math.max(1, Math.floor(num(merged.MAX_CONCURRENT_RUNS, 2))),
+      sendPhotos: Math.max(0, Math.min(Math.floor(num(merged.SEND_PHOTOS_PER_LOT, 4)), 8)),
     },
     port: merged.PORT ? Number(merged.PORT) : null,
     settingsBootstrap: {

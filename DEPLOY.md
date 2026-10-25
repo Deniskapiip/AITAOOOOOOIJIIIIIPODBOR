@@ -52,6 +52,7 @@ BotHost удобнее всего подключать к Git. Если репо
 | ADMIN_TELEGRAM_IDS | твой Telegram ID (узнать: /id в боте или @userinfobot) |
 | ALLOWED_TELEGRAM_IDS | кому разрешён подбор; можно оставить пустым |
 | TELEGRAM_API_IP | 149.154.167.220 (если Telegram блокируется по DNS) |
+| SEND_PHOTOS_PER_LOT | 4 (сколько фото лота отправлять) |
 | RATE_CNY_RUB | актуальный курс, например 12.4 |
 | GOOFISH_PROVIDER | mock для демо или http для реального Goofish |
 | PHOTO_MODE | off для DeepSeek; vision только для vision-модели |

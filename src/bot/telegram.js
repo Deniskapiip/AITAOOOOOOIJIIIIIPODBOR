@@ -15,27 +15,41 @@ export class TelegramClient {
     this.logger = logger;
     this.base = 'https://api.telegram.org/bot' + token;
     this.apiHost = options.apiHost || 'api.telegram.org';
-    this.apiIp = options.apiIp || '';
+    const configured = String(options.apiIps || options.apiIp || '149.154.167.220')
+      .split(',')
+      .map((ip) => ip.trim())
+      .filter(Boolean);
+    this.apiIps = [...new Set([...configured, '149.154.167.221', '149.154.175.50'])];
     this.offset = 0;
   }
 
   async call(method, payload = {}, timeoutMs = 40000) {
-    if (this.apiIp) {
-      try {
-        return await this.callViaIp(method, payload, timeoutMs);
-      } catch (err) {
-        if (this.logger) this.logger.debug('telegram: IP-транспорт не сработал, пробую обычный', { error: err.message });
+    const effective = method === 'getUpdates' ? timeoutMs : Math.min(timeoutMs, 20000);
+    let lastIpError = null;
+    for (let round = 0; round < 2; round += 1) {
+      for (const ip of this.apiIps) {
+        try {
+          return await this.callViaIp(method, payload, effective, ip);
+        } catch (err) {
+          if (err instanceof TelegramError) throw err;
+          lastIpError = err;
+          if (this.logger) this.logger.debug('telegram: IP не ответил', { ip, round, error: err.message });
+        }
       }
     }
-    return this.callViaFetch(method, payload, timeoutMs);
+    try {
+      return await this.callViaFetch(method, payload, effective);
+    } catch (err) {
+      throw lastIpError || err;
+    }
   }
 
-  callViaIp(method, payload, timeoutMs) {
+  callViaIp(method, payload, timeoutMs, ip) {
     return new Promise((resolve, reject) => {
       const body = JSON.stringify(payload);
       const req = https.request(
         {
-          host: this.apiIp,
+          host: ip,
           servername: this.apiHost,
           path: '/bot' + this.token + '/' + method,
           method: 'POST',
@@ -101,6 +115,19 @@ export class TelegramClient {
 
   async sendMessage(chatId, text, extra = {}) {
     return this.call('sendMessage', { chat_id: chatId, text: text.slice(0, 4096), ...extra });
+  }
+
+  async sendPhoto(chatId, photo, caption = '', extra = {}) {
+    return this.call('sendPhoto', {
+      chat_id: chatId,
+      photo,
+      ...(caption ? { caption: caption.slice(0, 1024) } : {}),
+      ...extra,
+    });
+  }
+
+  async sendMediaGroup(chatId, media, extra = {}) {
+    return this.call('sendMediaGroup', { chat_id: chatId, media, ...extra });
   }
 
   async editMessageText(chatId, messageId, text, extra = {}) {
