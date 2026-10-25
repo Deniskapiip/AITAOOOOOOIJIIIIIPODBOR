@@ -130,14 +130,12 @@ export function buildResultPlan(result, meta = {}, photosByItem = {}) {
 
   const stats = result.stats || {};
   const footerLines = [];
-  if (meta.rate) footerLines.push('Курс ' + meta.rate + ' ₽/¥ · комиссия ' + meta.commissionPercent + '% (мин. ' + meta.commissionMin + ' ₽)');
   footerLines.push(
     'Найдено: ' + (stats.found === null || stats.found === undefined ? '—' : stats.found) +
       ' · карточек: ' + (stats.after_card_filter === null || stats.after_card_filter === undefined ? '—' : stats.after_card_filter) +
       ' · вызовов: ' + (stats.tool_calls === null || stats.tool_calls === undefined ? '—' : stats.tool_calls) +
       (meta.durationMs ? ' · ' + Math.round(meta.durationMs / 1000) + ' с' : ''),
   );
-  if (meta.warnings && meta.warnings.length) footerLines.push('⚠️ ' + meta.warnings.join('; '));
   if (lots.some((entry) => entry.photos.length)) {
     footerLines.push(
       meta.photoMode === 'vision'

@@ -82,7 +82,7 @@ test('бот: запрос менеджера даёт карточки и JSON 
   assert.match(cardMessage, /58 533 ₽/);
   assert.match(cardMessage, /item\?id=812345678901/);
   const footer = texts.at(-1);
-  assert.match(footer, /Курс 12/);
+  assert.ok(!footer.includes('Курс'));
   assert.match(footer, /вызовов: 10/);
   assert.equal(telegram.groups.length, 2, 'каждому лоту уходит группа фото');
   assert.ok(telegram.groups[0].media.length > 0);

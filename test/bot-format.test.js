@@ -31,7 +31,8 @@ test('план результата: заголовок, HTML-карточки, 
   assert.equal(plan.lots[1].photos.length, 0);
   assert.equal(plan.lots[0].buttons.inline_keyboard[0][0].url, 'https://www.goofish.com/item?id=812345678901');
   assert.equal(plan.footerButtons.inline_keyboard[0][0].callback_data, 'json:run-1');
-  assert.match(plan.footer, /Курс 12/);
+  assert.ok(!plan.footer.includes('Курс'));
+  assert.ok(!plan.footer.includes('комиссия'));
 });
 
 test('фото ограничиваются maxPhotos', () => {

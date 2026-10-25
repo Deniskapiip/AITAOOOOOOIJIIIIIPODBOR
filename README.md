@@ -77,6 +77,10 @@
 | RUN_TIMEOUT_MS | 300000 | таймаут прогона |
 | PHOTO_MODE | off | off или vision (нужна vision-модель) |
 | SEND_PHOTOS_PER_LOT | 4 | сколько фото лота бот отправляет в Telegram (0-8) |
+| VISION_ENABLED | false | включить анализ фото отдельной vision-моделью |
+| VISION_BASE_URL | LLM_BASE_URL | OpenAI-совместимый vision endpoint |
+| VISION_MODEL | — | например qwen-vl-max |
+| VISION_API_KEY | LLM key | ключ vision-провайдера |
 | INLINE_IMAGES | true | скачивать фото в data URI для модели |
 | DATA_DIR | data | настройки и логи прогонов |
 | PORT | — | если задан, поднимается GET /health |
@@ -180,6 +184,26 @@
 браузера на чистом IP (лучше китайский прокси или VPS), залогиниться руками и
 вставить строку cookie в GOOFISH_COOKIE. С российского IP API может резать даже
 с валидной cookie — тогда нужен китайский прокси.
+
+## Vision: анализ фото
+
+DeepSeek (flash/v4-pro) картинки не видит: на image_url он отвечает пустым
+сообщением или «изображение не загрузилось». Поэтому для реальной проверки
+фото нужен отдельный OpenAI-совместимый vision-эндпоинт:
+
+- Alibaba DashScope (Qwen-VL, оплата через Alipay):
+  VISION_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+  VISION_MODEL=qwen-vl-max
+- OpenRouter (есть бесплатные vision-модели):
+  VISION_BASE_URL=https://openrouter.ai/api/v1
+  VISION_MODEL=qwen/qwen2.5-vl-72b-instruct
+
+Плюс VISION_API_KEY, VISION_ENABLED=true, PHOTO_MODE=vision. Бот сам скачает
+фото, приведёт к PNG (sharp), отправит vision-модели и передаст вердикт
+(ок/сомнительно/плохо) в scoring: «плохо» не попадает в top.
+
+Без vision-ключа фото всё равно отправляются тебе в Telegram, но модель их
+не анализирует, а в scoring работают только текст и теги карточки.
 
 ## Фото, ссылки и вид карточек
 

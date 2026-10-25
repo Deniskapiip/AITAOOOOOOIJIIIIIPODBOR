@@ -16,5 +16,8 @@
     "test": "node --test",
     "doctor": "node src/doctor.js"
   },
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {
+    "sharp": "^0.35.5"
+  }
 }

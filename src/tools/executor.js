@@ -1,5 +1,6 @@
 import { calcPrice } from './pricing.js';
 import { loadImage } from './images.js';
+import { analyzePhotos } from '../agent/vision.js';
 import { validateFinish } from '../agent/validate.js';
 
 function str(value, fallback = '') {
@@ -52,6 +53,7 @@ export class ToolState {
     this.finished = false;
     this.result = null;
     this.finishWarnings = [];
+    this.visionByItem = new Map();
     this.log = [];
   }
 
@@ -210,6 +212,33 @@ async function runImages(args, state) {
   if (!urls.length) return { text: 'ОШИБКА: передай хотя бы один http(s) URL фото' };
   const max = Math.max(1, Math.min(Number(args.max) || 4, 4));
   const selected = urls.slice(0, max);
+  const targetEntry = [...state.items].find(([, item]) =>
+    (Array.isArray(item.image_urls) ? item.image_urls : []).some((url) => selected.includes(url)),
+  );
+
+  if (state.config.vision.enabled) {
+    const result = await analyzePhotos({
+      urls: selected,
+      item: targetEntry ? targetEntry[1] : null,
+      config: state.config,
+      logger: state.logger,
+    });
+    if (result.ok) {
+      if (targetEntry) {
+        state.visionByItem.set(targetEntry[0], result.analysis);
+        state.viewedItemIds.add(targetEntry[0]);
+        state.checkedDeeply.add(targetEntry[0]);
+      }
+      return {
+        text:
+          'VISION-АНАЛИЗ ФОТО (используй как photo_check):\n' +
+          JSON.stringify(result.analysis, null, 2) +
+          '\n\nОценивай состояние по этому анализу. Если verdict = "плохо" — лот в top не включай.',
+      };
+    }
+    return { text: 'ОШИБКА vision: ' + result.reason + '. Фото не проверены, photo_check = "не проверялось".' };
+  }
+
   if (state.config.images.mode === 'off') {
     return { text: 'Просмотр фото отключён настройками (PHOTO_MODE=off). photo_check = "не проверялось".' };
   }

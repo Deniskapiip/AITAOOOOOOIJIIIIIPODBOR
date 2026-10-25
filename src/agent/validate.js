@@ -171,6 +171,12 @@ export function validateFinish({ result, state, settings, budget, config }) {
       return;
     }
     if (item.status !== 'active') errors.push(prefix + ' (' + itemId + '): статус лота не активен (' + item.status + ')');
+    const screenText = [item.title, item.description, ...(Array.isArray(item.condition_tags) ? item.condition_tags : [])].join(' ');
+    const screenStop = /(屏幕破损|外壳破碎|烧屏|透图|绿线|漏液|断触|触摸失灵|花屏|屏幕老化)/.test(screenText);
+    const screenNegated = /(无|没有|不|未)\s*(烧屏|透图|老化|绿线|漏液|断触|花屏)/.test(screenText);
+    if (screenStop && !screenNegated) {
+      errors.push(prefix + ' (' + itemId + '): стоп-фактор экрана/корпуса по карточке (трещины, выгорание, 透图, 老化, 漏液)');
+    }
 
     const card = isObject(lot.card) ? lot.card : {};
     if (!isObject(lot.card)) errors.push(prefix + ': card должен быть объектом');
@@ -256,6 +262,13 @@ export function validateFinish({ result, state, settings, budget, config }) {
     photo.mismatch = Array.isArray(photo.mismatch) ? photo.mismatch.filter((x) => typeof x === 'string') : [];
     if (photo.verdict !== 'не проверялось' && !state.viewedItemIds.has(itemId)) {
       errors.push(prefix + ': фото лота не просматривались, verdict должен быть "не проверялось"');
+    }
+    const visionResult = state.visionByItem.get(itemId);
+    if (visionResult) {
+      photo.verdict = visionResult.verdict;
+      photo.defects = [...new Set([...photo.defects, ...(visionResult.defects || [])])];
+      photo.mismatch = [...new Set([...photo.mismatch, ...(visionResult.mismatches || [])])];
+      warnings.push(prefix + ': photo_check взят из vision-анализа (' + visionResult.verdict + ')');
     }
     lot.photo_check = photo;
     if (photo.verdict === 'не проверялось' || photo.verdict === 'сомнительно') {

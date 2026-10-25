@@ -139,3 +139,30 @@ test('битый результат не роняет валидатор', async
   assert.equal(validation.ok, false);
   assert.ok(validation.errors.length > 0);
 });
+
+test('лот с дефектом экрана не проходит', async () => {
+  const ctx = await makeTokenContext();
+  ctx.state.items.get('812345678901').description += ' 轻微透图';
+  const validation = validateFinish({
+    result: baseResult(),
+    state: ctx.state,
+    settings: ctx.settings.get(),
+    budget: ctx.budget,
+    config: ctx.config,
+  });
+  assert.ok(validation.errors.some((e) => e.includes('стоп-фактор экрана')));
+});
+
+test('vision-вердикт "плохо" перебивает фото-проверку', async () => {
+  const ctx = await makeTokenContext();
+  ctx.state.visionByItem.set('812345678901', { verdict: 'плохо', defects: ['трещина экрана'], mismatches: [] });
+  const validation = validateFinish({
+    result: baseResult(),
+    state: ctx.state,
+    settings: ctx.settings.get(),
+    budget: ctx.budget,
+    config: ctx.config,
+  });
+  assert.equal(validation.result.top.find((l) => l.item_id === '812345678901').photo_check.verdict, 'плохо');
+  assert.ok(validation.errors.some((e) => e.includes('photo_check = "плохо"')));
+});

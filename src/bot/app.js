@@ -315,7 +315,7 @@ export class BotApp {
         durationMs: outcome.durationMs,
         warnings: outcome.finishWarnings,
         provider: this.config.goofish.provider,
-        photoMode: this.config.images.mode,
+        photoMode: this.config.vision.enabled ? 'vision' : this.config.images.mode,
         runId,
         maxPhotos: this.config.bot.sendPhotos,
       },

@@ -82,6 +82,14 @@ export function loadConfig(env = process.env, baseDir = process.cwd()) {
       userAgent:
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
     },
+    vision: {
+      enabled: bool(merged.VISION_ENABLED, Boolean(merged.VISION_MODEL)),
+      baseUrl: String(merged.VISION_BASE_URL || llmBase).replace(/\/+$/, ''),
+      apiKey: String(merged.VISION_API_KEY || apiKey).trim(),
+      model: String(merged.VISION_MODEL || '').trim(),
+      maxPhotos: Math.min(4, Math.max(1, Math.floor(num(merged.VISION_MAX_PHOTOS, 4)))),
+      timeoutMs: num(merged.VISION_TIMEOUT_MS, 120000),
+    },
     images: {
       mode: String(merged.PHOTO_MODE || 'off').trim().toLowerCase() === 'vision' ? 'vision' : 'off',
       inline: bool(merged.INLINE_IMAGES, true),
