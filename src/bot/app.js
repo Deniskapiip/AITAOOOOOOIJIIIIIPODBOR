@@ -437,6 +437,27 @@ export class BotApp {
       this.semaphore.release();
     }
 
+    if (!searchOnly && !error && outcome && outcome.result && Array.isArray(outcome.result.top) && outcome.result.top.length === 0) {
+      const health = this.provider.health ? this.provider.health() : null;
+      if (this.config.goofish.searchOnlyFallback && health && health.item_available === false && health.search_available !== false) {
+        try {
+          log.info('run: пустой top при недоступных карточках, search-only');
+          searchOnly = await runSearchOnly({
+            query,
+            provider: this.provider,
+            llm: this.llm,
+            settings,
+            logger: log,
+            reason: 'карточки Goofish в cooldown после RGV587',
+          });
+          persistSearchOnly(searchOnly);
+          void this.notifyAdmins('Goofish: карточки в cooldown, прогон ' + runId + ' ушёл в search-only. Причина: ' + (searchOnly.reason || 'RGV587'), 'search-only', 30 * 60 * 1000, chatId);
+        } catch (fallbackErr) {
+          log.error('run: search-only после пустого top упал', { error: fallbackErr.message });
+        }
+      }
+    }
+
     if (placeholderId) {
       const status = searchOnly ? '✅ Поиск завершён' : error ? '❌ Подбор не завершён' : '✅ Подбор завершён';
       await this.telegram.editMessageText(chatId, placeholderId, status).catch(() => {});
