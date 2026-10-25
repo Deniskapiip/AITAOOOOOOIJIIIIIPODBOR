@@ -47,6 +47,7 @@ export class ToolState {
     this.searchKeys = new Set();
     this.checkedDeeply = new Set();
     this.viewedItemIds = new Set();
+    this.itemAttempts = new Set();
     this.priceResults = new Map();
     this.priceBudgetCny = null;
     this.rateCnyRub = null;
@@ -142,6 +143,10 @@ function formatItemCard(item) {
 async function runItem(args, state) {
   const itemId = String(args.item_id || '').trim();
   if (!itemId) return { text: 'ОШИБКА: item_id пустой' };
+  if (state.itemAttempts.has(itemId)) {
+    return { text: 'ОШИБКА: карточка ' + itemId + ' уже запрашивалась в этом прогоне. Не повторяй её; используй полученные данные или пропусти лот.' };
+  }
+  state.itemAttempts.add(itemId);
   if (state.itemCache.has(itemId)) {
     return { text: '[кэш] Карточка ' + itemId + ' уже запрашивалась, данные ниже.\n' + state.itemCache.get(itemId) };
   }

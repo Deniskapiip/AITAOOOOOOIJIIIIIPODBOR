@@ -20,8 +20,21 @@
       },
       {
         "item_id": "lab-camera-03-2",
-        "title": "Fujifilm X-T5 body 个人",
-        "price_cny": 8010,
+        "title": "Fujifilm X-T5 body 个人自用",
+        "price_cny": 8188,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家camera-03-2",
+        "seller_ref": "seller-camera-03-2",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 12,
+        "image_url": null
+      },
+      {
+        "item_id": "lab-camera-03-2",
+        "title": "Fujifilm X-T5 body 个人自用",
+        "price_cny": 8188,
         "location": "深圳",
         "seller_id": null,
         "seller_nick": "卖家camera-03-2",
@@ -33,21 +46,8 @@
       },
       {
         "item_id": "lab-camera-03-3",
-        "title": "Fujifilm X-T5 body 个人自用",
-        "price_cny": 8188,
-        "location": "深圳",
-        "seller_id": null,
-        "seller_nick": "卖家camera-03-3",
-        "seller_ref": "seller-camera-03-3",
-        "publish_time": "2026-10-20T00:00:00.000Z",
-        "condition_tags": [],
-        "want_count": 13,
-        "image_url": null
-      },
-      {
-        "item_id": "lab-camera-03-3",
-        "title": "Fujifilm X-T5 body 个人自用",
-        "price_cny": 8188,
+        "title": "Fujifilm X-T5 body 已出",
+        "price_cny": 6230,
         "location": "深圳",
         "seller_id": null,
         "seller_nick": "卖家camera-03-3",
@@ -59,8 +59,8 @@
       },
       {
         "item_id": "lab-camera-03-4",
-        "title": "Fujifilm X-T5 body 已出",
-        "price_cny": 6230,
+        "title": "Fujifilm X-T5 body 个人自用",
+        "price_cny": 7565,
         "location": "深圳",
         "seller_id": null,
         "seller_nick": "卖家camera-03-4",
@@ -68,12 +68,12 @@
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
         "want_count": 14,
-        "image_url": null
+        "image_url": "https://lab.local/images/camera-03-4-1.png"
       },
       {
         "item_id": "lab-camera-03-5",
-        "title": "Fujifilm X-T5 body 个人自用",
-        "price_cny": 7565,
+        "title": "Fujifilm X-T5 body 個人自用 😀 國行",
+        "price_cny": 8010,
         "location": "深圳",
         "seller_id": null,
         "seller_nick": "卖家camera-03-5",
@@ -85,8 +85,8 @@
       },
       {
         "item_id": "lab-camera-03-6",
-        "title": "Fujifilm X-T5 body 個人自用 😀 國行",
-        "price_cny": 8010,
+        "title": "Fujifilm X-T5 body 自用",
+        "price_cny": 8188,
         "location": "深圳",
         "seller_id": null,
         "seller_nick": "卖家camera-03-6",
@@ -156,7 +156,7 @@
         "price_cny": 7565,
         "original_price_cny": 7865,
         "status": "active",
-        "description": "个人自用，无进水无烧屏无拆修，全套，包邮，成色如图",
+        "description": "个人自用，无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，全套，包邮，成色如图",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -185,11 +185,11 @@
       },
       "lab-camera-03-2": {
         "item_id": "lab-camera-03-2",
-        "title": "Fujifilm X-T5 body 个人",
-        "price_cny": 8010,
-        "original_price_cny": 8310,
+        "title": "Fujifilm X-T5 body 个人自用",
+        "price_cny": 8188,
+        "original_price_cny": 8488,
         "status": "active",
-        "description": "个人自用，包邮",
+        "description": "个人自用，包邮，成色如图",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -214,11 +214,11 @@
       },
       "lab-camera-03-3": {
         "item_id": "lab-camera-03-3",
-        "title": "Fujifilm X-T5 body 个人自用",
-        "price_cny": 8188,
-        "original_price_cny": 8488,
-        "status": "active",
-        "description": "个人自用，包邮，成色如图",
+        "title": "Fujifilm X-T5 body 已出",
+        "price_cny": 6230,
+        "original_price_cny": 6530,
+        "status": "sold",
+        "description": "已出，留着纪念",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -243,17 +243,21 @@
       },
       "lab-camera-03-4": {
         "item_id": "lab-camera-03-4",
-        "title": "Fujifilm X-T5 body 已出",
-        "price_cny": 6230,
-        "original_price_cny": 6530,
-        "status": "sold",
-        "description": "已出，留着纪念",
+        "title": "Fujifilm X-T5 body 个人自用",
+        "price_cny": 7565,
+        "original_price_cny": 7865,
+        "status": "active",
+        "description": "无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，功能正常，包邮",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
           "拆修和功能: 无拆无修"
         ],
-        "image_urls": [],
+        "image_urls": [
+          "https://lab.local/images/camera-03-4-1.png",
+          "https://lab.local/images/camera-03-4-2.png",
+          "https://lab.local/images/camera-03-4-3.png"
+        ],
         "has_video": false,
         "delivery": {
           "mode": "包邮",
@@ -272,11 +276,11 @@
       },
       "lab-camera-03-5": {
         "item_id": "lab-camera-03-5",
-        "title": "Fujifilm X-T5 body 个人自用",
-        "price_cny": 7565,
-        "original_price_cny": 7865,
+        "title": "Fujifilm X-T5 body 個人自用 😀 國行",
+        "price_cny": 8010,
+        "original_price_cny": 8310,
         "status": "active",
-        "description": "无进水无烧屏无拆修，功能正常，包邮",
+        "description": "繁體/简体混用，emoji，功能正常",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -301,11 +305,11 @@
       },
       "lab-camera-03-6": {
         "item_id": "lab-camera-03-6",
-        "title": "Fujifilm X-T5 body 個人自用 😀 國行",
-        "price_cny": 8010,
-        "original_price_cny": 8310,
+        "title": "Fujifilm X-T5 body 自用",
+        "price_cny": 8188,
+        "original_price_cny": 8488,
         "status": "active",
-        "description": "繁體/简体混用，emoji，功能正常",
+        "description": "自用，顺丰到付",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -314,8 +318,8 @@
         "image_urls": [],
         "has_video": false,
         "delivery": {
-          "mode": "包邮",
-          "ship_fee_cny": 0,
+          "mode": "доставка",
+          "ship_fee_cny": 18,
           "from_city": "深圳"
         },
         "location": "深圳",
@@ -723,9 +727,6 @@
         }
       ],
       "seller-camera-03-10": []
-    },
-    "errors": {
-      "lab-camera-03-2": "risk_control"
     }
   },
   "images": {
@@ -739,8 +740,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -752,8 +755,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -765,8 +770,57 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+        }
+      }
+    ],
+    "lab-camera-03-4": [
+      {
+        "file": "test/fixtures/lab/images/camera-03-4-1.png",
+        "url": "https://lab.local/images/camera-03-4-1.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+        }
+      },
+      {
+        "file": "test/fixtures/lab/images/camera-03-4-2.png",
+        "url": "https://lab.local/images/camera-03-4-2.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+        }
+      },
+      {
+        "file": "test/fixtures/lab/images/camera-03-4-3.png",
+        "url": "https://lab.local/images/camera-03-4-3.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       }
     ]
@@ -776,35 +830,34 @@
       "lab-camera-03-1"
     ],
     "top_must_exclude": [
-      "lab-camera-03-2",
-      "lab-camera-03-4"
+      "lab-camera-03-3"
     ],
     "verdicts": {
       "lab-camera-03-1": "брать",
-      "lab-camera-03-2": "пропустить",
-      "lab-camera-03-3": "проверить",
-      "lab-camera-03-4": "пропустить",
-      "lab-camera-03-5": "брать",
+      "lab-camera-03-2": "проверить",
+      "lab-camera-03-3": "пропустить",
+      "lab-camera-03-4": "брать",
+      "lab-camera-03-5": "проверить",
       "lab-camera-03-6": "проверить"
     },
     "stop_factor_ids": {
-      "lab-camera-03-4": "лот продан"
+      "lab-camera-03-3": "лот продан"
     },
     "notes": "golden: чистый лот с фото и отрицаниями",
     "traps": [
-      "rgv587",
       "duplicate",
       "sold",
       "negation",
-      "mixed_lang"
+      "mixed_lang",
+      "delivery_paid"
     ]
   },
   "traps": [
-    "rgv587",
     "duplicate",
     "sold",
     "negation",
-    "mixed_lang"
+    "mixed_lang",
+    "delivery_paid"
   ],
   "seed": 42
 }

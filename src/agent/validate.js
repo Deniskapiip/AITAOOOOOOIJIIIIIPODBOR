@@ -276,7 +276,7 @@ export function validateFinish({ result, state, settings, budget, config }) {
         /(关于本机|电池健康|沙漏|爱思|на фото|по фото|скриншот|фото экрана|экраны|экран[а-я]* (без|с ))/i.test(line),
       );
       if (photoClaims.length) {
-        warnings.push(prefix + ': why_good описывает содержание фото, хотя фото не подтверждены');
+        errors.push(prefix + ': why_good описывает содержание фото, хотя photo_check != "ок"');
       }
     }
 

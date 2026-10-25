@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildMessages, buildTaskContext, loadSystemPrompt, sanitizeQuery } from '../src/agent/prompt.js';
+import { buildMessages, buildTaskContext, loadSystemPrompt, parseBudgetHint, sanitizeQuery } from '../src/agent/prompt.js';
 
 const settings = { commission_percent: 6.5, commission_min_rub: 650 };
 
@@ -32,4 +32,12 @@ test('сообщения: system + user', () => {
   assert.equal(messages.length, 2);
   assert.equal(messages[0].role, 'system');
   assert.match(messages[1].content, /client_query: "тест"/);
+});
+
+test('budget_hint различает юани и рубли', () => {
+  assert.deepEqual(parseBudgetHint('Xiaomi до 4300 юаней'), { currency: 'CNY', amount: 4300, source: 'query' });
+  assert.deepEqual(parseBudgetHint('Xiaomi до 55 000 ₽'), { currency: 'RUB', amount: 55000, source: 'query' });
+  const context = buildTaskContext({ query: 'Xiaomi до 4300 юаней', settings });
+  assert.match(context, /budget_hint: \{"currency":"CNY","amount":4300/);
+  assert.match(loadSystemPrompt(), /budget_hint/);
 });

@@ -166,3 +166,19 @@ test('vision-вердикт "плохо" перебивает фото-пров�
   assert.equal(validation.result.top.find((l) => l.item_id === '812345678901').photo_check.verdict, 'плохо');
   assert.ok(validation.errors.some((e) => e.includes('photo_check = "плохо"')));
 });
+
+test('описание фото без photo_check ок — ошибка', async () => {
+  const ctx = await makeTokenContext();
+  ctx.state.viewedItemIds.delete('812345678901');
+  const result = baseResult();
+  result.top[0].photo_check = { verdict: 'не проверялось', defects: [], mismatch: [] };
+  result.top[0].why_good.push('На фото видно чистый экран (фото: экран)');
+  const validation = validateFinish({
+    result,
+    state: ctx.state,
+    settings: ctx.settings.get(),
+    budget: ctx.budget,
+    config: ctx.config,
+  });
+  assert.ok(validation.errors.some((e) => e.includes('why_good описывает содержание фото')));
+});

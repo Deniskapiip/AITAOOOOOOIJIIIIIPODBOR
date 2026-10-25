@@ -20,21 +20,8 @@
       },
       {
         "item_id": "lab-console-03-2",
-        "title": "Xbox Series X 个人自用",
-        "price_cny": 2300,
-        "location": "深圳",
-        "seller_id": null,
-        "seller_nick": "卖家console-03-2",
-        "seller_ref": "seller-console-03-2",
-        "publish_time": "2026-10-20T00:00:00.000Z",
-        "condition_tags": [],
-        "want_count": 12,
-        "image_url": null
-      },
-      {
-        "item_id": "lab-console-03-2",
-        "title": "Xbox Series X 个人自用",
-        "price_cny": 2300,
+        "title": "Xbox Series X 已出",
+        "price_cny": 1750,
         "location": "深圳",
         "seller_id": null,
         "seller_nick": "卖家console-03-2",
@@ -46,8 +33,8 @@
       },
       {
         "item_id": "lab-console-03-3",
-        "title": "Xbox Series X 已出",
-        "price_cny": 1750,
+        "title": "Xbox Series X 个人自用",
+        "price_cny": 2125,
         "location": "深圳",
         "seller_id": null,
         "seller_nick": "卖家console-03-3",
@@ -55,12 +42,12 @@
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
         "want_count": 13,
-        "image_url": null
+        "image_url": "https://lab.local/images/console-03-3-1.png"
       },
       {
         "item_id": "lab-console-03-4",
-        "title": "Xbox Series X 个人自用",
-        "price_cny": 2125,
+        "title": "Xbox Series X 個人自用 😀 國行",
+        "price_cny": 2250,
         "location": "深圳",
         "seller_id": null,
         "seller_nick": "卖家console-03-4",
@@ -72,8 +59,8 @@
       },
       {
         "item_id": "lab-console-03-5",
-        "title": "Xbox Series X 個人自用 😀 國行",
-        "price_cny": 2250,
+        "title": "Xbox Series X 自用",
+        "price_cny": 2300,
         "location": "深圳",
         "seller_id": null,
         "seller_nick": "卖家console-03-5",
@@ -85,11 +72,11 @@
       },
       {
         "item_id": "lab-console-03-6",
-        "title": "Xbox Series X 自用",
-        "price_cny": 2300,
+        "title": "Xbox Series X 个人闲置",
+        "price_cny": 1375,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "卖家console-03-6",
+        "seller_nick": "新卖家console-03-6",
         "seller_ref": "seller-console-03-6",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -147,6 +134,19 @@
         "condition_tags": [],
         "want_count": 20,
         "image_url": null
+      },
+      {
+        "item_id": "lab-console-03-11",
+        "title": "Xbox Series X 自用 成色好",
+        "price_cny": 2500,
+        "location": "深圳",
+        "seller_id": null,
+        "seller_nick": "卖家console-03-11",
+        "seller_ref": "seller-console-03-11",
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "condition_tags": [],
+        "want_count": 21,
+        "image_url": null
       }
     ],
     "items": {
@@ -156,7 +156,7 @@
         "price_cny": 2125,
         "original_price_cny": 2425,
         "status": "active",
-        "description": "个人自用，无进水无烧屏无拆修，全套，包邮，成色如图",
+        "description": "个人自用，无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，全套，包邮，成色如图",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -185,11 +185,11 @@
       },
       "lab-console-03-2": {
         "item_id": "lab-console-03-2",
-        "title": "Xbox Series X 个人自用",
-        "price_cny": 2300,
-        "original_price_cny": 2600,
-        "status": "active",
-        "description": "个人自用，包邮，成色如图",
+        "title": "Xbox Series X 已出",
+        "price_cny": 1750,
+        "original_price_cny": 2050,
+        "status": "sold",
+        "description": "已出，留着纪念",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -214,17 +214,21 @@
       },
       "lab-console-03-3": {
         "item_id": "lab-console-03-3",
-        "title": "Xbox Series X 已出",
-        "price_cny": 1750,
-        "original_price_cny": 2050,
-        "status": "sold",
-        "description": "已出，留着纪念",
+        "title": "Xbox Series X 个人自用",
+        "price_cny": 2125,
+        "original_price_cny": 2425,
+        "status": "active",
+        "description": "无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，功能正常，包邮",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
           "拆修和功能: 无拆无修"
         ],
-        "image_urls": [],
+        "image_urls": [
+          "https://lab.local/images/console-03-3-1.png",
+          "https://lab.local/images/console-03-3-2.png",
+          "https://lab.local/images/console-03-3-3.png"
+        ],
         "has_video": false,
         "delivery": {
           "mode": "包邮",
@@ -243,11 +247,11 @@
       },
       "lab-console-03-4": {
         "item_id": "lab-console-03-4",
-        "title": "Xbox Series X 个人自用",
-        "price_cny": 2125,
-        "original_price_cny": 2425,
+        "title": "Xbox Series X 個人自用 😀 國行",
+        "price_cny": 2250,
+        "original_price_cny": 2550,
         "status": "active",
-        "description": "无进水无烧屏无拆修，功能正常，包邮",
+        "description": "繁體/简体混用，emoji，功能正常",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -272,35 +276,6 @@
       },
       "lab-console-03-5": {
         "item_id": "lab-console-03-5",
-        "title": "Xbox Series X 個人自用 😀 國行",
-        "price_cny": 2250,
-        "original_price_cny": 2550,
-        "status": "active",
-        "description": "繁體/简体混用，emoji，功能正常",
-        "condition_tags": [
-          "成色: 95新",
-          "版本: 国行",
-          "拆修和功能: 无拆无修"
-        ],
-        "image_urls": [],
-        "has_video": false,
-        "delivery": {
-          "mode": "包邮",
-          "ship_fee_cny": 0,
-          "from_city": "深圳"
-        },
-        "location": "深圳",
-        "want_count": 15,
-        "view_count": 200,
-        "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-console-03-5",
-        "seller_nick": "卖家console-03-5",
-        "seller_credit": "极好",
-        "seller_registered_at": "2022-05-01T00:00:00.000Z",
-        "provider": "lab"
-      },
-      "lab-console-03-6": {
-        "item_id": "lab-console-03-6",
         "title": "Xbox Series X 自用",
         "price_cny": 2300,
         "original_price_cny": 2600,
@@ -319,13 +294,42 @@
           "from_city": "深圳"
         },
         "location": "深圳",
+        "want_count": 15,
+        "view_count": 200,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-console-03-5",
+        "seller_nick": "卖家console-03-5",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-console-03-6": {
+        "item_id": "lab-console-03-6",
+        "title": "Xbox Series X 个人闲置",
+        "price_cny": 1375,
+        "original_price_cny": 1675,
+        "status": "active",
+        "description": "急出，价格低，先到先得",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
         "want_count": 16,
         "view_count": 220,
         "publish_time": "2026-10-20T00:00:00.000Z",
         "seller_id": "seller-console-03-6",
-        "seller_nick": "卖家console-03-6",
-        "seller_credit": "极好",
-        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "seller_nick": "新卖家console-03-6",
+        "seller_credit": "无",
+        "seller_registered_at": "2026-08-01T00:00:00.000Z",
         "provider": "lab"
       },
       "lab-console-03-7": {
@@ -443,6 +447,35 @@
         "seller_credit": "无",
         "seller_registered_at": "2026-08-01T00:00:00.000Z",
         "provider": "lab"
+      },
+      "lab-console-03-11": {
+        "item_id": "lab-console-03-11",
+        "title": "Xbox Series X 自用 成色好",
+        "price_cny": 2500,
+        "original_price_cny": 2800,
+        "status": "active",
+        "description": "自用，功能正常，包邮，成色如图",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 21,
+        "view_count": 320,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-console-03-11",
+        "seller_nick": "卖家console-03-11",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
       }
     },
     "sellers": {
@@ -513,16 +546,16 @@
       },
       "seller-console-03-6": {
         "seller_id": "seller-console-03-6",
-        "nickname": "卖家console-03-6",
-        "zhima_credit": 780,
-        "zhima_text": "极好",
-        "verified": true,
-        "registered_at": "2022-05-01T00:00:00.000Z",
-        "sold_count": 120,
+        "nickname": "新卖家console-03-6",
+        "zhima_credit": null,
+        "zhima_text": "无",
+        "verified": false,
+        "registered_at": "2026-08-01T00:00:00.000Z",
+        "sold_count": 1,
         "praise_rate": 99.2,
         "location": "深圳",
         "items_sample": [],
-        "reviews_count": 40
+        "reviews_count": 0
       },
       "seller-console-03-7": {
         "seller_id": "seller-console-03-7",
@@ -575,6 +608,19 @@
         "location": "深圳",
         "items_sample": [],
         "reviews_count": 0
+      },
+      "seller-console-03-11": {
+        "seller_id": "seller-console-03-11",
+        "nickname": "卖家console-03-11",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
       }
     },
     "reviews": {
@@ -658,22 +704,7 @@
           "item_id": null
         }
       ],
-      "seller-console-03-6": [
-        {
-          "review_id": "g1-seller-console-03-6",
-          "created_at": "2026-07-01T00:00:00.000Z",
-          "rating": 1,
-          "text": "如实描述，发货快",
-          "item_id": null
-        },
-        {
-          "review_id": "g2-seller-console-03-6",
-          "created_at": "2026-06-01T00:00:00.000Z",
-          "rating": 1,
-          "text": "手机无问题，卖家靠谱",
-          "item_id": null
-        }
-      ],
+      "seller-console-03-6": [],
       "seller-console-03-7": [
         {
           "review_id": "g1-seller-console-03-7",
@@ -722,7 +753,23 @@
           "item_id": null
         }
       ],
-      "seller-console-03-10": []
+      "seller-console-03-10": [],
+      "seller-console-03-11": [
+        {
+          "review_id": "g1-seller-console-03-11",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-console-03-11",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ]
     }
   },
   "images": {
@@ -736,8 +783,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -749,8 +798,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -762,8 +813,57 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+        }
+      }
+    ],
+    "lab-console-03-3": [
+      {
+        "file": "test/fixtures/lab/images/console-03-3-1.png",
+        "url": "https://lab.local/images/console-03-3-1.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+        }
+      },
+      {
+        "file": "test/fixtures/lab/images/console-03-3-2.png",
+        "url": "https://lab.local/images/console-03-3-2.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+        }
+      },
+      {
+        "file": "test/fixtures/lab/images/console-03-3-3.png",
+        "url": "https://lab.local/images/console-03-3-3.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       }
     ]
@@ -773,34 +873,34 @@
       "lab-console-03-1"
     ],
     "top_must_exclude": [
-      "lab-console-03-3"
+      "lab-console-03-2"
     ],
     "verdicts": {
       "lab-console-03-1": "брать",
-      "lab-console-03-2": "проверить",
-      "lab-console-03-3": "пропустить",
-      "lab-console-03-4": "брать",
+      "lab-console-03-2": "пропустить",
+      "lab-console-03-3": "брать",
+      "lab-console-03-4": "проверить",
       "lab-console-03-5": "проверить",
       "lab-console-03-6": "проверить"
     },
     "stop_factor_ids": {
-      "lab-console-03-3": "лот продан"
+      "lab-console-03-2": "лот продан"
     },
     "notes": "golden: чистый лот с фото и отрицаниями",
     "traps": [
-      "duplicate",
       "sold",
       "negation",
       "mixed_lang",
-      "delivery_paid"
+      "delivery_paid",
+      "low_price_new_seller"
     ]
   },
   "traps": [
-    "duplicate",
     "sold",
     "negation",
     "mixed_lang",
-    "delivery_paid"
+    "delivery_paid",
+    "low_price_new_seller"
   ],
   "seed": 42
 }

@@ -79,12 +79,24 @@ for (const scenario of selected) {
   const inner = args.live ? new LlmClient(config.llm, logger) : null;
   const llm = new CassetteLlm({ inner, file: cassetteFile, mode: args.live ? 'live' : 'replay', logger });
   logger.info('eval: scenario', { id: scenario.id });
-  const run = await runScenario({ scenario, config, settings, llm, logger });
-  tokens += Number(llm.totalUsage.total_tokens || 0) || (llm.entries || []).reduce((acc, entry) => acc + Number(entry.response && entry.response.usage && entry.response.usage.total_tokens || 0), 0);
-  const score = scoreScenario({ scenario, result: run.result, calls: run.calls, finishAttempts: run.finishAttempts, trace: run.trace, settings });
-  score.tokens = Number(llm.totalUsage.total_tokens || 0);
-  score.duration_ms = run.durationMs;
-  scores.push(score);
+  try {
+    const run = await runScenario({ scenario, config, settings, llm, logger });
+    tokens += Number(llm.totalUsage.total_tokens || 0) || (llm.entries || []).reduce((acc, entry) => acc + Number(entry.response && entry.response.usage && entry.response.usage.total_tokens || 0), 0);
+    const score = scoreScenario({ scenario, result: run.result, calls: run.calls, finishAttempts: run.finishAttempts, trace: run.trace, settings });
+    score.tokens = Number(llm.totalUsage.total_tokens || 0);
+    score.duration_ms = run.durationMs;
+    scores.push(score);
+  } catch (err) {
+    logger.error('eval: scenario failed', { id: scenario.id, error: err.message });
+    scores.push({
+      scenario_id: scenario.id,
+      top_ids: [],
+      metrics: { safety_pass: false, gold_recall: 0, verdict_match: 0, all_bad_top_empty: false, calls: 0, duplicates: 0, finish_first: false },
+      failures: ['run_error:' + err.message],
+      tokens: 0,
+      duration_ms: 0,
+    });
+  }
   if (args.live && tokens > args.maxTokens) {
     logger.warn('eval: token cap reached', { tokens, cap: args.maxTokens });
     break;

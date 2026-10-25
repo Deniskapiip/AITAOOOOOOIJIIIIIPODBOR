@@ -101,6 +101,16 @@
 | APP_PORT | — | если задан, поднимается GET /health (не путать с PORT на BotHost) |
 | LOG_LEVEL | info | debug/info/warn/error/silent |
 
+## Quality lab
+
+Офлайн-лаборатория: 42 сценария, 7 категорий, 23 ловушки, synthetic images.
+
+    npm run lab:gen
+    npm run eval
+    npm run eval -- --live --scenario smartphone-01 --max-tokens 300000
+
+Подробности: `docs/EVALS.md`. Goofish в eval не вызывается.
+
 ## Архитектура
 
     prompts/system.md              системный промт v2.0, разделы 0–14

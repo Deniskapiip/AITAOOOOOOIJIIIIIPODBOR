@@ -16,7 +16,8 @@ export function createLabVision(scenario) {
         frames.push({ url, truth: null, summary_ru: 'нет truth для кадра' });
         continue;
       }
-      frames.push({ url, truth, summary_ru: truth.label || '' });
+      const extra = truth.system_ok ? '关于本机: модель/память/регион подтверждены; iCloud/аккаунт чист' : '';
+      frames.push({ url, truth, summary_ru: [truth.label || '', extra].filter(Boolean).join('; ') });
       if (truth.screen_ok === true) screenOk = true;
       if (truth.screen_ok === false) screenOk = false;
       if (truth.battery_pct !== null && truth.battery_pct !== undefined) {

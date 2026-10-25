@@ -46,21 +46,21 @@
       },
       {
         "item_id": "lab-audio-06-4",
-        "title": "Huawei FreeBuds Pro 3 屏幕有裂纹",
-        "price_cny": 420,
+        "title": "手机壳/包装盒 适用于 Huawei FreeBuds Pro 3",
+        "price_cny": 15,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "新卖家audio-06-4",
+        "seller_nick": "卖家audio-06-4",
         "seller_ref": "seller-audio-06-4",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
         "want_count": 14,
-        "image_url": "https://lab.local/images/audio-06-4-1.png"
+        "image_url": null
       },
       {
         "item_id": "lab-audio-06-5",
-        "title": "手机壳/包装盒 适用于 Huawei FreeBuds Pro 3",
-        "price_cny": 15,
+        "title": "Huawei FreeBuds Pro 3 已出",
+        "price_cny": 490,
         "location": "深圳",
         "seller_id": null,
         "seller_nick": "卖家audio-06-5",
@@ -72,11 +72,11 @@
       },
       {
         "item_id": "lab-audio-06-6",
-        "title": "Huawei FreeBuds Pro 3 已出",
-        "price_cny": 490,
+        "title": "Huawei FreeBuds Pro 3 低价出",
+        "price_cny": 455,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "卖家audio-06-6",
+        "seller_nick": "新卖家audio-06-6",
         "seller_ref": "seller-audio-06-6",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -85,11 +85,11 @@
       },
       {
         "item_id": "lab-audio-06-7",
-        "title": "Huawei FreeBuds Pro 3 低价出",
-        "price_cny": 455,
+        "title": "Huawei FreeBuds Pro 3 自用",
+        "price_cny": 595,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "新卖家audio-06-7",
+        "seller_nick": "卖家audio-06-7",
         "seller_ref": "seller-audio-06-7",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -239,19 +239,17 @@
       },
       "lab-audio-06-4": {
         "item_id": "lab-audio-06-4",
-        "title": "Huawei FreeBuds Pro 3 屏幕有裂纹",
-        "price_cny": 420,
-        "original_price_cny": 720,
+        "title": "手机壳/包装盒 适用于 Huawei FreeBuds Pro 3",
+        "price_cny": 15,
+        "original_price_cny": 315,
         "status": "active",
-        "description": "屏幕有裂纹，触摸正常，便宜出",
+        "description": "原装包装盒和手机壳，不含主机",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
           "拆修和功能: 无拆无修"
         ],
-        "image_urls": [
-          "https://lab.local/images/audio-06-4-1.png"
-        ],
+        "image_urls": [],
         "has_video": false,
         "delivery": {
           "mode": "包邮",
@@ -263,18 +261,18 @@
         "view_count": 180,
         "publish_time": "2026-10-20T00:00:00.000Z",
         "seller_id": "seller-audio-06-4",
-        "seller_nick": "新卖家audio-06-4",
-        "seller_credit": "无",
-        "seller_registered_at": "2026-08-01T00:00:00.000Z",
+        "seller_nick": "卖家audio-06-4",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
         "provider": "lab"
       },
       "lab-audio-06-5": {
         "item_id": "lab-audio-06-5",
-        "title": "手机壳/包装盒 适用于 Huawei FreeBuds Pro 3",
-        "price_cny": 15,
-        "original_price_cny": 315,
-        "status": "active",
-        "description": "原装包装盒和手机壳，不含主机",
+        "title": "Huawei FreeBuds Pro 3 已出",
+        "price_cny": 490,
+        "original_price_cny": 790,
+        "status": "sold",
+        "description": "已出，留着纪念",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -299,35 +297,6 @@
       },
       "lab-audio-06-6": {
         "item_id": "lab-audio-06-6",
-        "title": "Huawei FreeBuds Pro 3 已出",
-        "price_cny": 490,
-        "original_price_cny": 790,
-        "status": "sold",
-        "description": "已出，留着纪念",
-        "condition_tags": [
-          "成色: 95新",
-          "版本: 国行",
-          "拆修和功能: 无拆无修"
-        ],
-        "image_urls": [],
-        "has_video": false,
-        "delivery": {
-          "mode": "包邮",
-          "ship_fee_cny": 0,
-          "from_city": "深圳"
-        },
-        "location": "深圳",
-        "want_count": 16,
-        "view_count": 220,
-        "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-audio-06-6",
-        "seller_nick": "卖家audio-06-6",
-        "seller_credit": "极好",
-        "seller_registered_at": "2022-05-01T00:00:00.000Z",
-        "provider": "lab"
-      },
-      "lab-audio-06-7": {
-        "item_id": "lab-audio-06-7",
         "title": "Huawei FreeBuds Pro 3 低价出",
         "price_cny": 455,
         "original_price_cny": 755,
@@ -346,13 +315,42 @@
           "from_city": "深圳"
         },
         "location": "深圳",
+        "want_count": 16,
+        "view_count": 220,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-audio-06-6",
+        "seller_nick": "新卖家audio-06-6",
+        "seller_credit": "无",
+        "seller_registered_at": "2026-08-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-audio-06-7": {
+        "item_id": "lab-audio-06-7",
+        "title": "Huawei FreeBuds Pro 3 自用",
+        "price_cny": 595,
+        "original_price_cny": 895,
+        "status": "active",
+        "description": "只同城面交，不邮寄，外地勿扰",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "自提",
+          "ship_fee_cny": null,
+          "from_city": "上海"
+        },
+        "location": "深圳",
         "want_count": 17,
         "view_count": 240,
         "publish_time": "2026-10-20T00:00:00.000Z",
         "seller_id": "seller-audio-06-7",
-        "seller_nick": "新卖家audio-06-7",
-        "seller_credit": "无",
-        "seller_registered_at": "2026-08-01T00:00:00.000Z",
+        "seller_nick": "卖家audio-06-7",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
         "provider": "lab"
       },
       "lab-audio-06-8": {
@@ -516,16 +514,16 @@
       },
       "seller-audio-06-4": {
         "seller_id": "seller-audio-06-4",
-        "nickname": "新卖家audio-06-4",
-        "zhima_credit": null,
-        "zhima_text": "无",
-        "verified": false,
-        "registered_at": "2026-08-01T00:00:00.000Z",
-        "sold_count": 1,
+        "nickname": "卖家audio-06-4",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
         "praise_rate": 99.2,
         "location": "深圳",
         "items_sample": [],
-        "reviews_count": 0
+        "reviews_count": 40
       },
       "seller-audio-06-5": {
         "seller_id": "seller-audio-06-5",
@@ -542,20 +540,7 @@
       },
       "seller-audio-06-6": {
         "seller_id": "seller-audio-06-6",
-        "nickname": "卖家audio-06-6",
-        "zhima_credit": 780,
-        "zhima_text": "极好",
-        "verified": true,
-        "registered_at": "2022-05-01T00:00:00.000Z",
-        "sold_count": 120,
-        "praise_rate": 99.2,
-        "location": "深圳",
-        "items_sample": [],
-        "reviews_count": 40
-      },
-      "seller-audio-06-7": {
-        "seller_id": "seller-audio-06-7",
-        "nickname": "新卖家audio-06-7",
+        "nickname": "新卖家audio-06-6",
         "zhima_credit": null,
         "zhima_text": "无",
         "verified": false,
@@ -565,6 +550,19 @@
         "location": "深圳",
         "items_sample": [],
         "reviews_count": 0
+      },
+      "seller-audio-06-7": {
+        "seller_id": "seller-audio-06-7",
+        "nickname": "卖家audio-06-7",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
       },
       "seller-audio-06-8": {
         "seller_id": "seller-audio-06-8",
@@ -638,7 +636,22 @@
       ],
       "seller-audio-06-2": [],
       "seller-audio-06-3": [],
-      "seller-audio-06-4": [],
+      "seller-audio-06-4": [
+        {
+          "review_id": "g1-seller-audio-06-4",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-audio-06-4",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
       "seller-audio-06-5": [
         {
           "review_id": "g1-seller-audio-06-5",
@@ -655,23 +668,23 @@
           "item_id": null
         }
       ],
-      "seller-audio-06-6": [
+      "seller-audio-06-6": [],
+      "seller-audio-06-7": [
         {
-          "review_id": "g1-seller-audio-06-6",
+          "review_id": "g1-seller-audio-06-7",
           "created_at": "2026-07-01T00:00:00.000Z",
           "rating": 1,
           "text": "如实描述，发货快",
           "item_id": null
         },
         {
-          "review_id": "g2-seller-audio-06-6",
+          "review_id": "g2-seller-audio-06-7",
           "created_at": "2026-06-01T00:00:00.000Z",
           "rating": 1,
           "text": "手机无问题，卖家靠谱",
           "item_id": null
         }
       ],
-      "seller-audio-06-7": [],
       "seller-audio-06-8": [
         {
           "review_id": "g1-seller-audio-06-8",
@@ -694,25 +707,6 @@
     }
   },
   "images": {
-    "lab-audio-06-4": [
-      {
-        "file": "test/fixtures/lab/images/audio-06-4-1.png",
-        "url": "https://lab.local/images/audio-06-4-1.png",
-        "truth": {
-          "screen_visible": true,
-          "cracks": [
-            "front"
-          ],
-          "scratches": [
-            "front"
-          ],
-          "battery_pct": null,
-          "screen_ok": false,
-          "verdict": "плохо",
-          "label": "экран с трещинами"
-        }
-      }
-    ],
     "lab-audio-06-11": [
       {
         "file": "test/fixtures/lab/images/audio-06-11-1.png",
@@ -765,9 +759,9 @@
       "lab-audio-06-1": "только самовывоз",
       "lab-audio-06-2": "блокировка аккаунта",
       "lab-audio-06-3": "цена-заглушка",
-      "lab-audio-06-4": "трещины экрана",
-      "lab-audio-06-6": "лот продан",
-      "lab-audio-06-7": "увод в мессенджер",
+      "lab-audio-06-5": "лот продан",
+      "lab-audio-06-6": "увод в мессенджер",
+      "lab-audio-06-7": "только самовывоз",
       "lab-audio-06-8": "только самовывоз",
       "lab-audio-06-9": "блокировка аккаунта",
       "lab-audio-06-10": "цена-заглушка",
@@ -778,10 +772,10 @@
       "pickup_only",
       "account_lock",
       "placeholder_price",
-      "screen_cracks",
       "accessory",
       "sold",
       "offsite_payment",
+      "pickup_only",
       "all_bad"
     ]
   },
@@ -789,10 +783,10 @@
     "pickup_only",
     "account_lock",
     "placeholder_price",
-    "screen_cracks",
     "accessory",
     "sold",
     "offsite_payment",
+    "pickup_only",
     "all_bad"
   ],
   "seed": 42

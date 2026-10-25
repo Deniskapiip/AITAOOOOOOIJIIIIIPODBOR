@@ -36,10 +36,11 @@ function reviews(kind, id) {
   ];
 }
 
-function truth(kind) {
+function truth(kind, category = '') {
+  if (kind === 'clean' && category === 'pc_parts') return { screen_visible: false, cracks: [], scratches: [], battery_pct: null, screen_ok: true, system_ok: false, icloud_clear: false, verdict: 'ок', label: 'плата и чипы, следов ремонта и перепайки нет' };
   if (kind === 'cracks') return { screen_visible: true, cracks: ['front'], scratches: ['front'], battery_pct: null, screen_ok: false, verdict: 'плохо', label: 'экран с трещинами' };
   if (kind === 'stock') return { screen_visible: false, cracks: [], scratches: [], battery_pct: null, screen_ok: null, verdict: 'сомнительно', mismatch: 'другая модель/стоковое фото', label: 'стоковое фото' };
-  return { screen_visible: true, cracks: [], scratches: [], battery_pct: 92, screen_ok: true, verdict: 'ок', label: 'экран и корпус чистые' };
+  return { screen_visible: true, cracks: [], scratches: [], battery_pct: 92, screen_ok: true, system_ok: true, icloud_clear: true, verdict: 'ок', label: 'экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист' };
 }
 
 function trapSpec(id, ctx) {
@@ -66,7 +67,7 @@ function trapSpec(id, ctx) {
     case 'rgv587': return { ...base, title: m + ' 个人', price: Math.round(b * 0.9), desc: '个人自用，包邮', expected: 'пропустить', rgv: true };
     case 'duplicate': return { ...base, title: m + ' 个人自用', price: Math.round(b * 0.92), desc: '个人自用，包邮，成色如图', expected: 'проверить', duplicate: true };
     case 'sold': return { ...base, title: m + ' 已出', price: Math.round(b * 0.7), desc: '已出，留着纪念', status: 'sold', stop: 'лот продан', expected: 'пропустить' };
-    case 'negation': return { ...base, title: m + ' 个人自用', price: Math.round(b * 0.85), desc: '无进水无烧屏无拆修，功能正常，包邮', expected: 'брать' };
+    case 'negation': return { ...base, title: m + ' 个人自用', price: Math.round(b * 0.85), desc: '无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，功能正常，包邮', images: 'clean', expected: 'брать' };
     case 'mixed_lang': return { ...base, title: m + ' 個人自用 😀 國行', price: Math.round(b * 0.9), desc: '繁體/简体混用，emoji，功能正常', expected: 'проверить' };
     case 'delivery_paid': return { ...base, title: m + ' 自用', price: Math.round(b * 0.92), desc: '自用，顺丰到付', delivery: { mode: 'доставка', ship_fee_cny: 18, from_city: '深圳' }, expected: 'проверить' };
     case 'screen_cracks': return { ...base, title: m + ' 屏幕有裂纹', price: Math.round(b * 0.6), desc: '屏幕有裂纹，触摸正常，便宜出', seller: 'new', images: 'cracks', stop: 'трещины экрана', expected: 'пропустить' };
@@ -74,14 +75,25 @@ function trapSpec(id, ctx) {
   }
 }
 
+function applicableTraps(category) {
+  return TRAP_IDS.filter((id) => {
+    if (id === 'all_bad') return false;
+    if (id === 'wrong_memory' && !['smartphone', 'tablet', 'laptop'].includes(category)) return false;
+    if (id === 'screen_cracks' && ['pc_parts', 'console', 'audio'].includes(category)) return false;
+    return true;
+  });
+}
+
 function makeScenario(cat, idx, seed) {
   const model = cat.models[idx];
   const budget = cat.budgets[idx];
   const id = cat.id + '-' + String(idx + 1).padStart(2, '0');
   const allBad = idx === 5;
+  const eligible = applicableTraps(cat.id);
+  const stopPool = ['pickup_only', 'account_lock', 'placeholder_price', 'screen_cracks', 'accessory', 'sold', 'offsite_payment'].filter((id) => eligible.includes(id));
   const chosen = allBad
-    ? ['pickup_only', 'account_lock', 'placeholder_price', 'screen_cracks', 'accessory', 'sold', 'offsite_payment']
-    : Array.from({ length: 5 }, (_, k) => TRAP_IDS[(idx * 5 + k + cat.id.length) % (TRAP_IDS.length - 1)]);
+    ? Array.from({ length: 7 }, (_, k) => stopPool[k % stopPool.length])
+    : Array.from({ length: 5 }, (_, k) => eligible[(idx * 5 + k + cat.id.length) % eligible.length]);
 
   const sc = {
     id,
@@ -127,7 +139,7 @@ function makeScenario(cat, idx, seed) {
     if (imageKind) {
       const count = imageKind === 'clean' ? 3 : 1;
       for (let k = 1; k <= count; k += 1) {
-        const tr = truth(imageKind);
+        const tr = truth(imageKind, cat.id);
         const file = 'test/fixtures/lab/images/' + id + '-' + n + '-' + k + '.png';
         const url = 'https://lab.local/images/' + id + '-' + n + '-' + k + '.png';
         item.image_urls.push(url);
@@ -152,10 +164,11 @@ function makeScenario(cat, idx, seed) {
 
   let goldenId = null;
   if (!allBad) {
-    const g = add({ title: model + ' 个人自用 全套 国行', price: Math.round(budget * 0.85), desc: '个人自用，无进水无烧屏无拆修，全套，包邮，成色如图', seller: 'good', images: 'clean' });
+    const goldenDesc = cat.id === 'pc_parts' ? '个人自用，非矿卡，无拆无修，全套，包邮，成色如图，可提供GPU-Z' : '个人自用，无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，全套，包邮，成色如图';
+    const g = add({ title: model + ' 个人自用 全套 国行', price: Math.round(budget * 0.85), desc: goldenDesc, seller: 'good', images: 'clean' });
     goldenId = g.item_id;
     sc.expected.top_must_include = [goldenId];
-    sc.expected.verdicts[goldenId] = 'брать';
+    sc.expected.verdicts[goldenId] = cat.id === 'pc_parts' ? 'проверить' : 'брать';
     sc.expected.notes = 'golden: чистый лот с фото и отрицаниями';
   }
   for (const trapId of chosen) {

@@ -81,7 +81,7 @@
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
         "want_count": 15,
-        "image_url": null
+        "image_url": "https://lab.local/images/laptop-03-5-1.png"
       },
       {
         "item_id": "lab-laptop-03-6",
@@ -156,7 +156,7 @@
         "price_cny": 4080,
         "original_price_cny": 4380,
         "status": "active",
-        "description": "个人自用，无进水无烧屏无拆修，全套，包邮，成色如图",
+        "description": "个人自用，无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，全套，包邮，成色如图",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -276,13 +276,17 @@
         "price_cny": 4080,
         "original_price_cny": 4380,
         "status": "active",
-        "description": "无进水无烧屏无拆修，功能正常，包邮",
+        "description": "无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，功能正常，包邮",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
           "拆修和功能: 无拆无修"
         ],
-        "image_urls": [],
+        "image_urls": [
+          "https://lab.local/images/laptop-03-5-1.png",
+          "https://lab.local/images/laptop-03-5-2.png",
+          "https://lab.local/images/laptop-03-5-3.png"
+        ],
         "has_video": false,
         "delivery": {
           "mode": "包邮",
@@ -739,8 +743,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -752,8 +758,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -765,8 +773,57 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+        }
+      }
+    ],
+    "lab-laptop-03-5": [
+      {
+        "file": "test/fixtures/lab/images/laptop-03-5-1.png",
+        "url": "https://lab.local/images/laptop-03-5-1.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+        }
+      },
+      {
+        "file": "test/fixtures/lab/images/laptop-03-5-2.png",
+        "url": "https://lab.local/images/laptop-03-5-2.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+        }
+      },
+      {
+        "file": "test/fixtures/lab/images/laptop-03-5-3.png",
+        "url": "https://lab.local/images/laptop-03-5-3.png",
+        "truth": {
+          "screen_visible": true,
+          "cracks": [],
+          "scratches": [],
+          "battery_pct": 92,
+          "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
+          "verdict": "ок",
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       }
     ]

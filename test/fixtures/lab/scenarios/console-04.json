@@ -20,24 +20,24 @@
       },
       {
         "item_id": "lab-console-04-2",
-        "title": "Steam Deck OLED 512 屏幕有裂纹",
-        "price_cny": 1860,
+        "title": "Steam Deck OLED 512 自用",
+        "price_cny": 2635,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "新卖家console-04-2",
+        "seller_nick": "卖家console-04-2",
         "seller_ref": "seller-console-04-2",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
         "want_count": 12,
-        "image_url": "https://lab.local/images/console-04-2-1.png"
+        "image_url": null
       },
       {
         "item_id": "lab-console-04-3",
-        "title": "Steam Deck OLED 512 个人闲置",
-        "price_cny": 1705,
+        "title": "Steam Deck OLED 512 个人备用机",
+        "price_cny": 999,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "新卖家console-04-3",
+        "seller_nick": "卖家console-04-3",
         "seller_ref": "seller-console-04-3",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -46,11 +46,11 @@
       },
       {
         "item_id": "lab-console-04-4",
-        "title": "Steam Deck OLED 512 自用",
-        "price_cny": 2635,
+        "title": "Steam Deck OLED 512 拍下改价",
+        "price_cny": 1,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "卖家console-04-4",
+        "seller_nick": "新卖家console-04-4",
         "seller_ref": "seller-console-04-4",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -59,11 +59,11 @@
       },
       {
         "item_id": "lab-console-04-5",
-        "title": "Steam Deck OLED 512 个人备用机",
-        "price_cny": 999,
+        "title": "Steam Deck OLED 512 监管机",
+        "price_cny": 2170,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "卖家console-04-5",
+        "seller_nick": "新卖家console-04-5",
         "seller_ref": "seller-console-04-5",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -72,11 +72,11 @@
       },
       {
         "item_id": "lab-console-04-6",
-        "title": "Steam Deck OLED 512 拍下改价",
-        "price_cny": 1,
+        "title": "Steam Deck OLED 512 全原无拆修99新",
+        "price_cny": 2945,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "新卖家console-04-6",
+        "seller_nick": "卖家console-04-6",
         "seller_ref": "seller-console-04-6",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -156,7 +156,7 @@
         "price_cny": 2635,
         "original_price_cny": 2935,
         "status": "active",
-        "description": "个人自用，无进水无烧屏无拆修，全套，包邮，成色如图",
+        "description": "个人自用，无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，全套，包邮，成色如图",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -185,66 +185,6 @@
       },
       "lab-console-04-2": {
         "item_id": "lab-console-04-2",
-        "title": "Steam Deck OLED 512 屏幕有裂纹",
-        "price_cny": 1860,
-        "original_price_cny": 2160,
-        "status": "active",
-        "description": "屏幕有裂纹，触摸正常，便宜出",
-        "condition_tags": [
-          "成色: 95新",
-          "版本: 国行",
-          "拆修和功能: 无拆无修"
-        ],
-        "image_urls": [
-          "https://lab.local/images/console-04-2-1.png"
-        ],
-        "has_video": false,
-        "delivery": {
-          "mode": "包邮",
-          "ship_fee_cny": 0,
-          "from_city": "深圳"
-        },
-        "location": "深圳",
-        "want_count": 12,
-        "view_count": 140,
-        "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-console-04-2",
-        "seller_nick": "新卖家console-04-2",
-        "seller_credit": "无",
-        "seller_registered_at": "2026-08-01T00:00:00.000Z",
-        "provider": "lab"
-      },
-      "lab-console-04-3": {
-        "item_id": "lab-console-04-3",
-        "title": "Steam Deck OLED 512 个人闲置",
-        "price_cny": 1705,
-        "original_price_cny": 2005,
-        "status": "active",
-        "description": "急出，价格低，先到先得",
-        "condition_tags": [
-          "成色: 95新",
-          "版本: 国行",
-          "拆修和功能: 无拆无修"
-        ],
-        "image_urls": [],
-        "has_video": false,
-        "delivery": {
-          "mode": "包邮",
-          "ship_fee_cny": 0,
-          "from_city": "深圳"
-        },
-        "location": "深圳",
-        "want_count": 13,
-        "view_count": 160,
-        "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-console-04-3",
-        "seller_nick": "新卖家console-04-3",
-        "seller_credit": "无",
-        "seller_registered_at": "2026-08-01T00:00:00.000Z",
-        "provider": "lab"
-      },
-      "lab-console-04-4": {
-        "item_id": "lab-console-04-4",
         "title": "Steam Deck OLED 512 自用",
         "price_cny": 2635,
         "original_price_cny": 2935,
@@ -263,17 +203,17 @@
           "from_city": "上海"
         },
         "location": "深圳",
-        "want_count": 14,
-        "view_count": 180,
+        "want_count": 12,
+        "view_count": 140,
         "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-console-04-4",
-        "seller_nick": "卖家console-04-4",
+        "seller_id": "seller-console-04-2",
+        "seller_nick": "卖家console-04-2",
         "seller_credit": "极好",
         "seller_registered_at": "2022-05-01T00:00:00.000Z",
         "provider": "lab"
       },
-      "lab-console-04-5": {
-        "item_id": "lab-console-04-5",
+      "lab-console-04-3": {
+        "item_id": "lab-console-04-3",
         "title": "Steam Deck OLED 512 个人备用机",
         "price_cny": 999,
         "original_price_cny": 1299,
@@ -292,17 +232,17 @@
           "from_city": "深圳"
         },
         "location": "深圳",
-        "want_count": 15,
-        "view_count": 200,
+        "want_count": 13,
+        "view_count": 160,
         "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-console-04-5",
-        "seller_nick": "卖家console-04-5",
+        "seller_id": "seller-console-04-3",
+        "seller_nick": "卖家console-04-3",
         "seller_credit": "极好",
         "seller_registered_at": "2022-05-01T00:00:00.000Z",
         "provider": "lab"
       },
-      "lab-console-04-6": {
-        "item_id": "lab-console-04-6",
+      "lab-console-04-4": {
+        "item_id": "lab-console-04-4",
         "title": "Steam Deck OLED 512 拍下改价",
         "price_cny": 1,
         "original_price_cny": 301,
@@ -321,13 +261,71 @@
           "from_city": "深圳"
         },
         "location": "深圳",
+        "want_count": 14,
+        "view_count": 180,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-console-04-4",
+        "seller_nick": "新卖家console-04-4",
+        "seller_credit": "无",
+        "seller_registered_at": "2026-08-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-console-04-5": {
+        "item_id": "lab-console-04-5",
+        "title": "Steam Deck OLED 512 监管机",
+        "price_cny": 2170,
+        "original_price_cny": 2470,
+        "status": "active",
+        "description": "账号锁，监管机，有锁，介意勿拍",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 15,
+        "view_count": 200,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-console-04-5",
+        "seller_nick": "新卖家console-04-5",
+        "seller_credit": "无",
+        "seller_registered_at": "2026-08-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-console-04-6": {
+        "item_id": "lab-console-04-6",
+        "title": "Steam Deck OLED 512 全原无拆修99新",
+        "price_cny": 2945,
+        "original_price_cny": 3245,
+        "status": "active",
+        "description": "全原无拆修99新，无图，非诚勿扰",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
         "want_count": 16,
         "view_count": 220,
         "publish_time": "2026-10-20T00:00:00.000Z",
         "seller_id": "seller-console-04-6",
-        "seller_nick": "新卖家console-04-6",
-        "seller_credit": "无",
-        "seller_registered_at": "2026-08-01T00:00:00.000Z",
+        "seller_nick": "卖家console-04-6",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
         "provider": "lab"
       },
       "lab-console-04-7": {
@@ -492,59 +490,33 @@
       },
       "seller-console-04-2": {
         "seller_id": "seller-console-04-2",
-        "nickname": "新卖家console-04-2",
-        "zhima_credit": null,
-        "zhima_text": "无",
-        "verified": false,
-        "registered_at": "2026-08-01T00:00:00.000Z",
-        "sold_count": 1,
+        "nickname": "卖家console-04-2",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
         "praise_rate": 99.2,
         "location": "深圳",
         "items_sample": [],
-        "reviews_count": 0
+        "reviews_count": 40
       },
       "seller-console-04-3": {
         "seller_id": "seller-console-04-3",
-        "nickname": "新卖家console-04-3",
-        "zhima_credit": null,
-        "zhima_text": "无",
-        "verified": false,
-        "registered_at": "2026-08-01T00:00:00.000Z",
-        "sold_count": 1,
+        "nickname": "卖家console-04-3",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
         "praise_rate": 99.2,
         "location": "深圳",
         "items_sample": [],
-        "reviews_count": 0
+        "reviews_count": 40
       },
       "seller-console-04-4": {
         "seller_id": "seller-console-04-4",
-        "nickname": "卖家console-04-4",
-        "zhima_credit": 780,
-        "zhima_text": "极好",
-        "verified": true,
-        "registered_at": "2022-05-01T00:00:00.000Z",
-        "sold_count": 120,
-        "praise_rate": 99.2,
-        "location": "深圳",
-        "items_sample": [],
-        "reviews_count": 40
-      },
-      "seller-console-04-5": {
-        "seller_id": "seller-console-04-5",
-        "nickname": "卖家console-04-5",
-        "zhima_credit": 780,
-        "zhima_text": "极好",
-        "verified": true,
-        "registered_at": "2022-05-01T00:00:00.000Z",
-        "sold_count": 120,
-        "praise_rate": 99.2,
-        "location": "深圳",
-        "items_sample": [],
-        "reviews_count": 40
-      },
-      "seller-console-04-6": {
-        "seller_id": "seller-console-04-6",
-        "nickname": "新卖家console-04-6",
+        "nickname": "新卖家console-04-4",
         "zhima_credit": null,
         "zhima_text": "无",
         "verified": false,
@@ -554,6 +526,32 @@
         "location": "深圳",
         "items_sample": [],
         "reviews_count": 0
+      },
+      "seller-console-04-5": {
+        "seller_id": "seller-console-04-5",
+        "nickname": "新卖家console-04-5",
+        "zhima_credit": null,
+        "zhima_text": "无",
+        "verified": false,
+        "registered_at": "2026-08-01T00:00:00.000Z",
+        "sold_count": 1,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 0
+      },
+      "seller-console-04-6": {
+        "seller_id": "seller-console-04-6",
+        "nickname": "卖家console-04-6",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
       },
       "seller-console-04-7": {
         "seller_id": "seller-console-04-7",
@@ -638,41 +636,56 @@
           "item_id": null
         }
       ],
-      "seller-console-04-2": [],
-      "seller-console-04-3": [],
-      "seller-console-04-4": [
+      "seller-console-04-2": [
         {
-          "review_id": "g1-seller-console-04-4",
+          "review_id": "g1-seller-console-04-2",
           "created_at": "2026-07-01T00:00:00.000Z",
           "rating": 1,
           "text": "如实描述，发货快",
           "item_id": null
         },
         {
-          "review_id": "g2-seller-console-04-4",
+          "review_id": "g2-seller-console-04-2",
           "created_at": "2026-06-01T00:00:00.000Z",
           "rating": 1,
           "text": "手机无问题，卖家靠谱",
           "item_id": null
         }
       ],
-      "seller-console-04-5": [
+      "seller-console-04-3": [
         {
-          "review_id": "g1-seller-console-04-5",
+          "review_id": "g1-seller-console-04-3",
           "created_at": "2026-07-01T00:00:00.000Z",
           "rating": 1,
           "text": "如实描述，发货快",
           "item_id": null
         },
         {
-          "review_id": "g2-seller-console-04-5",
+          "review_id": "g2-seller-console-04-3",
           "created_at": "2026-06-01T00:00:00.000Z",
           "rating": 1,
           "text": "手机无问题，卖家靠谱",
           "item_id": null
         }
       ],
-      "seller-console-04-6": [],
+      "seller-console-04-4": [],
+      "seller-console-04-5": [],
+      "seller-console-04-6": [
+        {
+          "review_id": "g1-seller-console-04-6",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-console-04-6",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
       "seller-console-04-7": [
         {
           "review_id": "g1-seller-console-04-7",
@@ -751,8 +764,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -764,8 +779,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -777,27 +794,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
-        }
-      }
-    ],
-    "lab-console-04-2": [
-      {
-        "file": "test/fixtures/lab/images/console-04-2-1.png",
-        "url": "https://lab.local/images/console-04-2-1.png",
-        "truth": {
-          "screen_visible": true,
-          "cracks": [
-            "front"
-          ],
-          "scratches": [
-            "front"
-          ],
-          "battery_pct": null,
-          "screen_ok": false,
-          "verdict": "плохо",
-          "label": "экран с трещинами"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       }
     ]
@@ -809,36 +809,36 @@
     "top_must_exclude": [
       "lab-console-04-2",
       "lab-console-04-4",
-      "lab-console-04-6"
+      "lab-console-04-5"
     ],
     "verdicts": {
       "lab-console-04-1": "брать",
       "lab-console-04-2": "пропустить",
       "lab-console-04-3": "проверить",
       "lab-console-04-4": "пропустить",
-      "lab-console-04-5": "проверить",
-      "lab-console-04-6": "пропустить"
+      "lab-console-04-5": "пропустить",
+      "lab-console-04-6": "проверить"
     },
     "stop_factor_ids": {
-      "lab-console-04-2": "трещины экрана",
-      "lab-console-04-4": "только самовывоз",
-      "lab-console-04-6": "цена-заглушка"
+      "lab-console-04-2": "только самовывоз",
+      "lab-console-04-4": "цена-заглушка",
+      "lab-console-04-5": "блокировка аккаунта"
     },
     "notes": "golden: чистый лот с фото и отрицаниями",
     "traps": [
-      "screen_cracks",
-      "low_price_new_seller",
       "pickup_only",
       "honest_low",
-      "placeholder_price"
+      "placeholder_price",
+      "account_lock",
+      "claims_only"
     ]
   },
   "traps": [
-    "screen_cracks",
-    "low_price_new_seller",
     "pickup_only",
     "honest_low",
-    "placeholder_price"
+    "placeholder_price",
+    "account_lock",
+    "claims_only"
   ],
   "seed": 42
 }

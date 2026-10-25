@@ -33,11 +33,11 @@
       },
       {
         "item_id": "lab-camera-02-3",
-        "title": "Canon EOS R6 Mark II",
-        "price_cny": 9860,
+        "title": "Canon EOS R6 Mark II 现货多台",
+        "price_cny": 10208,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "卖家camera-02-3",
+        "seller_nick": "数码批发camera-02-3",
         "seller_ref": "seller-camera-02-3",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -46,11 +46,11 @@
       },
       {
         "item_id": "lab-camera-02-4",
-        "title": "Canon EOS R6 Mark II 现货多台",
-        "price_cny": 10208,
+        "title": "Canon EOS R6 Mark II 自用",
+        "price_cny": 10440,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "数码批发camera-02-4",
+        "seller_nick": "问题卖家camera-02-4",
         "seller_ref": "seller-camera-02-4",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -59,11 +59,11 @@
       },
       {
         "item_id": "lab-camera-02-5",
-        "title": "Canon EOS R6 Mark II 自用",
-        "price_cny": 10440,
+        "title": "Canon EOS R6 Mark II 出",
+        "price_cny": 9280,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "问题卖家camera-02-5",
+        "seller_nick": "新号camera-02-5",
         "seller_ref": "seller-camera-02-5",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -72,11 +72,11 @@
       },
       {
         "item_id": "lab-camera-02-6",
-        "title": "Canon EOS R6 Mark II 出",
-        "price_cny": 9280,
+        "title": "Canon EOS R6 Mark II 个人",
+        "price_cny": 10440,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "新号camera-02-6",
+        "seller_nick": "卖家camera-02-6",
         "seller_ref": "seller-camera-02-6",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -156,7 +156,7 @@
         "price_cny": 9860,
         "original_price_cny": 10160,
         "status": "active",
-        "description": "个人自用，无进水无烧屏无拆修，全套，包邮，成色如图",
+        "description": "个人自用，无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，全套，包邮，成色如图",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -214,35 +214,6 @@
       },
       "lab-camera-02-3": {
         "item_id": "lab-camera-02-3",
-        "title": "Canon EOS R6 Mark II",
-        "price_cny": 9860,
-        "original_price_cny": 10160,
-        "status": "active",
-        "description": "12+256，成色好，包邮",
-        "condition_tags": [
-          "成色: 95新",
-          "版本: 国行",
-          "拆修和功能: 无拆无修"
-        ],
-        "image_urls": [],
-        "has_video": false,
-        "delivery": {
-          "mode": "包邮",
-          "ship_fee_cny": 0,
-          "from_city": "深圳"
-        },
-        "location": "深圳",
-        "want_count": 13,
-        "view_count": 160,
-        "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-camera-02-3",
-        "seller_nick": "卖家camera-02-3",
-        "seller_credit": "极好",
-        "seller_registered_at": "2022-05-01T00:00:00.000Z",
-        "provider": "lab"
-      },
-      "lab-camera-02-4": {
-        "item_id": "lab-camera-02-4",
         "title": "Canon EOS R6 Mark II 现货多台",
         "price_cny": 10208,
         "original_price_cny": 10508,
@@ -261,17 +232,17 @@
           "from_city": "深圳"
         },
         "location": "深圳",
-        "want_count": 14,
-        "view_count": 180,
+        "want_count": 13,
+        "view_count": 160,
         "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-camera-02-4",
-        "seller_nick": "数码批发camera-02-4",
+        "seller_id": "seller-camera-02-3",
+        "seller_nick": "数码批发camera-02-3",
         "seller_credit": "极好",
         "seller_registered_at": "2022-05-01T00:00:00.000Z",
         "provider": "lab"
       },
-      "lab-camera-02-5": {
-        "item_id": "lab-camera-02-5",
+      "lab-camera-02-4": {
+        "item_id": "lab-camera-02-4",
         "title": "Canon EOS R6 Mark II 自用",
         "price_cny": 10440,
         "original_price_cny": 10740,
@@ -290,17 +261,17 @@
           "from_city": "深圳"
         },
         "location": "深圳",
-        "want_count": 15,
-        "view_count": 200,
+        "want_count": 14,
+        "view_count": 180,
         "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-camera-02-5",
-        "seller_nick": "问题卖家camera-02-5",
+        "seller_id": "seller-camera-02-4",
+        "seller_nick": "问题卖家camera-02-4",
         "seller_credit": "极好",
         "seller_registered_at": "2022-05-01T00:00:00.000Z",
         "provider": "lab"
       },
-      "lab-camera-02-6": {
-        "item_id": "lab-camera-02-6",
+      "lab-camera-02-5": {
+        "item_id": "lab-camera-02-5",
         "title": "Canon EOS R6 Mark II 出",
         "price_cny": 9280,
         "original_price_cny": 9580,
@@ -319,13 +290,42 @@
           "from_city": "深圳"
         },
         "location": "深圳",
+        "want_count": 15,
+        "view_count": 200,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-camera-02-5",
+        "seller_nick": "新号camera-02-5",
+        "seller_credit": "无",
+        "seller_registered_at": null,
+        "provider": "lab"
+      },
+      "lab-camera-02-6": {
+        "item_id": "lab-camera-02-6",
+        "title": "Canon EOS R6 Mark II 个人",
+        "price_cny": 10440,
+        "original_price_cny": 10740,
+        "status": "active",
+        "description": "个人自用，包邮",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
         "want_count": 16,
         "view_count": 220,
         "publish_time": "2026-10-20T00:00:00.000Z",
         "seller_id": "seller-camera-02-6",
-        "seller_nick": "新号camera-02-6",
-        "seller_credit": "无",
-        "seller_registered_at": null,
+        "seller_nick": "卖家camera-02-6",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
         "provider": "lab"
       },
       "lab-camera-02-7": {
@@ -503,20 +503,7 @@
       },
       "seller-camera-02-3": {
         "seller_id": "seller-camera-02-3",
-        "nickname": "卖家camera-02-3",
-        "zhima_credit": 780,
-        "zhima_text": "极好",
-        "verified": true,
-        "registered_at": "2022-05-01T00:00:00.000Z",
-        "sold_count": 120,
-        "praise_rate": 99.2,
-        "location": "深圳",
-        "items_sample": [],
-        "reviews_count": 40
-      },
-      "seller-camera-02-4": {
-        "seller_id": "seller-camera-02-4",
-        "nickname": "数码批发camera-02-4",
+        "nickname": "数码批发camera-02-3",
         "zhima_credit": 780,
         "zhima_text": "极好",
         "verified": true,
@@ -526,161 +513,161 @@
         "location": "深圳",
         "items_sample": [
           {
-            "item_id": "shop-camera-02-4-0",
+            "item_id": "shop-camera-02-3-0",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-1",
+            "item_id": "shop-camera-02-3-1",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-2",
+            "item_id": "shop-camera-02-3-2",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-3",
+            "item_id": "shop-camera-02-3-3",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-4",
+            "item_id": "shop-camera-02-3-4",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-5",
+            "item_id": "shop-camera-02-3-5",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-6",
+            "item_id": "shop-camera-02-3-6",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-7",
+            "item_id": "shop-camera-02-3-7",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-8",
+            "item_id": "shop-camera-02-3-8",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-9",
+            "item_id": "shop-camera-02-3-9",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-10",
+            "item_id": "shop-camera-02-3-10",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-11",
+            "item_id": "shop-camera-02-3-11",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-12",
+            "item_id": "shop-camera-02-3-12",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-13",
+            "item_id": "shop-camera-02-3-13",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-14",
+            "item_id": "shop-camera-02-3-14",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-15",
+            "item_id": "shop-camera-02-3-15",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-16",
+            "item_id": "shop-camera-02-3-16",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-17",
+            "item_id": "shop-camera-02-3-17",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-18",
+            "item_id": "shop-camera-02-3-18",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-19",
+            "item_id": "shop-camera-02-3-19",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-20",
+            "item_id": "shop-camera-02-3-20",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-21",
+            "item_id": "shop-camera-02-3-21",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-22",
+            "item_id": "shop-camera-02-3-22",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-23",
+            "item_id": "shop-camera-02-3-23",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-24",
+            "item_id": "shop-camera-02-3-24",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-25",
+            "item_id": "shop-camera-02-3-25",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-26",
+            "item_id": "shop-camera-02-3-26",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-27",
+            "item_id": "shop-camera-02-3-27",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-28",
+            "item_id": "shop-camera-02-3-28",
             "title": "同款现货",
             "price_cny": 1000
           },
           {
-            "item_id": "shop-camera-02-4-29",
+            "item_id": "shop-camera-02-3-29",
             "title": "同款现货",
             "price_cny": 1000
           }
         ],
         "reviews_count": 40
       },
-      "seller-camera-02-5": {
-        "seller_id": "seller-camera-02-5",
-        "nickname": "问题卖家camera-02-5",
+      "seller-camera-02-4": {
+        "seller_id": "seller-camera-02-4",
+        "nickname": "问题卖家camera-02-4",
         "zhima_credit": 780,
         "zhima_text": "极好",
         "verified": true,
@@ -691,9 +678,9 @@
         "items_sample": [],
         "reviews_count": 12
       },
-      "seller-camera-02-6": {
-        "seller_id": "seller-camera-02-6",
-        "nickname": "新号camera-02-6",
+      "seller-camera-02-5": {
+        "seller_id": "seller-camera-02-5",
+        "nickname": "新号camera-02-5",
         "zhima_credit": null,
         "zhima_text": "无",
         "verified": false,
@@ -703,6 +690,19 @@
         "location": "深圳",
         "items_sample": [],
         "reviews_count": 0
+      },
+      "seller-camera-02-6": {
+        "seller_id": "seller-camera-02-6",
+        "nickname": "卖家camera-02-6",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 40
       },
       "seller-camera-02-7": {
         "seller_id": "seller-camera-02-7",
@@ -821,37 +821,37 @@
       ],
       "seller-camera-02-4": [
         {
-          "review_id": "g1-seller-camera-02-4",
-          "created_at": "2026-07-01T00:00:00.000Z",
-          "rating": 1,
-          "text": "如实描述，发货快",
-          "item_id": null
-        },
-        {
-          "review_id": "g2-seller-camera-02-4",
-          "created_at": "2026-06-01T00:00:00.000Z",
-          "rating": 1,
-          "text": "手机无问题，卖家靠谱",
-          "item_id": null
-        }
-      ],
-      "seller-camera-02-5": [
-        {
-          "review_id": "r1-seller-camera-02-5",
+          "review_id": "r1-seller-camera-02-4",
           "created_at": "2026-09-01T00:00:00.000Z",
           "rating": -1,
           "text": "假货，货不对板，卖家不处理",
           "item_id": null
         },
         {
-          "review_id": "r2-seller-camera-02-5",
+          "review_id": "r2-seller-camera-02-4",
           "created_at": "2026-08-01T00:00:00.000Z",
           "rating": -1,
           "text": "翻新机，描述不符",
           "item_id": null
         }
       ],
-      "seller-camera-02-6": [],
+      "seller-camera-02-5": [],
+      "seller-camera-02-6": [
+        {
+          "review_id": "g1-seller-camera-02-6",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-camera-02-6",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
       "seller-camera-02-7": [
         {
           "review_id": "g1-seller-camera-02-7",
@@ -917,6 +917,9 @@
           "item_id": null
         }
       ]
+    },
+    "errors": {
+      "lab-camera-02-6": "risk_control"
     }
   },
   "images": {
@@ -930,8 +933,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -943,8 +948,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -956,8 +963,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       }
     ]
@@ -968,32 +977,32 @@
     ],
     "top_must_exclude": [
       "lab-camera-02-2",
-      "lab-camera-02-3"
+      "lab-camera-02-6"
     ],
     "verdicts": {
       "lab-camera-02-1": "брать",
       "lab-camera-02-2": "пропустить",
-      "lab-camera-02-3": "пропустить",
+      "lab-camera-02-3": "проверить",
       "lab-camera-02-4": "проверить",
       "lab-camera-02-5": "проверить",
-      "lab-camera-02-6": "проверить"
+      "lab-camera-02-6": "пропустить"
     },
     "stop_factor_ids": {},
     "notes": "golden: чистый лот с фото и отрицаниями",
     "traps": [
       "accessory",
-      "wrong_memory",
       "reseller",
       "bad_reviews",
-      "missing_data"
+      "missing_data",
+      "rgv587"
     ]
   },
   "traps": [
     "accessory",
-    "wrong_memory",
     "reseller",
     "bad_reviews",
-    "missing_data"
+    "missing_data",
+    "rgv587"
   ],
   "seed": 42
 }

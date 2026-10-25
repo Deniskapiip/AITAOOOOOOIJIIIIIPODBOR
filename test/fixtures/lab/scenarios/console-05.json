@@ -20,11 +20,11 @@
       },
       {
         "item_id": "lab-console-05-2",
-        "title": "PlayStation Portal 监管机",
-        "price_cny": 910,
+        "title": "PlayStation Portal 个人自用",
+        "price_cny": 1105,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "新卖家console-05-2",
+        "seller_nick": "卖家console-05-2",
         "seller_ref": "seller-console-05-2",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -33,11 +33,11 @@
       },
       {
         "item_id": "lab-console-05-3",
-        "title": "PlayStation Portal 全原无拆修99新",
-        "price_cny": 1235,
+        "title": "PlayStation Portal 低价出",
+        "price_cny": 845,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "卖家console-05-3",
+        "seller_nick": "新卖家console-05-3",
         "seller_ref": "seller-console-05-3",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -46,24 +46,24 @@
       },
       {
         "item_id": "lab-console-05-4",
-        "title": "PlayStation Portal 个人自用",
-        "price_cny": 1105,
+        "title": "PlayStation Portal 全新库存",
+        "price_cny": 1040,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "卖家console-05-4",
+        "seller_nick": "新卖家console-05-4",
         "seller_ref": "seller-console-05-4",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
         "want_count": 14,
-        "image_url": null
+        "image_url": "https://lab.local/images/console-05-4-1.png"
       },
       {
         "item_id": "lab-console-05-5",
-        "title": "PlayStation Portal 低价出",
-        "price_cny": 845,
+        "title": "PlayStation Portal 自用",
+        "price_cny": 1339,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "新卖家console-05-5",
+        "seller_nick": "卖家console-05-5",
         "seller_ref": "seller-console-05-5",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
@@ -72,16 +72,16 @@
       },
       {
         "item_id": "lab-console-05-6",
-        "title": "PlayStation Portal 全新库存",
-        "price_cny": 1040,
+        "title": "PlayStation Portal 全套",
+        "price_cny": 1404,
         "location": "深圳",
         "seller_id": null,
-        "seller_nick": "新卖家console-05-6",
+        "seller_nick": "卖家console-05-6",
         "seller_ref": "seller-console-05-6",
         "publish_time": "2026-10-20T00:00:00.000Z",
         "condition_tags": [],
         "want_count": 16,
-        "image_url": "https://lab.local/images/console-05-6-1.png"
+        "image_url": null
       },
       {
         "item_id": "lab-console-05-7",
@@ -156,7 +156,7 @@
         "price_cny": 1105,
         "original_price_cny": 1405,
         "status": "active",
-        "description": "个人自用，无进水无烧屏无拆修，全套，包邮，成色如图",
+        "description": "个人自用，无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，全套，包邮，成色如图",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -185,64 +185,6 @@
       },
       "lab-console-05-2": {
         "item_id": "lab-console-05-2",
-        "title": "PlayStation Portal 监管机",
-        "price_cny": 910,
-        "original_price_cny": 1210,
-        "status": "active",
-        "description": "账号锁，监管机，有锁，介意勿拍",
-        "condition_tags": [
-          "成色: 95新",
-          "版本: 国行",
-          "拆修和功能: 无拆无修"
-        ],
-        "image_urls": [],
-        "has_video": false,
-        "delivery": {
-          "mode": "包邮",
-          "ship_fee_cny": 0,
-          "from_city": "深圳"
-        },
-        "location": "深圳",
-        "want_count": 12,
-        "view_count": 140,
-        "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-console-05-2",
-        "seller_nick": "新卖家console-05-2",
-        "seller_credit": "无",
-        "seller_registered_at": "2026-08-01T00:00:00.000Z",
-        "provider": "lab"
-      },
-      "lab-console-05-3": {
-        "item_id": "lab-console-05-3",
-        "title": "PlayStation Portal 全原无拆修99新",
-        "price_cny": 1235,
-        "original_price_cny": 1535,
-        "status": "active",
-        "description": "全原无拆修99新，无图，非诚勿扰",
-        "condition_tags": [
-          "成色: 95新",
-          "版本: 国行",
-          "拆修和功能: 无拆无修"
-        ],
-        "image_urls": [],
-        "has_video": false,
-        "delivery": {
-          "mode": "包邮",
-          "ship_fee_cny": 0,
-          "from_city": "深圳"
-        },
-        "location": "深圳",
-        "want_count": 13,
-        "view_count": 160,
-        "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-console-05-3",
-        "seller_nick": "卖家console-05-3",
-        "seller_credit": "极好",
-        "seller_registered_at": "2022-05-01T00:00:00.000Z",
-        "provider": "lab"
-      },
-      "lab-console-05-4": {
-        "item_id": "lab-console-05-4",
         "title": "PlayStation Portal 个人自用",
         "price_cny": 1105,
         "original_price_cny": 1405,
@@ -261,17 +203,17 @@
           "from_city": "深圳"
         },
         "location": "深圳",
-        "want_count": 14,
-        "view_count": 180,
+        "want_count": 12,
+        "view_count": 140,
         "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-console-05-4",
-        "seller_nick": "卖家console-05-4",
+        "seller_id": "seller-console-05-2",
+        "seller_nick": "卖家console-05-2",
         "seller_credit": "极好",
         "seller_registered_at": "2022-05-01T00:00:00.000Z",
         "provider": "lab"
       },
-      "lab-console-05-5": {
-        "item_id": "lab-console-05-5",
+      "lab-console-05-3": {
+        "item_id": "lab-console-05-3",
         "title": "PlayStation Portal 低价出",
         "price_cny": 845,
         "original_price_cny": 1145,
@@ -290,17 +232,17 @@
           "from_city": "深圳"
         },
         "location": "深圳",
-        "want_count": 15,
-        "view_count": 200,
+        "want_count": 13,
+        "view_count": 160,
         "publish_time": "2026-10-20T00:00:00.000Z",
-        "seller_id": "seller-console-05-5",
-        "seller_nick": "新卖家console-05-5",
+        "seller_id": "seller-console-05-3",
+        "seller_nick": "新卖家console-05-3",
         "seller_credit": "无",
         "seller_registered_at": "2026-08-01T00:00:00.000Z",
         "provider": "lab"
       },
-      "lab-console-05-6": {
-        "item_id": "lab-console-05-6",
+      "lab-console-05-4": {
+        "item_id": "lab-console-05-4",
         "title": "PlayStation Portal 全新库存",
         "price_cny": 1040,
         "original_price_cny": 1340,
@@ -312,8 +254,66 @@
           "拆修和功能: 无拆无修"
         ],
         "image_urls": [
-          "https://lab.local/images/console-05-6-1.png"
+          "https://lab.local/images/console-05-4-1.png"
         ],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 14,
+        "view_count": 180,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-console-05-4",
+        "seller_nick": "新卖家console-05-4",
+        "seller_credit": "无",
+        "seller_registered_at": "2026-08-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-console-05-5": {
+        "item_id": "lab-console-05-5",
+        "title": "PlayStation Portal 自用",
+        "price_cny": 1339,
+        "original_price_cny": 1639,
+        "status": "active",
+        "description": "自用，成色好，包邮",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
+        "has_video": false,
+        "delivery": {
+          "mode": "包邮",
+          "ship_fee_cny": 0,
+          "from_city": "深圳"
+        },
+        "location": "深圳",
+        "want_count": 15,
+        "view_count": 200,
+        "publish_time": "2026-10-20T00:00:00.000Z",
+        "seller_id": "seller-console-05-5",
+        "seller_nick": "卖家console-05-5",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
+        "provider": "lab"
+      },
+      "lab-console-05-6": {
+        "item_id": "lab-console-05-6",
+        "title": "PlayStation Portal 全套",
+        "price_cny": 1404,
+        "original_price_cny": 1704,
+        "status": "active",
+        "description": "全套，成色好，包邮",
+        "condition_tags": [
+          "成色: 95新",
+          "版本: 国行",
+          "拆修和功能: 无拆无修"
+        ],
+        "image_urls": [],
         "has_video": false,
         "delivery": {
           "mode": "包邮",
@@ -325,9 +325,9 @@
         "view_count": 220,
         "publish_time": "2026-10-20T00:00:00.000Z",
         "seller_id": "seller-console-05-6",
-        "seller_nick": "新卖家console-05-6",
-        "seller_credit": "无",
-        "seller_registered_at": "2026-08-01T00:00:00.000Z",
+        "seller_nick": "卖家console-05-6",
+        "seller_credit": "极好",
+        "seller_registered_at": "2022-05-01T00:00:00.000Z",
         "provider": "lab"
       },
       "lab-console-05-7": {
@@ -492,33 +492,46 @@
       },
       "seller-console-05-2": {
         "seller_id": "seller-console-05-2",
-        "nickname": "新卖家console-05-2",
-        "zhima_credit": null,
-        "zhima_text": "无",
-        "verified": false,
-        "registered_at": "2026-08-01T00:00:00.000Z",
-        "sold_count": 1,
+        "nickname": "卖家console-05-2",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
         "praise_rate": 99.2,
         "location": "深圳",
         "items_sample": [],
-        "reviews_count": 0
+        "reviews_count": 40
       },
       "seller-console-05-3": {
         "seller_id": "seller-console-05-3",
-        "nickname": "卖家console-05-3",
-        "zhima_credit": 780,
-        "zhima_text": "极好",
-        "verified": true,
-        "registered_at": "2022-05-01T00:00:00.000Z",
-        "sold_count": 120,
+        "nickname": "新卖家console-05-3",
+        "zhima_credit": null,
+        "zhima_text": "无",
+        "verified": false,
+        "registered_at": "2026-08-01T00:00:00.000Z",
+        "sold_count": 1,
         "praise_rate": 99.2,
         "location": "深圳",
         "items_sample": [],
-        "reviews_count": 40
+        "reviews_count": 0
       },
       "seller-console-05-4": {
         "seller_id": "seller-console-05-4",
-        "nickname": "卖家console-05-4",
+        "nickname": "新卖家console-05-4",
+        "zhima_credit": null,
+        "zhima_text": "无",
+        "verified": false,
+        "registered_at": "2026-08-01T00:00:00.000Z",
+        "sold_count": 1,
+        "praise_rate": 99.2,
+        "location": "深圳",
+        "items_sample": [],
+        "reviews_count": 0
+      },
+      "seller-console-05-5": {
+        "seller_id": "seller-console-05-5",
+        "nickname": "卖家console-05-5",
         "zhima_credit": 780,
         "zhima_text": "极好",
         "verified": true,
@@ -529,31 +542,18 @@
         "items_sample": [],
         "reviews_count": 40
       },
-      "seller-console-05-5": {
-        "seller_id": "seller-console-05-5",
-        "nickname": "新卖家console-05-5",
-        "zhima_credit": null,
-        "zhima_text": "无",
-        "verified": false,
-        "registered_at": "2026-08-01T00:00:00.000Z",
-        "sold_count": 1,
-        "praise_rate": 99.2,
-        "location": "深圳",
-        "items_sample": [],
-        "reviews_count": 0
-      },
       "seller-console-05-6": {
         "seller_id": "seller-console-05-6",
-        "nickname": "新卖家console-05-6",
-        "zhima_credit": null,
-        "zhima_text": "无",
-        "verified": false,
-        "registered_at": "2026-08-01T00:00:00.000Z",
-        "sold_count": 1,
+        "nickname": "卖家console-05-6",
+        "zhima_credit": 780,
+        "zhima_text": "极好",
+        "verified": true,
+        "registered_at": "2022-05-01T00:00:00.000Z",
+        "sold_count": 120,
         "praise_rate": 99.2,
         "location": "深圳",
         "items_sample": [],
-        "reviews_count": 0
+        "reviews_count": 40
       },
       "seller-console-05-7": {
         "seller_id": "seller-console-05-7",
@@ -638,41 +638,56 @@
           "item_id": null
         }
       ],
-      "seller-console-05-2": [],
-      "seller-console-05-3": [
+      "seller-console-05-2": [
         {
-          "review_id": "g1-seller-console-05-3",
+          "review_id": "g1-seller-console-05-2",
           "created_at": "2026-07-01T00:00:00.000Z",
           "rating": 1,
           "text": "如实描述，发货快",
           "item_id": null
         },
         {
-          "review_id": "g2-seller-console-05-3",
+          "review_id": "g2-seller-console-05-2",
           "created_at": "2026-06-01T00:00:00.000Z",
           "rating": 1,
           "text": "手机无问题，卖家靠谱",
           "item_id": null
         }
       ],
-      "seller-console-05-4": [
+      "seller-console-05-3": [],
+      "seller-console-05-4": [],
+      "seller-console-05-5": [
         {
-          "review_id": "g1-seller-console-05-4",
+          "review_id": "g1-seller-console-05-5",
           "created_at": "2026-07-01T00:00:00.000Z",
           "rating": 1,
           "text": "如实描述，发货快",
           "item_id": null
         },
         {
-          "review_id": "g2-seller-console-05-4",
+          "review_id": "g2-seller-console-05-5",
           "created_at": "2026-06-01T00:00:00.000Z",
           "rating": 1,
           "text": "手机无问题，卖家靠谱",
           "item_id": null
         }
       ],
-      "seller-console-05-5": [],
-      "seller-console-05-6": [],
+      "seller-console-05-6": [
+        {
+          "review_id": "g1-seller-console-05-6",
+          "created_at": "2026-07-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "如实描述，发货快",
+          "item_id": null
+        },
+        {
+          "review_id": "g2-seller-console-05-6",
+          "created_at": "2026-06-01T00:00:00.000Z",
+          "rating": 1,
+          "text": "手机无问题，卖家靠谱",
+          "item_id": null
+        }
+      ],
       "seller-console-05-7": [
         {
           "review_id": "g1-seller-console-05-7",
@@ -751,8 +766,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -764,8 +781,10 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       },
       {
@@ -777,15 +796,17 @@
           "scratches": [],
           "battery_pct": 92,
           "screen_ok": true,
+          "system_ok": true,
+          "icloud_clear": true,
           "verdict": "ок",
-          "label": "экран и корпус чистые"
+          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
         }
       }
     ],
-    "lab-console-05-6": [
+    "lab-console-05-4": [
       {
-        "file": "test/fixtures/lab/images/console-05-6-1.png",
-        "url": "https://lab.local/images/console-05-6-1.png",
+        "file": "test/fixtures/lab/images/console-05-4-1.png",
+        "url": "https://lab.local/images/console-05-4-1.png",
         "truth": {
           "screen_visible": false,
           "cracks": [],
@@ -804,36 +825,35 @@
       "lab-console-05-1"
     ],
     "top_must_exclude": [
-      "lab-console-05-2",
-      "lab-console-05-5"
+      "lab-console-05-3",
+      "lab-console-05-6"
     ],
     "verdicts": {
       "lab-console-05-1": "брать",
-      "lab-console-05-2": "пропустить",
-      "lab-console-05-3": "проверить",
+      "lab-console-05-2": "проверить",
+      "lab-console-05-3": "пропустить",
       "lab-console-05-4": "проверить",
-      "lab-console-05-5": "пропустить",
-      "lab-console-05-6": "проверить"
+      "lab-console-05-5": "проверить",
+      "lab-console-05-6": "пропустить"
     },
     "stop_factor_ids": {
-      "lab-console-05-2": "блокировка аккаунта",
-      "lab-console-05-5": "увод в мессенджер"
+      "lab-console-05-3": "увод в мессенджер"
     },
     "notes": "golden: чистый лот с фото и отрицаниями",
     "traps": [
-      "account_lock",
-      "claims_only",
       "prompt_injection",
       "offsite_payment",
-      "stock_photo"
+      "stock_photo",
+      "budget_103",
+      "budget_108"
     ]
   },
   "traps": [
-    "account_lock",
-    "claims_only",
     "prompt_injection",
     "offsite_payment",
-    "stock_photo"
+    "stock_photo",
+    "budget_103",
+    "budget_108"
   ],
   "seed": 42
 }
