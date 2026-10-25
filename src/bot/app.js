@@ -40,6 +40,7 @@ export class BotApp {
     this.semaphore = new Semaphore(config.bot.maxConcurrentRuns);
     this.chatQueues = new Map();
     this.lastRuns = new Map();
+    this.adminNotices = new Map();
     this.running = false;
   }
 
@@ -197,6 +198,9 @@ export class BotApp {
           'Cookie сохранён для <code>' + escapeHtml(account.id) + '</code>. Статус: <b>' + escapeHtml(account.status) + '</b>. Проверь /accounts.',
           { parse_mode: 'HTML' },
         );
+        if (this.telegram.deleteMessage) {
+          await this.telegram.deleteMessage(chatId, message.message_id).catch(() => {});
+        }
       } catch (err) {
         await this.telegram.sendMessage(chatId, 'Ошибка cookie: ' + escapeHtml(err.message));
       }
@@ -356,6 +360,7 @@ export class BotApp {
           reason: 'карточки Goofish в cooldown после RGV587',
         });
         persistSearchOnly(searchOnly);
+        void this.notifyAdmins('Goofish: карточки в cooldown, прогон ' + runId + ' ушёл в search-only. Причина: ' + (searchOnly.reason || 'RGV587'), 'search-only', 30 * 60 * 1000, chatId);
       } else {
         outcome = await runAgent({
           query,
@@ -403,6 +408,7 @@ export class BotApp {
             reason: err.message,
           });
           persistSearchOnly(searchOnly);
+          void this.notifyAdmins('Goofish: карточки в cooldown, прогон ' + runId + ' ушёл в search-only. Причина: ' + (searchOnly.reason || err.message), 'search-only', 30 * 60 * 1000, chatId);
           error = null;
         } catch (fallbackErr) {
           error = fallbackErr;
@@ -579,6 +585,21 @@ export class BotApp {
       });
     } catch (err) {
       this.logger.warn('bot: не удалось отправить search-only футер', { error: err.message });
+    }
+  }
+
+  async notifyAdmins(text, key = 'risk', ttlMs = 30 * 60 * 1000, skipChatId = null) {
+    const now = Date.now();
+    const last = this.adminNotices.get(key) || 0;
+    if (now - last < ttlMs) return;
+    this.adminNotices.set(key, now);
+    for (const adminId of this.config.telegram.adminIds) {
+      if (skipChatId !== null && Number(adminId) === Number(skipChatId)) continue;
+      try {
+        await this.telegram.sendMessage(adminId, escapeHtml(text));
+      } catch (err) {
+        this.logger.debug('bot: admin notify failed', { adminId, error: err.message });
+      }
     }
   }
 

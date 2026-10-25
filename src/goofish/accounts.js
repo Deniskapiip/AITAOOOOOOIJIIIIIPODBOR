@@ -276,6 +276,7 @@ export class AccountStore {
       if (account.status === 'dead' || account.status === 'session_expired') continue;
       let at = now;
       if (account.status === 'cooldown' && account.cooldown_until) at = Math.max(at, new Date(account.cooldown_until).getTime());
+      if (scope === 'item' && account.verification_needed) at = Math.max(at, now + 24 * 60 * 60 * 1000);
       if (scope === 'item' && account.item_cooldown_until) at = Math.max(at, new Date(account.item_cooldown_until).getTime());
       if (account.calls_today >= this.dailyLimit) at = Math.max(at, now + DAY_MS);
       if (best === null || at < best) best = at;

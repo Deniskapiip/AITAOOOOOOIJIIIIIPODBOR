@@ -144,6 +144,15 @@ export class TelegramClient {
     }
   }
 
+  async deleteMessage(chatId, messageId) {
+    try {
+      return await this.call('deleteMessage', { chat_id: chatId, message_id: messageId });
+    } catch (err) {
+      if (this.logger) this.logger.debug('telegram: deleteMessage failed', { error: err.message });
+      return null;
+    }
+  }
+
   async answerCallbackQuery(id, text) {
     try {
       return await this.call('answerCallbackQuery', { callback_query_id: id, text });
