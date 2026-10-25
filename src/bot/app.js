@@ -552,11 +552,11 @@ export class BotApp {
   }
 
   async sendSearchOnly(chatId, result, runId) {
-    const items = Array.isArray(result.items) ? result.items : [];
+    const items = (Array.isArray(result.items) ? result.items : []).slice(0, this.config.bot.searchOnlyMax);
     const header = items.length
-      ? '<b>Ограниченный режим: только поиск</b>\n' +
-        'Карточки Goofish сейчас недоступны (RGV587/cooldown), поэтому это <b>не проверенные</b> лоты: только заголовок и цена из поиска.'
-      : '<b>Ограниченный режим: только поиск</b>\nПодходящих лотов в поиске не нашлось.';
+      ? '<b>Ограниченный режим · НЕ ПРОВЕРЕНО</b>\n' +
+        'Карточки Goofish сейчас недоступны (RGV587/cooldown). Это не подбор: только заголовок и цена из поиска, без фото-анализа, продавца, отзывов и рынка.'
+      : '<b>Ограниченный режим · НЕ ПРОВЕРЕНО</b>\nПодходящих лотов в поиске не нашлось.';
     await this.telegram.sendMessage(chatId, header, { parse_mode: 'HTML', disable_web_page_preview: true });
 
     for (const item of items) {
@@ -566,7 +566,7 @@ export class BotApp {
         '<b>' + escapeHtml(item.rank + '. ' + item.title) + '</b>',
         '',
         '<b>' + (price === null ? '—' : price + ' ¥') + (rub === null ? '' : ' · ' + rub + ' ₽') + '</b>',
-        '🟡 проверить · ' + item.score + '/100 · уверенность низкая',
+        '🟡 кандидат · уверенность низкая',
       ];
       if (item.seller_nick || item.location) {
         lines.push('👤 ' + escapeHtml([item.seller_nick, item.location].filter(Boolean).join(' · ')));
@@ -596,7 +596,7 @@ export class BotApp {
     const footer = [
       escapeHtml(result.disclaimer || 'Это только поиск, не проверка карточки.'),
       'Найдено в поиске: ' + (result.total_found || 0) + ' · показано: ' + items.length + ' · ключ: ' + escapeHtml(result.keyword || '—'),
-      'Карточки и фото не проверялись; перед покупкой проверь вручную.',
+      'Это не карточка: фото, продавец, отзывы, рынок и статус продажи не проверялись.',
     ];
     try {
       await this.telegram.sendMessage(chatId, footer.join('\n'), {
