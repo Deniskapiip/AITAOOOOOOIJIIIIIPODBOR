@@ -395,7 +395,7 @@ export class BotApp {
       const health = this.provider.health ? this.provider.health() : null;
       const canSearch = !health || health.search_available !== false;
       const canFallback = this.config.goofish.searchOnlyFallback && canSearch &&
-        (err.code === 'risk_control' || err.kind === 'NO_ACCOUNT' || (err.details && err.details.riskControlHits));
+        ((health && health.item_available === false) || err.code === 'risk_control' || err.kind === 'NO_ACCOUNT' || (err.details && err.details.riskControlHits));
       if (canFallback) {
         try {
           log.warn('run: fallback в search-only', { error: err.message });
