@@ -12,34 +12,22 @@ async function getSharp() {
   return sharpModule;
 }
 
-function buildPrompt(item) {
-  const lines = [
-    'Ты эксперт по б/у технике и проверяешь фотографии лота с Goofish (闲鱼).',
-    'Опиши только то, что реально видно на фото. Не угадывай и не выдумывай.',
+function buildPrompt(item, index, total) {
+  const title = String((item && item.title) || '—').slice(0, 260);
+  const desc = String((item && item.description) || '—').slice(0, 500);
+  return [
+    'Ты проверяешь ОДНО фото лота с Goofish (闲鱼), фото ' + index + ' из ' + total + '.',
+    'Заголовок лота: ' + title,
+    'Описание: ' + desc,
     '',
-    'Заявление продавца:',
-    'Заголовок: ' + String((item && item.title) || '—').slice(0, 300),
-    'Описание: ' + String((item && item.description) || '—').slice(0, 900),
-    'Теги: ' + ((item && Array.isArray(item.condition_tags) ? item.condition_tags.join(', ') : '') || '—'),
-    'Цена: ' + ((item && item.price_cny) || '—') + ' ¥',
-    '',
-    'Проверь:',
-    '1. Модель, цвет, память и регион — если видно экран «关于本机».',
-    '2. Здоровье АКБ — если виден экран «电池健康» или отчёт 爱思/沙漏.',
-    '3. Экран: трещины, сколы, царапины, выгорание/透图, битые пиксели, полосы, засветы.',
-    '4. Корпус: вмятины, сколы, потёртости, состояние крышки и рамки.',
-    '5. Камеры: царапины и повреждения стёкол.',
-    '6. Признаки вскрытия/ремонта по зазорам и следам.',
-    '7. Комплект: коробка, зарядка, кабель, чехол.',
-    '8. Несоответствия заявлению продавца.',
+    'Опиши только то, что реально видно на ЭТОМ фото. Не угадывай модель и не придумывай дефекты.',
+    'Проверь: экран (трещины, сколы, царапины, выгорание/透图, полосы), корпус (вмятины, сколы), камеры, следы вскрытия, комплект.',
+    'Если экран не виден — screen_ok=null и verdict не "ок".',
     '',
     'Верни СТРОГО JSON без markdown:',
-    '{"summary_ru":"кратко 1-2 предложения","defects":["..."],"mismatches":["..."],"screen_ok":true,"battery_health_percent":null,"verdict":"ок"}',
-    'verdict: "ок" — видимых дефектов и несоответствий нет;',
-    '"сомнительно" — фото мало/нечитаемо/есть мелкие дефекты;',
-    '"плохо" — трещины, выгорание, сколы экрана, сильные повреждения или несоответствие модели/памяти/цвета.',
-  ];
-  return lines.join('\n');
+    '{"summary_ru":"что видно","defects":["..."],"screen_ok":null,"battery_health_percent":null,"verdict":"сомнительно"}',
+    'verdict: "ок" — зона видна и дефектов нет; "плохо" — трещины/сколы/выгорание/сильные повреждения; иначе "сомнительно".',
+  ].join('\n');
 }
 
 export function parseVisionJson(text) {
@@ -56,18 +44,30 @@ export function parseVisionJson(text) {
     return null;
   }
   const verdict = String(data.verdict || '').toLowerCase();
+  let normalizedVerdict = ['ок', 'сомнительно', 'плохо'].includes(verdict) ? verdict : 'сомнительно';
+  const defects = Array.isArray(data.defects) ? data.defects.map((x) => String(x)).slice(0, 12) : [];
+  const mismatches = Array.isArray(data.mismatches) ? data.mismatches.map((x) => String(x)).slice(0, 8) : [];
+  const screenOk = data.screen_ok === true ? true : data.screen_ok === false ? false : null;
+  if (normalizedVerdict === 'ок' && screenOk !== true) normalizedVerdict = 'сомнительно';
+  if (screenOk === false && defects.some((d) => /экран|трещин|скол|выгор|透图|老化|лини/i.test(d))) normalizedVerdict = 'плохо';
+  const battery =
+    data.battery_health_percent === null || data.battery_health_percent === undefined || data.battery_health_percent === ''
+      ? null
+      : Number.isFinite(Number(data.battery_health_percent))
+        ? Number(data.battery_health_percent)
+        : null;
   return {
     summary_ru: String(data.summary_ru || '').trim(),
-    defects: Array.isArray(data.defects) ? data.defects.map((x) => String(x)).slice(0, 12) : [],
-    mismatches: Array.isArray(data.mismatches) ? data.mismatches.map((x) => String(x)).slice(0, 8) : [],
-    screen_ok: data.screen_ok === true ? true : data.screen_ok === false ? false : null,
-    battery_health_percent: Number.isFinite(Number(data.battery_health_percent)) ? Number(data.battery_health_percent) : null,
-    verdict: ['ок', 'сомнительно', 'плохо'].includes(verdict) ? verdict : 'сомнительно',
+    defects,
+    mismatches,
+    screen_ok: screenOk,
+    battery_health_percent: battery,
+    verdict: normalizedVerdict,
     raw_text: String(text || '').slice(0, 1500),
   };
 }
 
-async function prepareImage(url, config) {
+async function prepareImage(url) {
   const res = await fetch(url, {
     headers: { 'user-agent': 'Mozilla/5.0', referer: 'https://www.goofish.com/', accept: 'image/*' },
     signal: AbortSignal.timeout(20000),
@@ -79,7 +79,7 @@ async function prepareImage(url, config) {
   if (sharp) {
     const png = await sharp(buffer)
       .rotate()
-      .resize({ width: 900, height: 900, fit: 'inside', withoutEnlargement: true })
+      .resize({ width: 640, height: 640, fit: 'inside', withoutEnlargement: true })
       .png({ compressionLevel: 9 })
       .toBuffer();
     return 'data:image/png;base64,' + png.toString('base64');
@@ -91,67 +91,120 @@ async function prepareImage(url, config) {
   throw new Error('нет sharp, формат ' + (mime || 'unknown') + ' не поддержан');
 }
 
+async function callVision(model, dataUrl, prompt, vision) {
+  const res = await fetch(vision.baseUrl.replace(/\/+$/, '') + '/chat/completions', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      authorization: 'Bearer ' + vision.apiKey,
+      'HTTP-Referer': 'https://localhost',
+      'X-Title': 'Goofish Agent',
+    },
+    body: JSON.stringify({
+      model,
+      messages: [
+        {
+          role: 'user',
+          content: [
+            { type: 'text', text: prompt },
+            { type: 'image_url', image_url: { url: dataUrl } },
+          ],
+        },
+      ],
+      max_tokens: 2000,
+      temperature: 0.1,
+    }),
+    signal: AbortSignal.timeout(vision.timeoutMs),
+  });
+  const text = await res.text();
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch {
+    throw new Error('vision вернул не JSON (HTTP ' + res.status + ')');
+  }
+  if (json.error) throw new Error(json.error.message || 'vision error');
+  const message = json.choices && json.choices[0] && json.choices[0].message ? json.choices[0].message : {};
+  const content = String(message.content || '').trim();
+  const analysis = parseVisionJson(content) || parseVisionJson(message.reasoning);
+  if (analysis) return analysis;
+  if (content) {
+    return {
+      summary_ru: content.slice(0, 400),
+      defects: [],
+      mismatches: [],
+      screen_ok: null,
+      battery_health_percent: null,
+      verdict: 'сомнительно',
+      raw_text: content.slice(0, 1500),
+    };
+  }
+  throw new Error('vision вернул пустой ответ');
+}
+
+function aggregate(results, imagesUsed) {
+  const defects = [...new Set(results.flatMap((r) => r.defects))];
+  const mismatches = [...new Set(results.flatMap((r) => r.mismatches))];
+  const summaries = [...new Set(results.map((r) => r.summary_ru).filter(Boolean))];
+  const screenStates = results.map((r) => r.screen_ok).filter((v) => v !== null && v !== undefined);
+  const screenOk = screenStates.includes(false) ? false : screenStates.includes(true) ? true : null;
+  const batteries = results.map((r) => r.battery_health_percent).filter((v) => Number.isFinite(v));
+  const verdicts = results.map((r) => r.verdict);
+  let verdict = 'сомнительно';
+  if (verdicts.includes('плохо')) verdict = 'плохо';
+  else if (screenOk === false) verdict = 'плохо';
+  else if (screenOk === true && verdicts.every((v) => v === 'ок')) verdict = 'ок';
+  if (verdict === 'ок' && defects.length) verdict = 'сомнительно';
+  return {
+    summary_ru: summaries.slice(0, 3).join(' ').slice(0, 900),
+    defects,
+    mismatches,
+    screen_ok: screenOk,
+    battery_health_percent: batteries.length ? Math.max(...batteries) : null,
+    verdict,
+    images_used: imagesUsed,
+  };
+}
+
 export async function analyzePhotos({ urls, item, config, logger }) {
   const vision = config.vision;
-  if (!vision || !vision.enabled || !vision.model) {
-    return { ok: false, reason: 'vision не настроен' };
-  }
+  if (!vision || !vision.enabled || !vision.model) return { ok: false, reason: 'vision не настроен' };
   const selected = (Array.isArray(urls) ? urls : []).filter(Boolean).slice(0, vision.maxPhotos);
   if (!selected.length) return { ok: false, reason: 'нет фото' };
 
-  const images = [];
+  const models = Array.isArray(vision.models) && vision.models.length ? vision.models : [vision.model];
+  const results = [];
   const errors = [];
-  for (const url of selected) {
+
+  for (let index = 0; index < selected.length; index += 1) {
+    let dataUrl;
     try {
-      images.push(await prepareImage(url, config));
+      dataUrl = await prepareImage(selected[index]);
     } catch (err) {
-      errors.push(url + ': ' + err.message);
-      if (logger) logger.warn('vision: фото не подготовлено', { error: err.message });
+      errors.push('фото ' + (index + 1) + ': ' + err.message);
+      continue;
     }
-  }
-  if (!images.length) return { ok: false, reason: 'не удалось загрузить фото (' + errors.join('; ') + ')' };
-
-  const body = {
-    model: vision.model,
-    messages: [
-      {
-        role: 'user',
-        content: [
-          { type: 'text', text: buildPrompt(item) + '\n\nФото: ' + images.length + '.' },
-          ...images.map((url) => ({ type: 'image_url', image_url: { url } })),
-        ],
-      },
-    ],
-    max_tokens: 900,
-    temperature: 0.1,
-  };
-
-  for (let attempt = 0; attempt < 2; attempt += 1) {
-    try {
-      const res = await fetch(vision.baseUrl.replace(/\/+$/, '') + '/chat/completions', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json', authorization: 'Bearer ' + vision.apiKey },
-        body: JSON.stringify(body),
-        signal: AbortSignal.timeout(vision.timeoutMs),
-      });
-      const text = await res.text();
-      let json;
+    const prompt = buildPrompt(item, index + 1, selected.length);
+    let done = false;
+    for (const model of models) {
       try {
-        json = JSON.parse(text);
-      } catch {
-        throw new Error('vision вернул не JSON');
+        const analysis = await callVision(model, dataUrl, prompt, vision);
+        results.push(analysis);
+        done = true;
+        break;
+      } catch (err) {
+        errors.push('фото ' + (index + 1) + ' ' + model + ': ' + err.message);
+        if (logger) logger.warn('vision: модель не справилась', { model, image: index + 1, error: err.message });
       }
-      if (json.error) throw new Error(json.error.message || JSON.stringify(json.error));
-      const content = json.choices && json.choices[0] && json.choices[0].message ? json.choices[0].message.content : '';
-      const analysis = parseVisionJson(content);
-      if (!analysis) throw new Error('vision вернул текст без JSON: ' + String(content || '').slice(0, 200));
-      analysis.images_used = images.length;
-      return { ok: true, analysis };
-    } catch (err) {
-      if (logger) logger.warn('vision: попытка не удалась', { attempt: attempt + 1, error: err.message });
-      if (attempt === 1) return { ok: false, reason: err.message };
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      await new Promise((resolve) => setTimeout(resolve, 1200));
     }
+    if (!done && logger) logger.warn('vision: фото пропущено', { image: index + 1 });
   }
-  return { ok: false, reason: 'vision недоступен' };
+
+  if (!results.length) {
+    return { ok: false, reason: 'vision не смог обработать фото (' + errors.slice(0, 3).join('; ') + ')' };
+  }
+  const analysis = aggregate(results, results.length);
+  if (errors.length) analysis.errors = errors.slice(0, 5);
+  return { ok: true, analysis };
 }

@@ -88,7 +88,11 @@ export function loadConfig(env = process.env, baseDir = process.cwd()) {
       baseUrl: String(merged.VISION_BASE_URL || llmBase).replace(/\/+$/, ''),
       apiKey: String(merged.VISION_API_KEY || apiKey).trim(),
       model: String(merged.VISION_MODEL || '').trim(),
-      maxPhotos: Math.min(4, Math.max(1, Math.floor(num(merged.VISION_MAX_PHOTOS, 4)))),
+      models: String(merged.VISION_MODELS || merged.VISION_MODEL || '')
+        .split(',')
+        .map((x) => x.trim())
+        .filter(Boolean),
+      maxPhotos: Math.min(8, Math.max(1, Math.floor(num(merged.VISION_MAX_PHOTOS, 6)))),
       timeoutMs: num(merged.VISION_TIMEOUT_MS, 120000),
     },
     images: {

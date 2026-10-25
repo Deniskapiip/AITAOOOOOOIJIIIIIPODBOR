@@ -218,8 +218,15 @@ async function runImages(args, state) {
   );
 
   if (state.config.vision.enabled) {
+    const visionUrls = selected.slice();
+    if (targetEntry) {
+      for (const url of targetEntry[1].image_urls || []) {
+        if (visionUrls.length >= state.config.vision.maxPhotos) break;
+        if (!visionUrls.includes(url)) visionUrls.push(url);
+      }
+    }
     const result = await analyzePhotos({
-      urls: selected,
+      urls: visionUrls.slice(0, state.config.vision.maxPhotos),
       item: targetEntry ? targetEntry[1] : null,
       config: state.config,
       logger: state.logger,
