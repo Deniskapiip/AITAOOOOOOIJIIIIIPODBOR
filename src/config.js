@@ -1,5 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import dns from 'node:dns';
+
+dns.setDefaultResultOrder('ipv4first');
 
 function num(value, fallback) {
   const n = Number(value);

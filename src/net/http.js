@@ -44,6 +44,8 @@ export function requestJson(url, options = {}) {
         port: target.port || 443,
         path: target.pathname + target.search,
         method,
+        family: 4,
+        autoSelectFamily: false,
         agent: proxyUrl ? createProxyAgent(proxyUrl, timeoutMs) : undefined,
         headers: {
           accept: 'application/json, text/plain, */*',
