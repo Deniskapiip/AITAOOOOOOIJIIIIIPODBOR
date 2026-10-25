@@ -67,7 +67,7 @@ function formatSearchItem(item) {
     '[' + item.item_id + '] ' + str(item.title, '(без названия)'),
     fmtNum(item.price_cny) + ' ¥',
     str(item.location, '?') || '?',
-    'продавец ' + str(item.seller_id, '?'),
+    'продавец ' + (item.seller_id ? String(item.seller_id) : item.seller_nick ? String(item.seller_nick) : '?'),
     fmtDate(item.publish_time),
   ];
   if (Array.isArray(item.condition_tags) && item.condition_tags.length) parts.push(item.condition_tags.join('/'));
@@ -99,7 +99,7 @@ async function runSearch(args, state) {
     'ПОИСК "' + keyword + '" — найдено ' + data.total + ', стр. ' + data.page + ', показано ' + data.items.length + ' (provider: ' + data.provider + ')';
   const body = data.items.length ? data.items.map(formatSearchItem).join('\n') : '(ничего не найдено)';
   const hint = data.items.length
-    ? '\n\nПроверяй перспективные лоты через goofish_item. Помни: цена-заглушка и аксессуары отсеиваются по заголовку.'
+    ? '\n\nПроверяй перспективные лоты через goofish_item. seller_id для goofish_seller бери из карточки лота: в поиске только ник. Помни: цена-заглушка и аксессуары отсеиваются по заголовку.'
     : '\n\nПопробуй другой ключ или измени ценовые границы.';
   return { text: header + '\n' + body + hint };
 }
@@ -110,7 +110,11 @@ function formatItemCard(item) {
   lines.push('Название: ' + str(item.title, '—'));
   lines.push('Цена: ' + fmtNum(item.price_cny) + ' ¥' + (item.original_price_cny ? ' (изначально ' + item.original_price_cny + ' ¥)' : ''));
   lines.push('Статус: ' + (item.status === 'active' ? 'активно' : item.status === 'sold' ? 'продано' : str(item.status, 'неизвестно')));
-  lines.push('Продавец: ' + str(item.seller_id, '—'));
+  lines.push(
+    'Продавец: ' + str(item.seller_id, '—') +
+      (item.seller_nick ? ' (' + item.seller_nick + ')' : '') +
+      (item.seller_credit ? ', кредит: ' + item.seller_credit : ''),
+  );
   lines.push('Локация: ' + str(item.location, '—'));
   const delivery = item.delivery || {};
   lines.push(
@@ -148,7 +152,9 @@ function formatSeller(seller) {
   const lines = [];
   lines.push('ПРОДАВЕЦ ' + str(seller.seller_id, '?'));
   lines.push('Ник: ' + str(seller.nickname, '—'));
-  lines.push('Zhima: ' + (seller.zhima_credit === null || seller.zhima_credit === undefined ? 'нет данных' : seller.zhima_credit));
+  lines.push('Zhima: ' + (seller.zhima_credit === null || seller.zhima_credit === undefined ? 'нет числового рейтинга' : seller.zhima_credit));
+  lines.push('Кредит: ' + (seller.zhima_text || 'нет данных'));
+  lines.push('Оценок/отзывов: ' + (seller.reviews_count !== null && seller.reviews_count !== undefined ? seller.reviews_count : 'нет данных'));
   lines.push('Верификация: ' + (seller.verified ? 'да' : 'нет'));
   lines.push('Регистрация: ' + (seller.registered_at || 'нет данных') + (age === null ? '' : ' (примерно ' + age + ' мес.)'));
   lines.push('Продано: ' + fmtNum(seller.sold_count));
@@ -190,7 +196,7 @@ async function runReviews(args, state) {
   data.reviews.forEach((review) => {
     lines.push(
       '[' + (review.review_id || '?') + '] ' + fmtDate(review.created_at) + ' — ' +
-        (review.rating === null || review.rating === undefined ? '?' : review.rating + '/5') + ' — ' +
+        (review.rating === 1 ? '好评' : review.rating === 0 ? '中评' : review.rating === -1 ? '差评' : review.rating === null || review.rating === undefined ? '?' : review.rating + '/5') + ' — ' +
         (review.item_id ? 'лот ' + review.item_id + ': ' : '') + str(review.text, '(без текста)'),
     );
   });

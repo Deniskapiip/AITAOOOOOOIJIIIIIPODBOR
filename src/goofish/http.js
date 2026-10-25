@@ -8,8 +8,9 @@ import {
 } from './normalize.js';
 
 const H5_HOST = 'https://h5api.m.goofish.com/h5';
-const APP_KEY = '12574478';
 const REFERER = 'https://www.goofish.com/';
+const APP_KEY_SEARCH = '12574478';
+const APP_KEY_WEB = '34839810';
 
 function parseCookie(raw) {
   const jar = {};
@@ -48,10 +49,14 @@ function md5(value) {
   return crypto.createHash('md5').update(value).digest('hex');
 }
 
-function parseApiSpec(spec, fallbackApi, fallbackVersion) {
-  if (!spec) return { api: fallbackApi, version: fallbackVersion };
-  const [api, version] = String(spec).split('|');
-  return { api: api || fallbackApi, version: version || fallbackVersion };
+function parseApiSpec(spec, fallbackApi, fallbackVersion, fallbackAppKey) {
+  if (!spec) return { api: fallbackApi, version: fallbackVersion, appKey: fallbackAppKey };
+  const [api, version, appKey] = String(spec).split('|');
+  return {
+    api: api || fallbackApi,
+    version: version || fallbackVersion,
+    appKey: appKey || fallbackAppKey,
+  };
 }
 
 export class HttpGoofishProvider {
@@ -62,10 +67,10 @@ export class HttpGoofishProvider {
     this.logger = logger;
     this.timeoutMs = timeoutMs;
     this.apis = {
-      search: parseApiSpec(apis.search, 'mtop.taobao.idlemtopsearch.pc.search', '1.0'),
-      item: parseApiSpec(apis.item, 'mtop.taobao.idle.item.detail', '1.0'),
-      seller: parseApiSpec(apis.seller, 'mtop.taobao.idle.user.page', '1.0'),
-      reviews: parseApiSpec(apis.reviews, 'mtop.taobao.idle.user.rate.list', '1.0'),
+      search: parseApiSpec(apis.search, 'mtop.taobao.idlemtopsearch.pc.search', '1.0', APP_KEY_SEARCH),
+      item: parseApiSpec(apis.item, 'mtop.taobao.idle.pc.detail', '1.0', APP_KEY_WEB),
+      seller: parseApiSpec(apis.seller, 'mtop.idle.web.user.page.head', '1.0', APP_KEY_WEB),
+      reviews: parseApiSpec(apis.reviews, 'mtop.idle.web.trade.rate.list', '1.0', APP_KEY_WEB),
     };
     if (!Object.keys(this.cookieJar).length) {
       if (this.logger) this.logger.warn('goofish http: GOOFISH_COOKIE пуст, запросы почти наверняка будут отклонены');
@@ -77,20 +82,21 @@ export class HttpGoofishProvider {
     return raw.split('_')[0] || '';
   }
 
-  async callMtop(api, version, data) {
+  async callMtop(api, version, data, appKey = APP_KEY_SEARCH) {
     const dataStr = JSON.stringify(data);
     let lastError = null;
     for (let attempt = 0; attempt < 2; attempt += 1) {
       const t = Date.now();
-      const sign = md5(this.token + '&' + t + '&' + APP_KEY + '&' + dataStr);
+      const sign = md5(this.token + '&' + t + '&' + appKey + '&' + dataStr);
       const qs = new URLSearchParams({
         jsv: '2.7.2',
-        appKey: APP_KEY,
+        appKey: appKey,
         t: String(t),
         sign,
         api,
         v: version,
         type: 'originaljson',
+        accountSite: 'xianyu',
         dataType: 'json',
         timeout: '20000',
       });
@@ -142,7 +148,7 @@ export class HttpGoofishProvider {
       extraFilterValue: '{}',
       userPositionJson: '{}',
     };
-    const json = await this.callMtop(this.apis.search.api, this.apis.search.version, data);
+    const json = await this.callMtop(this.apis.search.api, this.apis.search.version, data, this.apis.search.appKey);
     let items = normalizeSearchResponse(json);
     if (priceMin !== null) items = items.filter((i) => i.price_cny !== null && i.price_cny >= priceMin);
     if (priceMax !== null) items = items.filter((i) => i.price_cny !== null && i.price_cny <= priceMax);
@@ -158,14 +164,14 @@ export class HttpGoofishProvider {
   }
 
   async item(itemId) {
-    const json = await this.callMtop(this.apis.item.api, this.apis.item.version, { itemId: String(itemId) });
+    const json = await this.callMtop(this.apis.item.api, this.apis.item.version, { itemId: String(itemId) }, this.apis.item.appKey);
     const item = normalizeItemResponse(json);
     if (!item.item_id) item.item_id = String(itemId);
     return item;
   }
 
   async seller(sellerId) {
-    const json = await this.callMtop(this.apis.seller.api, this.apis.seller.version, { sellerId: String(sellerId) });
+    const json = await this.callMtop(this.apis.seller.api, this.apis.seller.version, { userId: String(sellerId) }, this.apis.seller.appKey);
     const seller = normalizeSellerResponse(json);
     if (!seller.seller_id) seller.seller_id = String(sellerId);
     return seller;
@@ -173,10 +179,15 @@ export class HttpGoofishProvider {
 
   async reviews(sellerId, page = 1) {
     const json = await this.callMtop(this.apis.reviews.api, this.apis.reviews.version, {
-      sellerId: String(sellerId),
+      rateType: 0,
+      ratedUid: String(sellerId),
+      raterType: 0,
+      rowsPerPage: 20,
       pageNumber: Math.max(1, Math.floor(page || 1)),
-      pageSize: 10,
-    });
+      foldFlag: 0,
+      fishAdCode: '330110',
+      extraTag: '',
+    }, this.apis.reviews.appKey);
     const normalized = normalizeReviewsResponse(json);
     if (!normalized.seller_id) normalized.seller_id = String(sellerId);
     normalized.page = Math.max(1, Math.floor(page || 1));

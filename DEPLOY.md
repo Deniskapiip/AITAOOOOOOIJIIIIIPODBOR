@@ -51,15 +51,19 @@ BotHost удобнее всего подключать к Git. Если репо
 | DEEPSEEK_API_KEY | ключ LLM |
 | ADMIN_TELEGRAM_IDS | твой Telegram ID (узнать: /id в боте или @userinfobot) |
 | ALLOWED_TELEGRAM_IDS | кому разрешён подбор; можно оставить пустым |
+| TELEGRAM_API_IP | 149.154.167.220 (если Telegram блокируется по DNS) |
 | RATE_CNY_RUB | актуальный курс, например 12.4 |
 | GOOFISH_PROVIDER | mock для демо или http для реального Goofish |
 | PHOTO_MODE | off для DeepSeek; vision только для vision-модели |
+
+Если api.telegram.org не открывается, но IP доступен, бот сам ходит на
+TELEGRAM_API_IP с SNI api.telegram.org. На BotHost обычно можно оставить пустым.
 
 Для реального Goofish дополнительно:
 
 | Переменная | Значение |
 |---|---|
-| GOOFISH_COOKIE | cookie залогиненного аккаунта goofish.com |
+| GOOFISH_COOKIE | cookie залогиненного аккаунта goofish.com (получить из обычного браузера, не из автоматизированного входа) |
 | GOOFISH_PROXY_URL | китайский прокси, например http://user:pass@host:port |
 
 Курс и комиссию можно менять без перезапуска: /rate 12.4 и

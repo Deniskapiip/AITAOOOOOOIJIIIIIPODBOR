@@ -1,3 +1,5 @@
+import https from 'node:https';
+
 export class TelegramError extends Error {
   constructor(message, code, method) {
     super(message);
@@ -8,14 +10,69 @@ export class TelegramError extends Error {
 }
 
 export class TelegramClient {
-  constructor(token, logger) {
+  constructor(token, logger, options = {}) {
     this.token = token;
     this.logger = logger;
     this.base = 'https://api.telegram.org/bot' + token;
+    this.apiHost = options.apiHost || 'api.telegram.org';
+    this.apiIp = options.apiIp || '';
     this.offset = 0;
   }
 
   async call(method, payload = {}, timeoutMs = 40000) {
+    if (this.apiIp) {
+      try {
+        return await this.callViaIp(method, payload, timeoutMs);
+      } catch (err) {
+        if (this.logger) this.logger.debug('telegram: IP-транспорт не сработал, пробую обычный', { error: err.message });
+      }
+    }
+    return this.callViaFetch(method, payload, timeoutMs);
+  }
+
+  callViaIp(method, payload, timeoutMs) {
+    return new Promise((resolve, reject) => {
+      const body = JSON.stringify(payload);
+      const req = https.request(
+        {
+          host: this.apiIp,
+          servername: this.apiHost,
+          path: '/bot' + this.token + '/' + method,
+          method: 'POST',
+          headers: {
+            host: this.apiHost,
+            'content-type': 'application/json',
+            'content-length': Buffer.byteLength(body),
+          },
+          timeout: timeoutMs,
+        },
+        (res) => {
+          const chunks = [];
+          res.on('data', (chunk) => chunks.push(chunk));
+          res.on('end', () => {
+            let json;
+            try {
+              json = JSON.parse(Buffer.concat(chunks).toString('utf8'));
+            } catch {
+              reject(new TelegramError('Telegram вернул не JSON (HTTP ' + res.statusCode + ')', res.statusCode, method));
+              return;
+            }
+            if (!json.ok) {
+              reject(new TelegramError(json.description || 'Telegram API error', json.error_code || res.statusCode, method));
+              return;
+            }
+            resolve(json.result);
+          });
+        },
+      );
+      req.on('timeout', () => req.destroy(new Error('Telegram IP timeout')));
+      req.on('error', (err) => reject(err));
+      req.write(body);
+      req.end();
+    });
+  }
+
+  async callViaFetch(method, payload, timeoutMs) {
     const res = await fetch(this.base + '/' + method, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },

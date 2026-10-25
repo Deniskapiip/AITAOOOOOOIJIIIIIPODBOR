@@ -59,6 +59,8 @@ export function loadConfig(env = process.env, baseDir = process.cwd()) {
       token: String(merged.TELEGRAM_BOT_TOKEN || '').trim(),
       adminIds: parseIds(merged.ADMIN_TELEGRAM_IDS),
       allowedIds: parseIds(merged.ALLOWED_TELEGRAM_IDS),
+      apiHost: String(merged.TELEGRAM_API_HOST || 'api.telegram.org'),
+      apiIp: String(merged.TELEGRAM_API_IP || '149.154.167.220'),
     },
     llm: {
       baseUrl: llmBase,

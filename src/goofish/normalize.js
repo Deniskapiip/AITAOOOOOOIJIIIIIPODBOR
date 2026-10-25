@@ -23,10 +23,10 @@ export function stripHtml(value) {
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
+    .replace(/\r/g, '')
     .trim();
 }
 
-// Ищет первое значение по списку ключей на любом уровне вложенности.
 export function deepFirst(obj, keys, maxDepth = 8) {
   if (!obj || typeof obj !== 'object' || maxDepth < 0) return undefined;
   for (const key of keys) {
@@ -59,168 +59,148 @@ export function deepArray(obj, keys, maxDepth = 8) {
   return null;
 }
 
-function pick(obj, paths) {
-  for (const p of paths) {
-    let cur = obj;
-    let ok = true;
-    for (const part of p.split('.')) {
-      if (cur && typeof cur === 'object' && part in cur) cur = cur[part];
-      else {
-        ok = false;
-        break;
-      }
-    }
-    if (ok && cur !== undefined && cur !== null && cur !== '') return cur;
-  }
-  return undefined;
-}
-
 function normalizeItemId(value) {
   if (value === null || value === undefined) return null;
   const s = String(value).trim();
-  return /^\d+$/.test(s) ? s : s || null;
+  return s || null;
 }
 
 function normalizeImageUrl(url) {
   if (!url || typeof url !== 'string') return null;
   let u = url.trim();
   if (u.startsWith('//')) u = 'https:' + u;
+  if (u.startsWith('http://')) u = 'https://' + u.slice(7);
   if (!/^https?:\/\//.test(u)) return null;
   return u;
 }
 
+export function toIso(value) {
+  if (value === null || value === undefined || value === '') return '';
+  if (typeof value === 'number' || /^\d{10,}$/.test(String(value))) {
+    const n = Number(value);
+    const ms = String(value).length <= 10 ? n * 1000 : n;
+    const d = new Date(ms);
+    return Number.isNaN(d.getTime()) ? String(value) : d.toISOString();
+  }
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? String(value) : d.toISOString();
+}
+
 export function normalizeSearchItem(raw) {
-  const data = raw && (raw.data || raw.item || raw) ? raw.data || raw.item || raw : {};
-  const price = toNumber(
-    pick(data, ['price', 'priceCny', 'soldPrice', 'priceInfo.price', 'priceInfo.priceText']) ??
-      deepFirst(data, ['price', 'soldPrice', 'priceText']),
-  );
-  const itemId = normalizeItemId(
-    pick(data, ['itemId', 'id', 'item_id', 'itemid']) ?? deepFirst(data, ['itemId', 'item_id', 'id']),
-  );
-  const title = stripHtml(
-    pick(data, ['title', 'itemTitle', 'subject']) ?? deepFirst(data, ['title', 'itemTitle', 'subject']) ?? '',
-  );
+  const main = (raw && raw.data && raw.data.item && raw.data.item.main) || (raw && raw.data && raw.data.item) || (raw && raw.data) || raw || {};
+  const args = (main.clickParam && main.clickParam.args) || {};
+  const ex = main.exContent || {};
+  const detail = ex.detailParams || {};
+  const itemId = args.id || args.item_id || detail.itemId || ex.itemId;
+  const price = toNumber(args.price !== undefined ? args.price : detail.soldPrice !== undefined ? detail.soldPrice : ex.soldPrice);
   return {
-    item_id: itemId,
-    title,
+    item_id: normalizeItemId(itemId),
+    title: stripHtml(ex.title || detail.title || args.title || ''),
     price_cny: price,
-    location: String(pick(data, ['location', 'area', 'city']) ?? deepFirst(data, ['location', 'area']) ?? ''),
-    seller_id: normalizeItemId(pick(data, ['sellerId', 'userId', 'seller_id']) ?? deepFirst(data, ['sellerId', 'userId'])),
-    publish_time: String(pick(data, ['publishTime', 'createTime', 'gmtCreate']) ?? deepFirst(data, ['publishTime', 'createTime']) ?? ''),
-    condition_tags: Array.isArray(pick(data, ['conditionTags', 'tags'])) ? pick(data, ['conditionTags', 'tags']) : [],
-    want_count: toNumber(pick(data, ['wantCount', 'want_cnt']) ?? deepFirst(data, ['wantCount'])),
-    image_url: normalizeImageUrl(
-      pick(data, ['imageUrl', 'picUrl', 'image']) ?? deepFirst(data, ['imageUrl', 'picUrl']),
-    ),
+    location: String(ex.area || args.area || ''),
+    seller_id: null,
+    seller_nick: String(ex.userNickName || detail.userNick || ''),
+    seller_ref: String(args.seller_id || ''),
+    publish_time: toIso(args.publishTime !== undefined ? args.publishTime : ex.publishTime),
+    condition_tags: [],
+    want_count: toNumber(ex.want !== undefined ? ex.want : args.want),
+    image_url: normalizeImageUrl(ex.picUrl || args.picUrl),
   };
 }
 
 export function normalizeSearchResponse(json) {
-  const list =
-    deepArray(json, ['resultList', 'itemList', 'items', 'list', 'auctions', 'dataList'], 4) || [];
-  return list
-    .map(normalizeSearchItem)
-    .filter((item) => item.item_id && item.title);
+  const list = deepArray(json, ['resultList', 'itemList', 'items', 'list', 'auctions', 'dataList'], 4) || [];
+  return list.map(normalizeSearchItem).filter((item) => item.item_id && item.title);
 }
 
 export function normalizeItemResponse(json) {
-  const item = pick(json, ['data.itemDO', 'data.item', 'data', 'itemDO', 'item']) || json;
-  const data = item && item.itemDO ? item.itemDO : item;
-  const itemId = normalizeItemId(
-    pick(data, ['itemId', 'id']) ?? pick(json, ['itemId']) ?? deepFirst(json, ['itemId', 'item_id']),
-  );
-  const price = toNumber(
-    pick(data, ['soldPrice', 'price', 'priceInfo.price']) ?? deepFirst(json, ['soldPrice', 'price']),
-  );
-  const originalPrice = toNumber(
-    pick(data, ['originalPrice', 'oriPrice', 'priceInfo.originalPrice']) ?? deepFirst(json, ['originalPrice', 'oriPrice']),
-  );
-  const description = stripHtml(
-    pick(data, ['desc', 'description', 'itemDesc']) ?? deepFirst(json, ['desc', 'description']) ?? '',
-  );
-  const imagesRaw =
-    pick(data, ['imageInfos', 'images', 'imageList', 'picUrlList']) ??
-    deepArray(json, ['imageInfos', 'images', 'imageList'], 3) ??
-    [];
-  const imageUrls = (Array.isArray(imagesRaw) ? imagesRaw : [])
-    .map((entry) => {
-      if (typeof entry === 'string') return normalizeImageUrl(entry);
-      return normalizeImageUrl(entry && (entry.url || entry.imageUrl || entry.picUrl || entry.originUrl));
-    })
-    .filter(Boolean);
-  const soldOut = toBool(deepFirst(json, ['soldOut', 'isSoldOut']) || false);
-  const itemStatus = pick(data, ['itemStatus', 'status']) ?? deepFirst(json, ['itemStatus']);
-  let status = 'active';
-  if (soldOut) status = 'sold';
-  else if (itemStatus !== undefined) {
-    const n = Number(itemStatus);
-    if (Number.isFinite(n) && n !== 0 && n !== 1) status = 'offline';
+  const data = (json && json.data) || {};
+  const item = data.itemDO || {};
+  const seller = data.sellerDO || {};
+  const labels = Array.isArray(item.itemLabelExtList) ? item.itemLabelExtList : [];
+  const labelMap = {};
+  for (const label of labels) {
+    if (label && label.propertyText) labelMap[label.propertyText] = label.valueText;
   }
-  const delivery = {
-    mode: String(
-      pick(data, ['delivery.mode', 'deliveryMode', 'shippingMode']) ??
-        deepFirst(json, ['deliveryMode', 'shippingMode']) ??
-        '',
-    ),
-    ship_fee_cny: toNumber(deepFirst(json, ['shipFee', 'postFee', 'freight'])),
-    from_city: String(
-      pick(data, ['delivery.fromCity', 'city']) ?? deepFirst(json, ['fromCity', 'city']) ?? '',
-    ),
-  };
-  const sellerId = normalizeItemId(
-    pick(data, ['sellerId', 'userId']) ?? deepFirst(json, ['sellerId', 'userId']),
-  );
+  const conditionTags = ['成色', '版本', '存储容量', '运行内存', '拆修和功能', '品牌', '型号']
+    .filter((key) => labelMap[key])
+    .map((key) => key + ': ' + labelMap[key]);
+  const images = (Array.isArray(item.imageInfos) ? item.imageInfos : [])
+    .map((entry) => normalizeImageUrl(entry && (entry.url || entry.majorUrl || entry.originUrl)))
+    .filter(Boolean);
+  const fee = toNumber(item.transportFee);
+  const statusText = String(item.itemStatusStr || '');
+  let status = 'active';
+  if (!/在线|在售/.test(statusText) && Number(item.itemStatus) !== 0) status = 'sold';
+  const zhima = seller.zhimaLevelInfo || {};
   return {
-    item_id: itemId,
-    title: stripHtml(pick(data, ['title', 'subject']) ?? deepFirst(json, ['title', 'subject']) ?? ''),
-    price_cny: price,
-    original_price_cny: originalPrice,
+    item_id: normalizeItemId(item.itemId || data.itemId),
+    title: stripHtml(item.title || ''),
+    price_cny: toNumber(item.soldPrice !== undefined ? item.soldPrice : item.defaultPrice),
+    original_price_cny: toNumber(item.originalPrice) || null,
     status,
-    description,
-    condition_tags: Array.isArray(deepFirst(json, ['conditionTags', 'tags'])) ? deepFirst(json, ['conditionTags', 'tags']) : [],
-    image_urls: imageUrls,
-    has_video: toBool(deepFirst(json, ['hasVideo', 'videoUrl']) || false),
-    delivery,
-    location: String(pick(data, ['location', 'area']) ?? deepFirst(json, ['location']) ?? ''),
-    want_count: toNumber(deepFirst(json, ['wantCount', 'want_cnt'])),
-    view_count: toNumber(deepFirst(json, ['viewCount', 'browseCount'])),
-    publish_time: String(deepFirst(json, ['publishTime', 'createTime', 'gmtCreate']) ?? ''),
-    seller_id: sellerId,
+    description: stripHtml(item.desc || ''),
+    condition_tags: conditionTags,
+    image_urls: images,
+    has_video: Boolean(deepFirst(data, ['videoUrl', 'videoInfo', 'hasVideo']) || false),
+    delivery: {
+      mode: fee === 0 ? '包邮' : fee !== null ? 'доставка' : '',
+      ship_fee_cny: fee,
+      from_city: String(seller.publishCity || seller.city || ''),
+    },
+    location: String(seller.publishCity || seller.city || ''),
+    want_count: toNumber(item.wantCnt),
+    view_count: toNumber(item.browseCnt),
+    publish_time: toIso(item.gmtCreate),
+    seller_id: normalizeItemId(seller.sellerId),
+    seller_nick: String(seller.nick || ''),
+    seller_credit: String(zhima.levelName || ''),
+    seller_registered_at: toIso(seller.registerTime),
     provider: 'http',
   };
 }
 
 export function normalizeSellerResponse(json) {
-  const data = pick(json, ['data.userDO', 'data.user', 'data', 'userDO', 'user']) || json;
-  const sellerId = normalizeItemId(deepFirst(json, ['sellerId', 'userId', 'id']));
+  const data = (json && json.data) || {};
+  const baseInfo = data.baseInfo || {};
+  const module = data.module || {};
+  const base = module.base || {};
+  const tags = baseInfo.tags || {};
+  const levelTag = (Array.isArray(base.ylzTags) ? base.ylzTags : []).find((tag) => tag && tag.code === 'cs_seller_level');
+  const rateTab = (module.tabs && module.tabs.rate) || {};
   return {
-    seller_id: sellerId,
-    nickname: stripHtml(String(deepFirst(json, ['nick', 'nickname', 'userNick']) ?? '')),
-    zhima_credit: toNumber(deepFirst(json, ['zhimaCredit', 'zhimaScore', 'creditScore'])),
-    verified: toBool(deepFirst(json, ['verified', 'realNameVerified', 'idCardVerified']) || false),
-    registered_at: String(deepFirst(json, ['registeredAt', 'registerTime', 'gmtCreate', 'createdAt']) ?? ''),
-    sold_count: toNumber(deepFirst(json, ['soldCount', 'sellCount', 'soldNum'])),
-    praise_rate: toNumber(deepFirst(json, ['praiseRate', 'goodRate', 'positiveRate'])),
-    location: String(deepFirst(json, ['location', 'city', 'area']) ?? ''),
+    seller_id: normalizeItemId(baseInfo.kcUserId || deepFirst(data, ['sellerId', 'userId'])),
+    nickname: String(base.displayName || deepFirst(data, ['nick', 'nickname']) || ''),
+    zhima_credit: null,
+    zhima_text: String((levelTag && levelTag.text) || ''),
+    verified: Boolean(tags.real_name_certification_77 || tags.real_person_certification_77 || false),
+    registered_at: toIso(deepFirst(data, ['registerTime', 'userRegDay', 'gmtCreate'])),
+    sold_count: toNumber(deepFirst(data, ['soldCount', 'sellCount', 'hasSoldNumInteger'])),
+    praise_rate: toNumber(deepFirst(data, ['praiseRate', 'goodRate', 'positiveRate'])),
+    location: String(base.ipLocation || ''),
     items_sample: [],
+    reviews_count: toNumber(rateTab.number),
     provider: 'http',
   };
 }
 
 export function normalizeReviewsResponse(json) {
-  const list =
-    deepArray(json, ['reviews', 'rateList', 'commentList', 'list', 'dataList'], 4) || [];
+  const data = (json && json.data) || {};
+  const list = Array.isArray(data.cardList) ? data.cardList : [];
+  const reviews = list.map((card) => {
+    const cardData = card && (card.cardData || card.data || card);
+    const content = cardData && (cardData.feedback || cardData.content || cardData.rateContent || cardData.comment || cardData.text);
+    return {
+      review_id: String((cardData && (cardData.rateId || cardData.id)) || ''),
+      created_at: toIso(cardData && (cardData.gmtCreate || cardData.rateTime || cardData.createTime || cardData.gmtCreateStr)),
+      rating: toNumber(cardData && (cardData.rate !== undefined ? cardData.rate : cardData.rateStar || cardData.score || cardData.star)),
+      text: stripHtml(typeof content === 'string' ? content : ''),
+      item_id: normalizeItemId(cardData && (cardData.itemId || cardData.auctionId)),
+    };
+  });
   return {
-    seller_id: normalizeItemId(deepFirst(json, ['sellerId', 'userId'])) || '',
-    reviews: list.map((entry) => ({
-      review_id: String(deepFirst(entry, ['reviewId', 'rateId', 'id']) ?? ''),
-      created_at: String(deepFirst(entry, ['createdAt', 'gmtCreate', 'createTime', 'rateTime']) ?? ''),
-      rating: toNumber(deepFirst(entry, ['rating', 'rateStar', 'score', 'star'])),
-      text: stripHtml(String(deepFirst(entry, ['content', 'text', 'comment', 'feedback']) ?? '')),
-      item_id: normalizeItemId(deepFirst(entry, ['itemId', 'auctionId'])),
-    })),
-    total: toNumber(deepFirst(json, ['total', 'totalCount', 'count'])) || list.length,
+    reviews,
+    total: toNumber(data.totalCount || data.total || data.rateCount) || reviews.length,
     page: 1,
     provider: 'http',
   };

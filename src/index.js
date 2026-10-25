@@ -23,7 +23,10 @@ async function main() {
 
   const llm = new LlmClient(config.llm, logger);
   const provider = await createProvider(config, logger);
-  const telegram = new TelegramClient(config.telegram.token, logger);
+  const telegram = new TelegramClient(config.telegram.token, logger, {
+    apiHost: config.telegram.apiHost,
+    apiIp: config.telegram.apiIp,
+  });
   const app = new BotApp({ config, logger, telegram, settings, llm, provider });
 
   let healthServer = null;

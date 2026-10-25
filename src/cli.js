@@ -80,7 +80,7 @@ async function main() {
     },
     logger,
   );
-  if (saved) console.error('Прогон сохранён: ' + saved.file);
+  if (saved && !flags.json) console.error('Прогон сохранён: ' + saved.file);
 
   if (flags.json) {
     console.log(JSON.stringify(outcome.result, null, 2));
