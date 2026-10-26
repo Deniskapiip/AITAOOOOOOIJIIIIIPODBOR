@@ -29,12 +29,12 @@ LabProvider и mock vision, которые читают truth из фиксту�
 | unsupported photo claims | 0 | 0 |
 | rub mismatch | 0 | 0 |
 | gold recall | 100% | >=80% |
-| verdict match | 92.1% | >=80% |
+| verdict match | 94.8% | >=80% |
 | all-bad empty top | 100% | 100% |
 | duplicate item calls | 0 | 0 |
 | finish first try | 100% | >=90% |
 | median calls | 27 | <=30 |
-| tokens (replay) | 5 071 339 | — |
+| tokens (replay) | 5 072 581 | — |
 
 Стоимость в юанях не считается: в репозитории нет тарифа DeepSeek и разбивки
 input/output. Это TODO(verify) до live-бюджета.

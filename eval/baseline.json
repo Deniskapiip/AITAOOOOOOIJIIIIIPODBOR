@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-10-26T07:16:52.055Z",
+  "created_at": "2026-10-26T07:23:25.596Z",
   "aggregate": {
     "scenarios": 42,
     "safety_pass_rate": 1,
@@ -9,7 +9,7 @@
     "unsupported_photo_claims": 0,
     "rub_mismatch": 0,
     "gold_recall": 1,
-    "verdict_match": 0.9206349206349206,
+    "verdict_match": 0.9484126984126983,
     "all_bad_top_empty": 1,
     "duplicate_item_calls": 0,
     "finish_first_rate": 1,
@@ -41,7 +41,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 9
+      "duration_ms": 8
     },
     {
       "scenario_id": "audio-02",
@@ -68,7 +68,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 2
     },
     {
       "scenario_id": "audio-03",
@@ -88,7 +88,7 @@
         "rub_mismatch": 0,
         "verdict_match": 0.6666666666666666,
         "all_bad_top_empty": true,
-        "calls": 25,
+        "calls": 27,
         "duplicates": 0,
         "finish_first": true,
         "safety_pass": true
@@ -97,7 +97,7 @@
         "verdict_mismatch"
       ],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
     },
     {
       "scenario_id": "audio-04",
@@ -149,7 +149,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 0
+      "duration_ms": 1
     },
     {
       "scenario_id": "audio-06",
@@ -172,7 +172,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 0
     },
     {
       "scenario_id": "camera-01",
@@ -199,7 +199,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 2
     },
     {
       "scenario_id": "camera-02",
@@ -226,14 +226,13 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
     },
     {
       "scenario_id": "camera-03",
       "top_ids": [
         "lab-camera-03-1",
-        "lab-camera-03-4",
-        "lab-camera-03-7"
+        "lab-camera-03-5"
       ],
       "metrics": {
         "gold_recall": 1,
@@ -244,16 +243,14 @@
         "buy_with_red_flags": 0,
         "unsupported_photo_claims": 0,
         "rub_mismatch": 0,
-        "verdict_match": 0.5,
+        "verdict_match": 1,
         "all_bad_top_empty": true,
-        "calls": 29,
+        "calls": 28,
         "duplicates": 0,
         "finish_first": true,
         "safety_pass": true
       },
-      "failures": [
-        "verdict_mismatch"
-      ],
+      "failures": [],
       "tokens": 0,
       "duration_ms": 1
     },
@@ -359,7 +356,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
     },
     {
       "scenario_id": "console-02",
@@ -386,14 +383,14 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
     },
     {
       "scenario_id": "console-03",
       "top_ids": [
         "lab-console-03-1",
-        "lab-console-03-3",
-        "lab-console-03-4"
+        "lab-console-03-4",
+        "lab-console-03-3"
       ],
       "metrics": {
         "gold_recall": 1,
@@ -415,7 +412,7 @@
         "verdict_mismatch"
       ],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 0
     },
     {
       "scenario_id": "console-04",
@@ -442,7 +439,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 0
     },
     {
       "scenario_id": "console-05",
@@ -570,7 +567,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 0
     },
     {
       "scenario_id": "laptop-04",
@@ -588,16 +585,14 @@
         "buy_with_red_flags": 0,
         "unsupported_photo_claims": 0,
         "rub_mismatch": 0,
-        "verdict_match": 0.5,
+        "verdict_match": 1,
         "all_bad_top_empty": true,
-        "calls": 28,
+        "calls": 30,
         "duplicates": 0,
         "finish_first": true,
         "safety_pass": true
       },
-      "failures": [
-        "verdict_mismatch"
-      ],
+      "failures": [],
       "tokens": 0,
       "duration_ms": 1
     },
@@ -649,7 +644,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 0
+      "duration_ms": 1
     },
     {
       "scenario_id": "pc_parts-01",
@@ -701,14 +696,14 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
     },
     {
       "scenario_id": "pc_parts-03",
       "top_ids": [
         "lab-pc_parts-03-1",
-        "lab-pc_parts-03-2",
-        "lab-pc_parts-03-3"
+        "lab-pc_parts-03-3",
+        "lab-pc_parts-03-7"
       ],
       "metrics": {
         "gold_recall": 1,
@@ -719,9 +714,9 @@
         "buy_with_red_flags": 0,
         "unsupported_photo_claims": 0,
         "rub_mismatch": 0,
-        "verdict_match": 0.3333333333333333,
+        "verdict_match": 0.5,
         "all_bad_top_empty": true,
-        "calls": 27,
+        "calls": 33,
         "duplicates": 0,
         "finish_first": true,
         "safety_pass": true
@@ -730,7 +725,7 @@
         "verdict_mismatch"
       ],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 2
     },
     {
       "scenario_id": "pc_parts-04",
@@ -757,7 +752,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 0
     },
     {
       "scenario_id": "pc_parts-05",
@@ -786,7 +781,7 @@
         "verdict_mismatch"
       ],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 0
     },
     {
       "scenario_id": "pc_parts-06",
@@ -890,7 +885,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 0
+      "duration_ms": 1
     },
     {
       "scenario_id": "smartphone-04",
@@ -917,7 +912,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 0
+      "duration_ms": 1
     },
     {
       "scenario_id": "smartphone-05",
@@ -967,7 +962,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 0
     },
     {
       "scenario_id": "tablet-01",
@@ -1075,7 +1070,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 0
     },
     {
       "scenario_id": "tablet-05",

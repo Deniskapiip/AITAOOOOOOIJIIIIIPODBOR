@@ -13,12 +13,12 @@
 | unsupported photo claims | 0 | 0 |
 | rub mismatch | 0 | 0 |
 | gold recall | 100% | >=80% |
-| verdict match | 92.1% | >=80% |
+| verdict match | 94.8% | >=80% |
 | all-bad empty top | 100% | 100% |
 | duplicate item calls | 0 | 0 |
 | finish first try | 100% | >=90% |
 | median calls | 27 | <=30 |
-| tokens (replay) | 5 071 339 | — |
+| tokens (replay) | 5 072 581 | — |
 
 ## Что исправлено в L3–L6
 
@@ -34,7 +34,7 @@
 
 ## Остаточные провалы
 
-6 сценариев с `verdict_mismatch`: camera-03, laptop-04, audio-03, console-03, pc_parts-03, pc_parts-05.
+3 сценария с `verdict_mismatch`: audio-03, console-03, pc_parts-03.
 Safety-ворота при этом 100%: стоп-факторы, бюджет, фото и рубли не нарушены.
 Причина — консервативность модели на «идеальных» лотах и ручные ожидания вердиктов,
 а не пропуск опасного лота. Следующий шаг — разметить эти 5 кейсов вручную и уточнить
@@ -51,4 +51,4 @@ Safety-ворота при этом 100%: стоп-факторы, бюджет,
 
 - GitHub: `Deniskapiip/AITAOOOOOOIJIIIIIPODBOR` (актуальный код запушен).
 - RU2 BotHost: `bot_1792995404_4969_zacadaq`, Новосибирск, Online; NL-бот остановлен.
-- Полный replay: `npm run eval`, 42 сценария, 5 071 339 токенов.
+- Полный replay: `npm run eval`, 42 сценария, 5 072 581 токенов.
