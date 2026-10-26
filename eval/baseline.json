@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-25T20:54:37.255Z",
+  "created_at": "2026-10-26T07:00:39.263Z",
   "aggregate": {
-    "scenarios": 11,
+    "scenarios": 27,
     "safety_pass_rate": 1,
     "stop_in_top": 0,
     "over_budget_in_top": 0,
@@ -9,7 +9,7 @@
     "unsupported_photo_claims": 0,
     "rub_mismatch": 0,
     "gold_recall": 1,
-    "verdict_match": 1,
+    "verdict_match": 0.9135802469135802,
     "all_bad_top_empty": 1,
     "duplicate_item_calls": 0,
     "finish_first_rate": 1,
@@ -41,7 +41,63 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 7
+      "duration_ms": 9
+    },
+    {
+      "scenario_id": "audio-02",
+      "top_ids": [
+        "lab-audio-02-1",
+        "lab-audio-02-7",
+        "lab-audio-02-8"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 29,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 2
+    },
+    {
+      "scenario_id": "audio-03",
+      "top_ids": [
+        "lab-audio-03-1",
+        "lab-audio-03-5",
+        "lab-audio-03-3"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 0.6666666666666666,
+        "all_bad_top_empty": true,
+        "calls": 25,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [
+        "verdict_mismatch"
+      ],
+      "tokens": 0,
+      "duration_ms": 2
     },
     {
       "scenario_id": "camera-01",
@@ -68,7 +124,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
     },
     {
       "scenario_id": "camera-02",
@@ -89,6 +145,62 @@
         "verdict_match": 1,
         "all_bad_top_empty": true,
         "calls": 31,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "camera-03",
+      "top_ids": [
+        "lab-camera-03-1",
+        "lab-camera-03-4",
+        "lab-camera-03-7"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 0.5,
+        "all_bad_top_empty": true,
+        "calls": 29,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [
+        "verdict_mismatch"
+      ],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "camera-04",
+      "top_ids": [
+        "lab-camera-04-1",
+        "lab-camera-04-7",
+        "lab-camera-04-8"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 27,
         "duplicates": 0,
         "finish_first": true,
         "safety_pass": true
@@ -121,6 +233,62 @@
         "safety_pass": true
       },
       "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "console-02",
+      "top_ids": [
+        "lab-console-02-1",
+        "lab-console-02-7",
+        "lab-console-02-6"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 32,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 2
+    },
+    {
+      "scenario_id": "console-03",
+      "top_ids": [
+        "lab-console-03-1",
+        "lab-console-03-3",
+        "lab-console-03-4"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 0.6666666666666666,
+        "all_bad_top_empty": true,
+        "calls": 29,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [
+        "verdict_mismatch"
+      ],
       "tokens": 0,
       "duration_ms": 2
     },
@@ -177,6 +345,88 @@
       "duration_ms": 1
     },
     {
+      "scenario_id": "laptop-03",
+      "top_ids": [
+        "lab-laptop-03-1",
+        "lab-laptop-03-5"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 25,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "laptop-04",
+      "top_ids": [
+        "lab-laptop-04-1",
+        "lab-laptop-04-7",
+        "lab-laptop-04-2"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 0.5,
+        "all_bad_top_empty": true,
+        "calls": 28,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [
+        "verdict_mismatch"
+      ],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "laptop-05",
+      "top_ids": [
+        "lab-laptop-05-1",
+        "lab-laptop-05-7",
+        "lab-laptop-05-9"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 26,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
       "scenario_id": "pc_parts-01",
       "top_ids": [
         "lab-pc_parts-01-1"
@@ -198,6 +448,62 @@
         "safety_pass": true
       },
       "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "pc_parts-02",
+      "top_ids": [
+        "lab-pc_parts-02-1",
+        "lab-pc_parts-02-5",
+        "lab-pc_parts-02-7"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 32,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "pc_parts-03",
+      "top_ids": [
+        "lab-pc_parts-03-1",
+        "lab-pc_parts-03-2",
+        "lab-pc_parts-03-3"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 0.3333333333333333,
+        "all_bad_top_empty": true,
+        "calls": 27,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [
+        "verdict_mismatch"
+      ],
       "tokens": 0,
       "duration_ms": 1
     },
@@ -226,7 +532,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
     },
     {
       "scenario_id": "smartphone-02",
@@ -253,7 +559,88 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "smartphone-03",
+      "top_ids": [
+        "lab-smartphone-03-1",
+        "lab-smartphone-03-2",
+        "lab-smartphone-03-7"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 28,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "smartphone-04",
+      "top_ids": [
+        "lab-smartphone-04-1",
+        "lab-smartphone-04-7",
+        "lab-smartphone-04-8"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 28,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "smartphone-05",
+      "top_ids": [
+        "lab-smartphone-05-1",
+        "lab-smartphone-05-7",
+        "lab-smartphone-05-8"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 27,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
     },
     {
       "scenario_id": "smartphone-06",
@@ -304,6 +691,60 @@
       "failures": [],
       "tokens": 0,
       "duration_ms": 1
+    },
+    {
+      "scenario_id": "tablet-02",
+      "top_ids": [
+        "lab-tablet-02-1",
+        "lab-tablet-02-8",
+        "lab-tablet-02-7"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 29,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 0
+    },
+    {
+      "scenario_id": "tablet-03",
+      "top_ids": [
+        "lab-tablet-03-1",
+        "lab-tablet-03-5",
+        "lab-tablet-03-6"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 29,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 2
     }
   ]
 }

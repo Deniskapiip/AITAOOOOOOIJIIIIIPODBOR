@@ -186,9 +186,17 @@ export function validateFinish({ result, state, settings, budget, config }) {
     if (!description) errors.push(prefix + ': card.description пустой');
     if (description.length > 220) errors.push(prefix + ': card.description длиннее 220 символов');
     else if (description.length > 160) warnings.push(prefix + ': card.description длиннее рекомендованных 120 символов');
-    const conditionLines = Array.isArray(card.condition_lines) ? card.condition_lines.filter((l) => typeof l === 'string') : [];
+    let conditionLines = Array.isArray(card.condition_lines) ? card.condition_lines.filter((l) => typeof l === 'string') : [];
+    const pricedLines = conditionLines.filter((line) => /[¥￥]|₽|\d+\s*(?:руб|юан)/i.test(line));
+    if (pricedLines.length) {
+      warnings.push(prefix + ': строка с ценой убрана из card.condition_lines');
+      conditionLines = conditionLines.filter((line) => !pricedLines.includes(line));
+    }
     if (!conditionLines.length) errors.push(prefix + ': card.condition_lines пустой');
-    if (conditionLines.length > 6) errors.push(prefix + ': card.condition_lines больше 6 строк');
+    if (conditionLines.length > 6) {
+      warnings.push(prefix + ': card.condition_lines обрезаны до 6 строк');
+      conditionLines.splice(6);
+    }
     if (conditionLines.length === 1) warnings.push(prefix + ': card.condition_lines из одной строки, лучше 2-6');
     for (const text of [title, description, ...conditionLines]) {
       if (PRICE_IN_TEXT.test(text)) errors.push(prefix + ': в card нельзя писать цену (' + text.slice(0, 60) + ')');
@@ -420,6 +428,12 @@ export function validateFinish({ result, state, settings, budget, config }) {
       }
       if (lot.photo_check.defects.length || lot.photo_check.mismatch.length) {
         errors.push(prefix + ': "брать" требует отсутствия дефектов и несоответствий на фото');
+      }
+      if (/RTX|GTX|Radeon|RX\s?\d{4}|显卡|GPU/i.test(String(item.title || ''))) {
+        const evidence = [lot.why_good, lot.card.condition_lines, lot.unknown].flat().join(' ');
+        if (!/(GPU-Z|HWiNFO|температур|стресс|нагрузк)/i.test(evidence)) {
+          errors.push(prefix + ': GPU "брать" требует GPU-Z/HWiNFO или стресс-теста');
+        }
       }
     }
     if (lot.score < 60) errors.push(prefix + ': score < 60, лот не может быть в top');

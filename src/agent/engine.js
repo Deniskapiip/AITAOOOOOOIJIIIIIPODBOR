@@ -91,12 +91,22 @@ export async function runAgent({
   let nudges = 0;
   let rejectedCalls = 0;
   let step = 0;
+  const usageByStep = [];
 
   try {
     for (step = 0; step < config.agent.maxSteps && !state.finished; step += 1) {
       if (controller.signal.aborted) throw new AgentError('Прогон прерван (таймаут или отмена)');
       onEvent({ type: 'llm_request', step: step + 1, used: budget.used, max: budget.max });
+      const before = { ...(llm.totalUsage || {}) };
+      const stepStarted = Date.now();
       const response = await llm.chat({ messages, tools: TOOLS_FOR_LLM, signal: controller.signal });
+      usageByStep.push({
+        step: step + 1,
+        duration_ms: Date.now() - stepStarted,
+        prompt_tokens: (llm.totalUsage && llm.totalUsage.prompt_tokens ? llm.totalUsage.prompt_tokens : 0) - (before.prompt_tokens || 0),
+        completion_tokens: (llm.totalUsage && llm.totalUsage.completion_tokens ? llm.totalUsage.completion_tokens : 0) - (before.completion_tokens || 0),
+        total_tokens: (llm.totalUsage && llm.totalUsage.total_tokens ? llm.totalUsage.total_tokens : 0) - (before.total_tokens || 0),
+      });
 
       if (response.vision === false && !state.visionUnavailable) {
         state.visionUnavailable = true;
@@ -212,6 +222,7 @@ export async function runAgent({
       usage: llm.totalUsage || null,
       llmRequests: llm.requests || null,
       toolStats: state.toolStats,
+      usageByStep,
       calls: budget.used,
       budget,
       finishWarnings: state.finishWarnings,

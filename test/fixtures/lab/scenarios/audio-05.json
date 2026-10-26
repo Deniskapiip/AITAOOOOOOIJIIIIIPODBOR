@@ -156,7 +156,7 @@
         "price_cny": 1955,
         "original_price_cny": 2255,
         "status": "active",
-        "description": "个人自用，无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，全套，包邮，成色如图",
+        "description": "个人自用，正品，功能正常，配件齐全，包邮，成色如图",
         "condition_tags": [
           "成色: 95新",
           "版本: 国行",
@@ -746,45 +746,45 @@
         "file": "test/fixtures/lab/images/audio-05-1-1.png",
         "url": "https://lab.local/images/audio-05-1-1.png",
         "truth": {
-          "screen_visible": true,
+          "screen_visible": false,
           "cracks": [],
           "scratches": [],
-          "battery_pct": 92,
+          "battery_pct": 90,
           "screen_ok": true,
-          "system_ok": true,
-          "icloud_clear": true,
+          "system_ok": false,
+          "icloud_clear": false,
           "verdict": "ок",
-          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+          "label": "наушники, кейс и амбушюры; серийный номер виден"
         }
       },
       {
         "file": "test/fixtures/lab/images/audio-05-1-2.png",
         "url": "https://lab.local/images/audio-05-1-2.png",
         "truth": {
-          "screen_visible": true,
+          "screen_visible": false,
           "cracks": [],
           "scratches": [],
-          "battery_pct": 92,
+          "battery_pct": 90,
           "screen_ok": true,
-          "system_ok": true,
-          "icloud_clear": true,
+          "system_ok": false,
+          "icloud_clear": false,
           "verdict": "ок",
-          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+          "label": "наушники, кейс и амбушюры; серийный номер виден"
         }
       },
       {
         "file": "test/fixtures/lab/images/audio-05-1-3.png",
         "url": "https://lab.local/images/audio-05-1-3.png",
         "truth": {
-          "screen_visible": true,
+          "screen_visible": false,
           "cracks": [],
           "scratches": [],
-          "battery_pct": 92,
+          "battery_pct": 90,
           "screen_ok": true,
-          "system_ok": true,
-          "icloud_clear": true,
+          "system_ok": false,
+          "icloud_clear": false,
           "verdict": "ок",
-          "label": "экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист"
+          "label": "наушники, кейс и амбушюры; серийный номер виден"
         }
       }
     ],

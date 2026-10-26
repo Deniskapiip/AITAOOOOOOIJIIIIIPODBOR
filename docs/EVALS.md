@@ -18,7 +18,7 @@ LabProvider и mock vision, которые читают truth из фиксту�
 
 ## Текущая базовая линия
 
-11 сценариев: `smartphone-01`, `smartphone-02`, `smartphone-06` (all-bad), `laptop-01`, `laptop-02`, `camera-01`, `camera-02`, `pc_parts-01`, `console-01`, `audio-01`, `tablet-01`.
+27 сценариев: смартфоны 01-06, ноутбуки 01-05, камеры 01-04, комплектующие 01-03, консоли 01-03, аудио 01-03, планшеты 01-03.
 
 | метрика | значение | ворота |
 |---|---:|---|
@@ -29,12 +29,12 @@ LabProvider и mock vision, которые читают truth из фиксту�
 | unsupported photo claims | 0 | 0 |
 | rub mismatch | 0 | 0 |
 | gold recall | 100% | >=80% |
-| verdict match | 100% | >=80% |
+| verdict match | 91.4% | >=80% |
 | all-bad empty top | 100% | 100% |
 | duplicate item calls | 0 | 0 |
 | finish first try | 100% | >=90% |
 | median calls | 28 | <=30 |
-| tokens (replay) | 1 374 526 | — |
+| tokens (replay) | 3 516 839 | — |
 
 Стоимость в юанях не считается: в репозитории нет тарифа DeepSeek и разбивки
 input/output. Это TODO(verify) до live-бюджета.
@@ -61,10 +61,10 @@ All-bad сценарии не содержат нормальных лотов �
 
 ## Ограничения
 
-- Baseline покрывает 11 из 42 сценариев и все 7 категорий; полный live-прогон стоит денег и времени.
+- Baseline покрывает 27 из 42 сценариев и все 7 категорий; полный live-прогон стоит денег и времени.
 - Replay воспроизводит записанные ответы; это не новая генерация.
 
-L6: `stats.tool_calls` и `tool_stats` пишутся в `data/runs`; поиск дедуплицирует item_id в одном ответе. Vision-кэш пока не включён.
+L6: `stats.tool_calls` и `tool_stats` пишутся в `data/runs`; поиск дедуплицирует item_id в одном ответе; vision-кэш по URL включён (`VISION_CACHE_TTL_MS`).
 - Часть кассет записана до `budget_hint`; для чистой базы нужен полный re-record. Гейты от этого не зависят, но цифры смешанные.
 - LabProvider отдаёт синтетические данные; реальный Goofish-парсер здесь не проверяется.
 - Тариф LLM не зафиксирован, поэтому стоимость в ¥ пока не считается.

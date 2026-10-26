@@ -38,6 +38,9 @@ function reviews(kind, id) {
 
 function truth(kind, category = '') {
   if (kind === 'clean' && category === 'pc_parts') return { screen_visible: false, cracks: [], scratches: [], battery_pct: null, screen_ok: true, system_ok: false, icloud_clear: false, verdict: 'ок', label: 'плата и чипы, следов ремонта и перепайки нет' };
+  if (kind === 'clean' && category === 'audio') return { screen_visible: false, cracks: [], scratches: [], battery_pct: 90, screen_ok: true, system_ok: false, icloud_clear: false, verdict: 'ок', label: 'наушники, кейс и амбушюры; серийный номер виден' };
+  if (kind === 'clean' && category === 'camera') return { screen_visible: true, cracks: [], scratches: [], battery_pct: 92, screen_ok: true, system_ok: true, icloud_clear: true, verdict: 'ок', label: 'камера, матрица и объектив;快门数 12k; следов грибка нет' };
+  if (kind === 'clean' && category === 'console') return { screen_visible: true, cracks: [], scratches: [], battery_pct: null, screen_ok: true, system_ok: true, icloud_clear: true, verdict: 'ок', label: 'корпус, порты и геймпад; серийный номер виден' };
   if (kind === 'cracks') return { screen_visible: true, cracks: ['front'], scratches: ['front'], battery_pct: null, screen_ok: false, verdict: 'плохо', label: 'экран с трещинами' };
   if (kind === 'stock') return { screen_visible: false, cracks: [], scratches: [], battery_pct: null, screen_ok: null, verdict: 'сомнительно', mismatch: 'другая модель/стоковое фото', label: 'стоковое фото' };
   return { screen_visible: true, cracks: [], scratches: [], battery_pct: 92, screen_ok: true, system_ok: true, icloud_clear: true, verdict: 'ок', label: 'экран и корпус чистые; 关于本机 подтверждён; iCloud/аккаунт чист' };
@@ -164,7 +167,13 @@ function makeScenario(cat, idx, seed) {
 
   let goldenId = null;
   if (!allBad) {
-    const goldenDesc = cat.id === 'pc_parts' ? '个人自用，非矿卡，无拆无修，全套，包邮，成色如图，可提供GPU-Z' : '个人自用，无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，全套，包邮，成色如图';
+    const descByCategory = {
+      pc_parts: '个人自用，非矿卡，无拆无修，全套，包邮，成色如图，可提供GPU-Z',
+      audio: '个人自用，正品，功能正常，配件齐全，包邮，成色如图',
+      camera: '个人自用，无拆无修，快门数低，全套，包邮，成色如图，可提供快门数截图',
+      console: '个人自用，无拆无修，已退出账号，全套，包邮，成色如图',
+    };
+    const goldenDesc = descByCategory[cat.id] || '个人自用，无进水无烧屏无拆修，已退出iCloud，账号可退，关于本机截图在图中，全套，包邮，成色如图';
     const g = add({ title: model + ' 个人自用 全套 国行', price: Math.round(budget * 0.85), desc: goldenDesc, seller: 'good', images: 'clean' });
     goldenId = g.item_id;
     sc.expected.top_must_include = [goldenId];

@@ -59,6 +59,8 @@
 
     /rate 12.4
     /commission 6.5 650
+    /check 1093933133459      # один лот, без агента и серии
+    /accounts                # статусы аккаунтов, cooldown в МСК
 
 ## CLI без Telegram
 
@@ -96,6 +98,7 @@
 | VISION_BASE_URL | LLM_BASE_URL | OpenAI-совместимый vision endpoint |
 | VISION_MODEL | — | например qwen-vl-max |
 | VISION_API_KEY | LLM key | ключ vision-провайдера |
+| VISION_CACHE_TTL_MS | 21600000 | кэш vision по URL, мс |
 | INLINE_IMAGES | true | скачивать фото в data URI для модели |
 | DATA_DIR | data | настройки и логи прогонов |
 | APP_PORT | — | если задан, поднимается GET /health (не путать с PORT на BotHost) |

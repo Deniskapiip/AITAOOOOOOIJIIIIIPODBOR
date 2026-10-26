@@ -12,6 +12,26 @@ async function getSharp() {
   return sharpModule;
 }
 
+const analysisCache = new Map();
+
+function cacheGet(key, ttlMs) {
+  const entry = analysisCache.get(key);
+  if (!entry) return null;
+  if (Date.now() - entry.at > ttlMs) {
+    analysisCache.delete(key);
+    return null;
+  }
+  return entry.value;
+}
+
+function cacheSet(key, value) {
+  if (analysisCache.size > 300) {
+    const oldest = analysisCache.keys().next().value;
+    if (oldest !== undefined) analysisCache.delete(oldest);
+  }
+  analysisCache.set(key, { at: Date.now(), value });
+}
+
 function buildPrompt(item, index, total) {
   const title = String((item && item.title) || '—').slice(0, 260);
   const desc = String((item && item.description) || '—').slice(0, 500);
@@ -177,6 +197,12 @@ export async function analyzePhotos({ urls, item, config, logger }) {
   const errors = [];
 
   for (let index = 0; index < selected.length; index += 1) {
+    const cacheKey = vision.model + '|' + selected[index];
+    const cached = cacheGet(cacheKey, vision.cacheTtlMs || 0);
+    if (cached) {
+      results.push(cached);
+      continue;
+    }
     let dataUrl;
     try {
       dataUrl = await prepareImage(selected[index]);
@@ -189,6 +215,7 @@ export async function analyzePhotos({ urls, item, config, logger }) {
     for (const model of models) {
       try {
         const analysis = await callVision(model, dataUrl, prompt, vision);
+        cacheSet(cacheKey, analysis);
         results.push(analysis);
         done = true;
         break;

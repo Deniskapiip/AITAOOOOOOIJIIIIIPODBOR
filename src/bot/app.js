@@ -496,6 +496,7 @@ export class BotApp {
             calls: outcome.calls,
             llm_requests: outcome.llmRequests || null,
             tool_stats: outcome.toolStats || null,
+            usage_by_step: outcome.usageByStep || null,
             usage: outcome.usage,
             warnings: outcome.finishWarnings,
             duration_ms: outcome.durationMs,

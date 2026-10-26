@@ -123,6 +123,7 @@ export function loadConfig(env = process.env, baseDir = process.cwd()) {
         .filter(Boolean),
       maxPhotos: Math.min(8, Math.max(1, Math.floor(num(merged.VISION_MAX_PHOTOS, 6)))),
       timeoutMs: num(merged.VISION_TIMEOUT_MS, 120000),
+      cacheTtlMs: num(merged.VISION_CACHE_TTL_MS, 6 * 60 * 60 * 1000),
     },
     images: {
       mode: String(merged.PHOTO_MODE || 'off').trim().toLowerCase() === 'vision' ? 'vision' : 'off',

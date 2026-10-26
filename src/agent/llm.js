@@ -50,6 +50,7 @@ export class LlmClient {
     this.visionSupported = true;
     this.requests = 0;
     this.totalUsage = { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 };
+    this.usageHistory = [];
   }
 
   async request(messages, tools, signal, temperature) {
@@ -95,6 +96,12 @@ export class LlmClient {
       this.totalUsage.prompt_tokens += json.usage.prompt_tokens || 0;
       this.totalUsage.completion_tokens += json.usage.completion_tokens || 0;
       this.totalUsage.total_tokens += json.usage.total_tokens || 0;
+      this.usageHistory.push({
+        at: new Date().toISOString(),
+        prompt_tokens: json.usage.prompt_tokens || 0,
+        completion_tokens: json.usage.completion_tokens || 0,
+        total_tokens: json.usage.total_tokens || 0,
+      });
     }
     return {
       content: message.content,

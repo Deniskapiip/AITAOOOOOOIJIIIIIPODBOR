@@ -29,6 +29,7 @@ export async function runScenario({ scenario, config, settings, llm, logger }) {
     usage: outcome.usage,
     durationMs: outcome.durationMs,
     warnings: outcome.finishWarnings,
+    messages: outcome.messages,
     startedAt,
   };
 }

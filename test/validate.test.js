@@ -42,11 +42,12 @@ test('лота без карточки в top быть не может', async (
   assert.ok(validation.errors.some((e) => e.includes('не проверялся через goofish_item')));
 });
 
-test('цена в тексте карточки запрещена', async () => {
+test('цена в тексте карточки удаляется', async () => {
   const { validation } = await check((r) => {
     r.top[0].card.condition_lines.push('Цена 4580 ¥');
   });
-  assert.ok(validation.errors.some((e) => e.includes('нельзя писать цену')));
+  assert.equal(validation.errors.filter((e) => e.includes('цену')).length, 0);
+  assert.ok(validation.warnings.some((e) => e.includes('строка с ценой')));
 });
 
 test('"брать" без просмотра фото невозможно', async () => {
@@ -181,4 +182,26 @@ test('описание фото без photo_check ок — ошибка', async
     config: ctx.config,
   });
   assert.ok(validation.errors.some((e) => e.includes('why_good описывает содержание фото')));
+});
+
+test('цена в condition_lines удаляется, а не ломает finish', async () => {
+  const ctx = await makeTokenContext();
+  const result = baseResult();
+  result.top[0].card.condition_lines.push('Доставка 18 ¥');
+  const validation = validateFinish({ result, state: ctx.state, settings: ctx.settings.get(), budget: ctx.budget, config: ctx.config });
+  assert.equal(validation.errors.length, 0);
+  assert.ok(!validation.result.top[0].card.condition_lines.some((line) => line.includes('18 ¥')));
+});
+
+test('GPU без стресс-теста не получает брать', async () => {
+  const ctx = await makeTokenContext();
+  const result = baseResult();
+  const id = result.top[0].item_id;
+  const item = ctx.state.items.get(id);
+  item.title = 'RTX 4080 Super 个人自用';
+  result.top[0].verdict = 'брать';
+  result.top[0].photo_check = { verdict: 'ок', defects: [], mismatch: [] };
+  result.top[0].why_good = ['Цена ниже медианы (карточка: price)'];
+  const validation = validateFinish({ result, state: ctx.state, settings: ctx.settings.get(), budget: ctx.budget, config: ctx.config });
+  assert.ok(validation.errors.some((e) => e.includes('GPU')));
 });

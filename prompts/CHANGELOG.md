@@ -18,3 +18,15 @@
 - Search results are deduplicated by `item_id` before the model sees them.
 - Runs store `llm_requests` and `tool_stats`.
 - Baseline extended to 11 scenarios / 7 categories; all safety gates pass.
+
+## v4 · 2026-10-26
+
+- Vision analyses are cached by URL (`VISION_CACHE_TTL_MS`).
+- Run logs include `llm_requests` and `tool_stats` for L6.
+
+## v5 · 2026-10-26
+
+- `/check <id|url>`: one item, one seller, one reviews page, optional vision; no agent loop.
+- GPU `брать` now requires GPU-Z/HWiNFO or stress-test evidence.
+- Price lines are stripped from `card.condition_lines` with a warning instead of rejecting the whole finish.
+- Vision analyses cached by URL.
