@@ -3,6 +3,9 @@ import { createProvider } from '../goofish/index.js';
 import { saveRun, newRunId } from '../store/runs.js';
 import { buildButtons, buildResultPlan, escapeHtml, formatCny, formatRub, progressText } from './format.js';
 import { runSearchOnly } from '../agent/searchOnly.js';
+import { analyzePhotos } from '../agent/vision.js';
+import { calcPrice } from '../tools/pricing.js';
+import { classifyGoofishError } from '../goofish/errors.js';
 import { SettingsError } from '../store/settings.js';
 import { formatRetryAfter } from '../goofish/errors.js';
 
@@ -127,6 +130,7 @@ export class BotApp {
           '',
           'Админ: /rate 12.4 · /commission 6.5 650',
           'Админ: /accounts · /cookie · /verify_help',
+          'Админ: /check &lt;id или ссылка&gt; — один лот без серии',
         ].join('\n'),
         { parse_mode: 'HTML' },
       );
@@ -268,6 +272,15 @@ export class BotApp {
       return;
     }
 
+    if (text.startsWith('/check')) {
+      if (!this.isAdmin(userId)) {
+        await this.telegram.sendMessage(chatId, 'Только администратор может запускать ручную проверку.');
+        return;
+      }
+      await this.runManualCheck(chatId, userId, text);
+      return;
+    }
+
     if (text.startsWith('/json')) {
       const last = this.lastRuns.get(chatId);
       if (!last) {
@@ -290,6 +303,105 @@ export class BotApp {
     }
 
     this.enqueue(chatId, () => this.runQuery(chatId, userId, text));
+  }
+
+  async runManualCheck(chatId, userId, text) {
+    const arg = text.slice('/check'.length).trim();
+    const match = arg.match(/(\d{6,})/);
+    if (!match) {
+      await this.telegram.sendMessage(chatId, 'Пришли: /check 1093933133459 или ссылку на лот.');
+      return;
+    }
+    const itemId = match[1];
+    const log = this.logger.child({ manualCheck: itemId, chatId });
+    let placeholder = null;
+    try {
+      placeholder = await this.telegram.sendMessage(chatId, '🔎 Проверяю один лот ' + itemId + '…');
+    } catch {
+      placeholder = null;
+    }
+    const placeholderId = placeholder && placeholder.message_id;
+    try {
+      const item = await this.provider.item(itemId);
+      let seller = null;
+      let reviews = null;
+      try {
+        if (item.seller_id) seller = await this.provider.seller(item.seller_id);
+      } catch (err) {
+        log.warn('manual check: seller failed', { error: err.message });
+      }
+      try {
+        if (item.seller_id) reviews = await this.provider.reviews(item.seller_id, 1);
+      } catch (err) {
+        log.warn('manual check: reviews failed', { error: err.message });
+      }
+      let vision = null;
+      if (this.config.vision.enabled && Array.isArray(item.image_urls) && item.image_urls.length) {
+        try {
+          const result = await analyzePhotos({
+            urls: item.image_urls.slice(0, Math.min(3, this.config.vision.maxPhotos)),
+            item,
+            config: this.config,
+            logger: log,
+          });
+          if (result.ok) vision = result.analysis;
+        } catch (err) {
+          log.warn('manual check: vision failed', { error: err.message });
+        }
+      }
+      let priced = null;
+      try {
+        const calc = calcPrice({ items: [{ item_id: itemId, price_cny: item.price_cny }] }, this.settings.get());
+        if (!calc.error) priced = calc.results[0];
+      } catch {
+        priced = null;
+      }
+
+      const lines = [];
+      lines.push('<b>🔎 Ручная проверка · ' + escapeHtml(item.title || itemId) + '</b>');
+      lines.push('<i>Это не подбор и не вердикт «брать»; один лот, без серии.</i>');
+      lines.push('');
+      lines.push('<b>' + (formatCny(item.price_cny) || '—') + ' ¥' + (priced ? ' · ' + formatRub(priced.final_rub) + ' ₽' : '') + '</b>');
+      lines.push('Статус: ' + escapeHtml(item.status || '—') + ' · ' + escapeHtml(item.location || '—'));
+      if (item.description) lines.push('📝 ' + escapeHtml(String(item.description).slice(0, 500)));
+      if (Array.isArray(item.condition_tags) && item.condition_tags.length) {
+        lines.push('🏷 ' + escapeHtml(item.condition_tags.join(' · ')));
+      }
+      if (seller) {
+        lines.push('👤 ' + escapeHtml(seller.nickname || item.seller_nick || '') + ' · Zhima ' + (seller.zhima_credit === null || seller.zhima_credit === undefined ? '—' : seller.zhima_credit) +
+          ' · продаж ' + (seller.sold_count === null || seller.sold_count === undefined ? '—' : seller.sold_count));
+      }
+      if (reviews) lines.push('💬 Отзывов: ' + (reviews.total === null || reviews.total === undefined ? '—' : reviews.total) + ' (стр. 1)');
+      lines.push('👀 ' + (item.view_count === null || item.view_count === undefined ? '—' : item.view_count) + ' · 🔥 ' + (item.want_count === null || item.want_count === undefined ? '—' : item.want_count));
+      if (vision) {
+        lines.push('');
+        lines.push('<b>📷 Фото:</b> ' + escapeHtml(vision.verdict));
+        lines.push(escapeHtml(vision.summary_ru || '').slice(0, 700));
+        if (Array.isArray(vision.defects) && vision.defects.length) lines.push('⚠️ ' + escapeHtml(vision.defects.join('; ')));
+      } else {
+        lines.push('');
+        lines.push('📷 Фото не проверялись.');
+      }
+      lines.push('');
+      lines.push('<a href="https://www.goofish.com/item?id=' + encodeURIComponent(itemId) + '">🌐 Открыть на сайте</a>');
+      const textOut = lines.join('\n').slice(0, 4096);
+      if (placeholderId) {
+        await this.telegram.editMessageText(chatId, placeholderId, textOut, { parse_mode: 'HTML', disable_web_page_preview: true, reply_markup: buildButtons({ item_id: itemId }) }).catch(() => {});
+      } else {
+        await this.telegram.sendMessage(chatId, textOut, { parse_mode: 'HTML', disable_web_page_preview: true, reply_markup: buildButtons({ item_id: itemId }) });
+      }
+      const photos = (item.image_urls || []).slice(0, this.config.bot.sendPhotos);
+      if (photos.length >= 2) {
+        await this.telegram.sendMediaGroup(chatId, photos.map((url) => ({ type: 'photo', media: url }))).catch(() => {});
+      } else if (photos.length === 1) {
+        await this.telegram.sendPhoto(chatId, photos[0]).catch(() => {});
+      }
+    } catch (err) {
+      const info = classifyGoofishError(err);
+      const msg = '❌ Не удалось проверить лот: ' + (err.message || 'ошибка') + ' [' + info.kind + ']';
+      if (placeholderId) await this.telegram.editMessageText(chatId, placeholderId, escapeHtml(msg)).catch(() => {});
+      else await this.telegram.sendMessage(chatId, escapeHtml(msg));
+    }
   }
 
   async runQuery(chatId, userId, query) {
