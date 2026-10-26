@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-26T07:00:39.263Z",
+  "created_at": "2026-10-26T07:12:50.051Z",
   "aggregate": {
-    "scenarios": 27,
+    "scenarios": 42,
     "safety_pass_rate": 1,
     "stop_in_top": 0,
     "over_budget_in_top": 0,
@@ -9,11 +9,11 @@
     "unsupported_photo_claims": 0,
     "rub_mismatch": 0,
     "gold_recall": 1,
-    "verdict_match": 0.9135802469135802,
+    "verdict_match": 0.9206349206349206,
     "all_bad_top_empty": 1,
     "duplicate_item_calls": 0,
     "finish_first_rate": 1,
-    "call_median": 28
+    "call_median": 27
   },
   "scores": [
     {
@@ -41,7 +41,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 9
+      "duration_ms": 8
     },
     {
       "scenario_id": "audio-02",
@@ -97,7 +97,82 @@
         "verdict_mismatch"
       ],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "audio-04",
+      "top_ids": [
+        "lab-audio-04-1",
+        "lab-audio-04-7",
+        "lab-audio-04-2"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 28,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "audio-05",
+      "top_ids": [
+        "lab-audio-05-1"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 29,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "audio-06",
+      "top_ids": [],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 17,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 0
     },
     {
       "scenario_id": "camera-01",
@@ -124,7 +199,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 2
     },
     {
       "scenario_id": "camera-02",
@@ -207,7 +282,57 @@
       },
       "failures": [],
       "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "camera-05",
+      "top_ids": [
+        "lab-camera-05-1",
+        "lab-camera-05-7",
+        "lab-camera-05-3"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 25,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
       "duration_ms": 2
+    },
+    {
+      "scenario_id": "camera-06",
+      "top_ids": [],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 22,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
     },
     {
       "scenario_id": "console-01",
@@ -234,7 +359,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 2
     },
     {
       "scenario_id": "console-02",
@@ -261,7 +386,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
     },
     {
       "scenario_id": "console-03",
@@ -290,7 +415,84 @@
         "verdict_mismatch"
       ],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "console-04",
+      "top_ids": [
+        "lab-console-04-1",
+        "lab-console-04-7",
+        "lab-console-04-6"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 27,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 0
+    },
+    {
+      "scenario_id": "console-05",
+      "top_ids": [
+        "lab-console-05-1",
+        "lab-console-05-7",
+        "lab-console-05-8"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 25,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "console-06",
+      "top_ids": [],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 18,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
     },
     {
       "scenario_id": "laptop-01",
@@ -397,7 +599,7 @@
         "verdict_mismatch"
       ],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 0
     },
     {
       "scenario_id": "laptop-05",
@@ -418,6 +620,29 @@
         "verdict_match": 1,
         "all_bad_top_empty": true,
         "calls": 26,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 0
+    },
+    {
+      "scenario_id": "laptop-06",
+      "top_ids": [],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 16,
         "duplicates": 0,
         "finish_first": true,
         "safety_pass": true
@@ -476,7 +701,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 2
     },
     {
       "scenario_id": "pc_parts-03",
@@ -504,6 +729,85 @@
       "failures": [
         "verdict_mismatch"
       ],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "pc_parts-04",
+      "top_ids": [
+        "lab-pc_parts-04-1",
+        "lab-pc_parts-04-7",
+        "lab-pc_parts-04-8"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 27,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "pc_parts-05",
+      "top_ids": [
+        "lab-pc_parts-05-1",
+        "lab-pc_parts-05-7",
+        "lab-pc_parts-05-8"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 0,
+        "all_bad_top_empty": true,
+        "calls": 27,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [
+        "verdict_mismatch"
+      ],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "pc_parts-06",
+      "top_ids": [],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 19,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
       "tokens": 0,
       "duration_ms": 1
     },
@@ -663,7 +967,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 1
+      "duration_ms": 0
     },
     {
       "scenario_id": "tablet-01",
@@ -717,7 +1021,7 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 0
+      "duration_ms": 1
     },
     {
       "scenario_id": "tablet-03",
@@ -744,7 +1048,84 @@
       },
       "failures": [],
       "tokens": 0,
-      "duration_ms": 2
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "tablet-04",
+      "top_ids": [
+        "lab-tablet-04-1",
+        "lab-tablet-04-6",
+        "lab-tablet-04-7"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 30,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 0
+    },
+    {
+      "scenario_id": "tablet-05",
+      "top_ids": [
+        "lab-tablet-05-1",
+        "lab-tablet-05-7",
+        "lab-tablet-05-4"
+      ],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 23,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 1
+    },
+    {
+      "scenario_id": "tablet-06",
+      "top_ids": [],
+      "metrics": {
+        "gold_recall": 1,
+        "excluded_in_top": 0,
+        "stop_in_top": 0,
+        "over_budget_in_top": 0,
+        "buy_without_photo": 0,
+        "buy_with_red_flags": 0,
+        "unsupported_photo_claims": 0,
+        "rub_mismatch": 0,
+        "verdict_match": 1,
+        "all_bad_top_empty": true,
+        "calls": 23,
+        "duplicates": 0,
+        "finish_first": true,
+        "safety_pass": true
+      },
+      "failures": [],
+      "tokens": 0,
+      "duration_ms": 0
     }
   ]
 }
